@@ -7,16 +7,6 @@ const dadosErro =
 const erroSigla =
   document.querySelector('.erro-sigla');
 
-// Áudios de erro
-const vozErroCampo =
-  document.querySelector(".vozErroCampo");
-
-const vozErroSigla =
-  document.querySelector(".vozErroSigla");
-
-const vozErroLoja =
-  document.querySelector(".vozErroLoja");
-
 // Controle do timeout
 let timeErroId;
 
@@ -55,13 +45,13 @@ document
 
     // Verifica campos vazios
     if (!nome || !sigla || !senha || !token) {
-      mostrarErro(dadosErro, 'Preencha todos os campos', vozErroCampo);
+      mostrarErro(dadosErro, 'Preencha todos os campos');
       return;
     }
 
     // Verifica tamanho da sigla
     if (sigla.length < 3) {
-      mostrarErro(erroSigla, 'A sigla deve ter pelo menos 3 caracteres', vozErroSigla);
+      mostrarErro(erroSigla, 'A sigla deve ter pelo menos 3 caracteres');
       return;
     }
 
@@ -78,13 +68,13 @@ document
         .single();
 
     if (tokenError || !tokenData) {
-      mostrarErro(dadosErro, 'Token inválido, expirado ou desativado', vozErroLoja);
+      mostrarErro(dadosErro, 'Token inválido, expirado ou desativado');
       return;
     }
 
     // ===== VERIFICA SE TOKEN JÁ ESTÁ EM USO =====
     if (tokenData.session_key) {
-      mostrarErro(dadosErro, 'Token já está em uso por outro usuário', vozErroLoja);
+      mostrarErro(dadosErro, 'Token já está em uso por outro usuário');
       return;
     }
 
@@ -98,7 +88,7 @@ document
         .single();
 
     if (lojaError || !lojaData) {
-      mostrarErro(dadosErro, 'Sigla ou senha incorretos', vozErroLoja);
+      mostrarErro(dadosErro, 'Sigla ou senha incorretos');
       return;
     }
 
@@ -112,7 +102,7 @@ document
       .eq('id', tokenData.id);
 
     if (sessionError) {
-      mostrarErro(dadosErro, 'Erro ao iniciar sessão', vozErroLoja);
+      mostrarErro(dadosErro, 'Erro ao iniciar sessão');
       return;
     }
 
