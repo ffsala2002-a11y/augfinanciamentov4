@@ -168,7 +168,6 @@ document.getElementById('btnSalvarSenha').addEventListener('click', async () => 
 
 // ================= TOKENS =================
 
-// Gera string aleatória para o token
 function gerarTokenAleatorio() {
   const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
   let token = '';
@@ -176,7 +175,7 @@ function gerarTokenAleatorio() {
     if (i > 0 && i % 4 === 0) token += '-';
     token += chars[Math.floor(Math.random() * chars.length)];
   }
-  return token; // ex: ABCD-EFGH-IJKL-MNPQ
+  return token;
 }
 
 async function carregarTokens() {
@@ -185,8 +184,8 @@ async function carregarTokens() {
     .select('*')
     .order('criado_em', { ascending: false });
 
-  const lista    = document.getElementById('listaTokens');
-  const totalEl  = document.getElementById('totalTokens');
+  const lista   = document.getElementById('listaTokens');
+  const totalEl = document.getElementById('totalTokens');
   if (!lista) return;
 
   const tokens = data || [];
@@ -204,14 +203,43 @@ async function carregarTokens() {
     const dataFmt   = new Date(t.data_expiracao).toLocaleDateString('pt-BR');
     const criadoFmt = new Date(t.criado_em).toLocaleDateString('pt-BR');
 
+    // Badge de status
     let statusBadge = '';
     if (!t.ativo) {
       statusBadge = `<span class="token-badge desativado">⛔ Desativado</span>`;
     } else if (expirado) {
       statusBadge = `<span class="token-badge expirado">⏰ Expirado</span>`;
+    } else if (t.session_key) {
+      statusBadge = `<span class="token-badge em-uso">🟢 Em uso</span>`;
     } else {
       statusBadge = `<span class="token-badge ativo">✅ Ativo</span>`;
     }
+
+    // Botões de ação
+    let botoes = '';
+
+    if (t.ativo && !expirado) {
+      botoes += `
+        <button class="btn btn-danger btn-sm" onclick="desativarToken('${t.id}')">
+          ⛔ Desativar
+        </button>
+      `;
+    }
+
+    // Botão forçar logout — só aparece se token está em uso
+    if (t.session_key) {
+      botoes += `
+        <button class="btn btn-warn btn-sm" onclick="forcarLogout('${t.id}')">
+          🔓 Forçar logout
+        </button>
+      `;
+    }
+
+    botoes += `
+      <button class="btn btn-outline btn-sm" onclick="deletarToken('${t.id}')">
+        🗑️ Remover
+      </button>
+    `;
 
     return `
       <div class="token-card ${!t.ativo || expirado ? 'inativo' : ''}">
@@ -227,14 +255,7 @@ async function carregarTokens() {
           <span>⏳ Expira: ${dataFmt}</span>
         </div>
         <div class="token-card-acoes">
-          ${t.ativo && !expirado ? `
-            <button class="btn btn-danger btn-sm" onclick="desativarToken('${t.id}')">
-              ⛔ Desativar
-            </button>
-          ` : ''}
-          <button class="btn btn-outline btn-sm" onclick="deletarToken('${t.id}')">
-            🗑️ Remover
-          </button>
+          ${botoes}
         </div>
       </div>
     `;
@@ -243,8 +264,8 @@ async function carregarTokens() {
 
 // Gerar token
 document.getElementById('btnGerarToken').addEventListener('click', async () => {
-  const nomePessoa  = document.getElementById('tokenNomePessoa').value.trim();
-  const expiracao   = document.getElementById('tokenExpiracao').value;
+  const nomePessoa = document.getElementById('tokenNomePessoa').value.trim();
+  const expiracao  = document.getElementById('tokenExpiracao').value;
 
   if (!nomePessoa || !expiracao) {
     mostrarStatus('statusGerarToken', '⚠️ Preencha o nome e a data de expiração.', 'erro');
@@ -265,7 +286,6 @@ document.getElementById('btnGerarToken').addEventListener('click', async () => {
     return;
   }
 
-  // Mostra token gerado
   document.getElementById('tokenGeradoValor').textContent = token;
   document.getElementById('tokenGerado').style.display = 'block';
   document.getElementById('tokenNomePessoa').value = '';
@@ -288,11 +308,12 @@ document.getElementById('btnCopiarToken')?.addEventListener('click', () => {
 
 // Desativar token
 window.desativarToken = async (id) => {
-  const confirmou = confirm('Desativar este token? O usuário perderá o acesso imediatamente.');
-  if (!confirmou) return;
+  if (!confirm('Desativar este token? O usuário perderá o acesso imediatamente.')) return;
 
   const { error } = await supabase
-    .from('tokens').update({ ativo: false }).eq('id', id);
+    .from('tokens')
+    .update({ ativo: false, session_key: null })
+    .eq('id', id);
 
   if (error) {
     alert('Erro ao desativar: ' + error.message);
@@ -301,13 +322,30 @@ window.desativarToken = async (id) => {
   }
 };
 
-// Deletar token
-window.deletarToken = async (id) => {
-  const confirmou = confirm('Remover este token permanentemente?');
-  if (!confirmou) return;
+// Forçar logout — limpa session_key sem desativar o token
+window.forcarLogout = async (id) => {
+  if (!confirm('Forçar logout deste usuário? O token continuará ativo e poderá ser usado novamente.')) return;
 
   const { error } = await supabase
-    .from('tokens').delete().eq('id', id);
+    .from('tokens')
+    .update({ session_key: null })
+    .eq('id', id);
+
+  if (error) {
+    alert('Erro ao forçar logout: ' + error.message);
+  } else {
+    carregarTokens();
+  }
+};
+
+// Deletar token
+window.deletarToken = async (id) => {
+  if (!confirm('Remover este token permanentemente?')) return;
+
+  const { error } = await supabase
+    .from('tokens')
+    .delete()
+    .eq('id', id);
 
   if (error) {
     alert('Erro ao remover: ' + error.message);
