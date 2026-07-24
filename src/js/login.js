@@ -82,6 +82,12 @@ document
       return;
     }
 
+    // ===== VERIFICA SE TOKEN JÁ ESTÁ EM USO =====
+    if (tokenData.session_key) {
+      mostrarErro(dadosErro, 'Token já está em uso por outro usuário', vozErroLoja);
+      return;
+    }
+
     // ===== VALIDA LOJA + SENHA =====
     const { data: lojaData, error: lojaError } =
       await supabase
@@ -96,6 +102,20 @@ document
       return;
     }
 
+    // ===== GERA SESSION KEY ÚNICA =====
+    const sessionKey = crypto.randomUUID();
+
+    // Salva session_key no banco
+    const { error: sessionError } = await supabase
+      .from('tokens')
+      .update({ session_key: sessionKey })
+      .eq('id', tokenData.id);
+
+    if (sessionError) {
+      mostrarErro(dadosErro, 'Erro ao iniciar sessão', vozErroLoja);
+      return;
+    }
+
     // Salva sessão local
     localStorage.setItem(
       'usuario',
@@ -103,7 +123,8 @@ document
         nome,
         sigla,
         nomeLoja: lojaData.nome,
-        tokenId: tokenData.id
+        tokenId:  tokenData.id,
+        sessionKey
       })
     );
 
