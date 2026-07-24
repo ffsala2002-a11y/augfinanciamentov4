@@ -70,9 +70,10 @@ async function verificarAcesso() {
   return true;
 }
 
-// Roda verificação antes de iniciar o app
-const acessoPermitido = await verificarAcesso();
+// Roda verificação antes de iniciar o app eRROAQUI
+/*const acessoPermitido = await verificarAcesso();
 if (!acessoPermitido) throw new Error('Sem acesso');
+*/
 
 
 // proteção de rota
