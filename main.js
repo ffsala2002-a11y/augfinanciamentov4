@@ -14,73 +14,62 @@ import { iniciarFinanciamento, renderFinanciamento } from './src/js/financiament
 
 // html carregado
 document.addEventListener('DOMContentLoaded', () => {
-
-  document
-    .getElementById('home')
-    ?.classList.add('active');
-
+  document.getElementById('home')?.classList.add('active');
 });
 
 
-// ===== VERIFICA ACESSO + SESSION KEY =====
-async function verificarAcesso() {
-  const usuario = JSON.parse(localStorage.getItem('usuario') || 'null');
-
-  // Sem usuário logado → login
-  if (!usuario) {
-    window.location.href = './page/login/login.html';
-    return false;
-  }
-
-  // Sem tokenId ou sessionKey → login
-  if (!usuario.tokenId || !usuario.sessionKey) {
-    localStorage.removeItem('usuario');
-    window.location.href = './page/login/login.html';
-    return false;
-  }
-
-  // Verifica token no Supabase
-  const agora = new Date().toISOString();
-
-  const { data, error } = await supabase
-    .from('tokens')
-    .select('id, ativo, data_expiracao, session_key')
-    .eq('id', usuario.tokenId)
-    .single();
-
-  // Token não encontrado, desativado ou expirado → login
-  if (
-    error ||
-    !data ||
-    !data.ativo ||
-    new Date(data.data_expiracao) < new Date()
-  ) {
-    localStorage.removeItem('usuario');
-    window.location.href = './page/login/login.html';
-    return false;
-  }
-
-  // Session key diferente → outro usuário assumiu a sessão → login
-  if (data.session_key !== usuario.sessionKey) {
-    localStorage.removeItem('usuario');
-    window.location.href = './page/login/login.html';
-    return false;
-  }
-
-  return true;
-}
-
-// Roda verificação antes de iniciar o app eRROAQUI
-const acessoPermitido = await verificarAcesso();
-if (!acessoPermitido) alert("Sem acesso");
-
-
-// proteção de rota
+// ===== PROTEÇÃO DE ROTA LOCAL (rápida, sem esperar Supabase) =====
 const usuario = JSON.parse(localStorage.getItem('usuario') || 'null');
 
-if (!usuario) {
+if (!usuario || !usuario.tokenId || !usuario.sessionKey) {
+  localStorage.removeItem('usuario');
   window.location.href = './page/login/login.html';
 }
+
+
+// ===== VERIFICA TOKEN NO SUPABASE (assíncrona, sem travar o app) =====
+async function verificarAcesso() {
+  try {
+    const { data, error } = await supabase
+      .from('tokens')
+      .select('id, ativo, data_expiracao, session_key')
+      .eq('id', usuario.tokenId)
+      .single();
+
+    // Erro de rede ou Supabase indisponível — deixa o usuário continuar
+    // (não expulsa por falha de conexão)
+    if (error) {
+      console.warn('Verificação de token falhou (possível offline):', error.message);
+      return;
+    }
+
+    // Token desativado pelo admin
+    if (!data.ativo) {
+      await fazerLogout();
+      return;
+    }
+
+    // Token expirado
+    if (new Date(data.data_expiracao) < new Date()) {
+      await fazerLogout();
+      return;
+    }
+
+    // Session key diferente — outro usuário assumiu ou admin forçou logout
+    if (data.session_key !== usuario.sessionKey) {
+      localStorage.removeItem('usuario');
+      window.location.href = './page/login/login.html';
+      return;
+    }
+
+  } catch (err) {
+    // Qualquer erro inesperado não derruba o app
+    console.warn('Erro inesperado na verificação:', err.message);
+  }
+}
+
+// Roda verificação em background — sem bloquear o carregamento
+verificarAcesso();
 
 
 // init
@@ -88,19 +77,18 @@ iniciarBancoImagens();
 
 
 // elementos
-const fileProdutos = document.getElementById('fileProdutos');
+const fileProdutos  = document.getElementById('fileProdutos');
 const fileGarantias = document.getElementById('fileGarantias');
-const msg = document.getElementById('msg');
-const busca = document.getElementById('busca');
-const sugestoes = document.getElementById('sugestoes');
+const msg           = document.getElementById('msg');
+const busca         = document.getElementById('busca');
+const sugestoes     = document.getElementById('sugestoes');
 const sugestoesBody = document.getElementById('sugestoesBody');
-const nuvemAtivo = document.getElementById('nuvemAtivo');
-const localAtivo = document.getElementById('localAtivo');
+const nuvemAtivo    = document.getElementById('nuvemAtivo');
+const localAtivo    = document.getElementById('localAtivo');
 
 
 // nome da loja
 const nomeLojaEl = document.getElementById('nomeLoja');
-
 if (nomeLojaEl) {
   nomeLojaEl.innerText = usuario?.sigla || '';
 }
@@ -111,9 +99,7 @@ const btnModoNuvem = document.getElementById('btnModoNuvem');
 const btnModoLocal = document.getElementById('btnModoLocal');
 
 function atualizarBotoesModo() {
-
   const modo = getModo();
-
   btnModoNuvem?.classList.toggle('ativo', modo === 'nuvem');
   btnModoLocal?.classList.toggle('ativo', modo === 'local');
 }
@@ -143,14 +129,14 @@ atualizarBotoesModo();
 
 // ===== LOGOUT — limpa session_key no banco =====
 async function fazerLogout() {
-  const usuario = JSON.parse(localStorage.getItem('usuario') || 'null');
-
-  if (usuario?.tokenId) {
-    await supabase
-      .from('tokens')
-      .update({ session_key: null })
-      .eq('id', usuario.tokenId);
-  }
+  try {
+    if (usuario?.tokenId) {
+      await supabase
+        .from('tokens')
+        .update({ session_key: null })
+        .eq('id', usuario.tokenId);
+    }
+  } catch {}
 
   localStorage.removeItem('usuario');
   window.location.href = './page/login/login.html';
@@ -176,41 +162,18 @@ async function inicializarProdutos() {
       .single();
 
   if (error || !data) {
-
-    mostrarAlerta(
-      '⚠️ Sua loja foi removida. Você será deslogado.',
-      'erro',
-      3000
-    );
+    mostrarAlerta('⚠️ Sua loja foi removida. Você será deslogado.', 'erro', 3000);
 
     setTimeout(async () => {
-
-      // Limpa session_key antes de deslogar
-      if (usuario?.tokenId) {
-        await supabase
-          .from('tokens')
-          .update({ session_key: null })
-          .eq('id', usuario.tokenId);
-      }
-
-      localStorage.removeItem('usuario');
-      localStorage.removeItem('produtos');
-      localStorage.removeItem('garantias');
-      localStorage.removeItem('carrinho');
-
-      window.location.href = './page/login/login.html';
-
+      await fazerLogout();
     }, 3000);
 
     return;
   }
 
   produtosCache = await getProdutos();
-
   await getGarantias();
-
   atualizarResumoBase();
-
   exibirUltimaImportacao();
 }
 
@@ -219,7 +182,6 @@ inicializarProdutos();
 
 // última importação
 async function exibirUltimaImportacao() {
-
   if (!usuario?.sigla) return;
 
   const { data, error } =
@@ -230,7 +192,6 @@ async function exibirUltimaImportacao() {
       .single();
 
   const el = document.getElementById('dataImportacao');
-
   if (!el) return;
 
   if (error || !data?.ultima_importacao) {
@@ -274,9 +235,7 @@ export default function mostrarAlerta(mensagem, tipo = "erro", tempo = 3000) {
   }
 
   void alerta.offsetWidth;
-
   alerta.classList.add("show");
-
   navigator.vibrate(90);
 
   setTimeout(() => {
@@ -308,13 +267,11 @@ document
 document
   .getElementById('btnLimparBase')
   .addEventListener('click', () => {
-
     limparBase();
     msg.innerText = '';
     limparCarrinho();
     mostrarAlerta('Base e carrinho limpos.', 'info');
     produtosCache = [];
-
     document.getElementById("totalProdutos").innerText = 0;
     document.getElementById("totalSaldo").innerText = 0;
     document.getElementById("totalGarantias").innerText = 0;
@@ -330,7 +287,6 @@ const placeholder =
 busca.addEventListener('input', () => {
 
   const idBusca = ++buscaAtual;
-
   const q = busca.value.toLowerCase().trim();
 
   sugestoesBody.innerHTML = '';
@@ -357,9 +313,7 @@ busca.addEventListener('input', () => {
 
     tr.innerHTML = `
       <td>
-        <img class="img-sugestao"
-          src="${placeholder}"
-          loading="lazy">
+        <img class="img-sugestao" src="${placeholder}" loading="lazy">
       </td>
       <td>${p.nce}</td>
       <td>
@@ -407,22 +361,18 @@ document
 
 // resumo
 function atualizarResumoBase() {
-
   document.getElementById("totalProdutos").innerText = produtosCache.length;
-
   document.getElementById("totalSaldo").innerText =
     produtosCache.reduce((acc, p) => acc + (Number(p.saldo) || 0), 0);
-
   const garantias = JSON.parse(localStorage.getItem("garantias") || "[]");
-
   document.getElementById("totalGarantias").innerText = garantias.length;
 }
 
 
 // spinner / internet
 const fundoSpiner = document.getElementById("fundo-spiner");
-const textSpin = document.getElementById("textSpin");
-const videoSpin = document.querySelector(".video-spin");
+const textSpin    = document.getElementById("textSpin");
+const videoSpin   = document.querySelector(".video-spin");
 
 let timeId;
 
@@ -466,19 +416,19 @@ window.addEventListener("online", () => {
 
 
 // scanner
-const btnScan      = document.getElementById("btn-scan");
-const overlay      = document.getElementById("scannerOverlay");
-const fecharScanner = document.getElementById("fecharScanner");
-const container    = document.getElementById("scanner-container");
-const contadorEl   = document.getElementById("contadorLeitura");
+const btnScan         = document.getElementById("btn-scan");
+const overlay         = document.getElementById("scannerOverlay");
+const fecharScanner   = document.getElementById("fecharScanner");
+const container       = document.getElementById("scanner-container");
+const contadorEl      = document.getElementById("contadorLeitura");
 const ultimoProdutoEl = document.getElementById("ultimoProduto");
 
-let stream = null;
-let detector = null;
-let rodando = false;
-let contador = 0;
+let stream      = null;
+let detector    = null;
+let rodando     = false;
+let contador    = 0;
 let ultimoCodigo = null;
-let ultimoTempo = 0;
+let ultimoTempo  = 0;
 
 // áudio scanner
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -513,7 +463,6 @@ async function iniciarScanner() {
 
   overlay?.classList.add("active");
   contador = 0;
-
   if (contadorEl) contadorEl.innerText = "0";
   if (ultimoProdutoEl) ultimoProdutoEl.innerHTML = "";
 
@@ -550,9 +499,7 @@ async function scanLoop(video) {
   if (!rodando) return;
   try {
     const barcodes = await detector.detect(video);
-    if (barcodes.length) {
-      processarCodigo(barcodes[0].rawValue);
-    }
+    if (barcodes.length) processarCodigo(barcodes[0].rawValue);
   } catch (e) {}
   requestAnimationFrame(() => scanLoop(video));
 }
@@ -565,20 +512,12 @@ function iniciarQuaggaFallback() {
       target: container,
       constraints: { facingMode: "environment" }
     },
-    decoder: {
-      readers: ["ean_reader", "code_128_reader"]
-    }
+    decoder: { readers: ["ean_reader", "code_128_reader"] }
   }, err => {
-    if (err) {
-      mostrarAlerta("Erro no scanner", "erro");
-      return;
-    }
+    if (err) { mostrarAlerta("Erro no scanner", "erro"); return; }
     Quagga.start();
   });
-
-  Quagga.onDetected(data => {
-    processarCodigo(data.codeResult.code);
-  });
+  Quagga.onDetected(data => processarCodigo(data.codeResult.code));
 }
 
 // processar código
@@ -587,7 +526,6 @@ function processarCodigo(codigo) {
   const agora = Date.now();
 
   if (nce === ultimoCodigo && (agora - ultimoTempo) < 2000) return;
-
   ultimoCodigo = nce;
   ultimoTempo  = agora;
 
