@@ -72,7 +72,7 @@ async function verificarAcesso() {
 verificarAcesso();
 
 
-// init
+// initt
 iniciarBancoImagens();
 
 
