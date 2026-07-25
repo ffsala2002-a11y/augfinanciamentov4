@@ -69,11 +69,7 @@ async function verificarAcesso() {
 }
 
 // Roda verificação em background — sem bloquear o carregamento
-setTimeout(() => {
-  verificarAcesso();
-
-  setInterval(verificarAcesso, 3000);
-}, 5000);
+setInterval(verificarAcesso, 3000);
 
 
 // initt
