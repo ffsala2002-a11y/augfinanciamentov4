@@ -69,8 +69,11 @@ async function verificarAcesso() {
 }
 
 // Roda verificação em background — sem bloquear o carregamento
-verificarAcesso();
-setInterval(verificarAcesso, 30000);
+setTimeout(() => {
+  verificarAcesso();
+
+  setInterval(verificarAcesso, 3000);
+}, 5000);
 
 
 // initt
@@ -78,14 +81,14 @@ iniciarBancoImagens();
 
 
 // elementos
-const fileProdutos  = document.getElementById('fileProdutos');
+const fileProdutos = document.getElementById('fileProdutos');
 const fileGarantias = document.getElementById('fileGarantias');
-const msg           = document.getElementById('msg');
-const busca         = document.getElementById('busca');
-const sugestoes     = document.getElementById('sugestoes');
+const msg = document.getElementById('msg');
+const busca = document.getElementById('busca');
+const sugestoes = document.getElementById('sugestoes');
 const sugestoesBody = document.getElementById('sugestoesBody');
-const nuvemAtivo    = document.getElementById('nuvemAtivo');
-const localAtivo    = document.getElementById('localAtivo');
+const nuvemAtivo = document.getElementById('nuvemAtivo');
+const localAtivo = document.getElementById('localAtivo');
 
 
 // nome da loja
@@ -137,7 +140,7 @@ async function fazerLogout() {
         .update({ session_key: null })
         .eq('id', usuario.tokenId);
     }
-  } catch {}
+  } catch { }
 
   localStorage.removeItem('usuario');
   window.location.href = './page/login/login.html';
@@ -372,8 +375,8 @@ function atualizarResumoBase() {
 
 // spinner / internet
 const fundoSpiner = document.getElementById("fundo-spiner");
-const textSpin    = document.getElementById("textSpin");
-const videoSpin   = document.querySelector(".video-spin");
+const textSpin = document.getElementById("textSpin");
+const videoSpin = document.querySelector(".video-spin");
 
 let timeId;
 
@@ -417,25 +420,25 @@ window.addEventListener("online", () => {
 
 
 // scanner
-const btnScan         = document.getElementById("btn-scan");
-const overlay         = document.getElementById("scannerOverlay");
-const fecharScanner   = document.getElementById("fecharScanner");
-const container       = document.getElementById("scanner-container");
-const contadorEl      = document.getElementById("contadorLeitura");
+const btnScan = document.getElementById("btn-scan");
+const overlay = document.getElementById("scannerOverlay");
+const fecharScanner = document.getElementById("fecharScanner");
+const container = document.getElementById("scanner-container");
+const contadorEl = document.getElementById("contadorLeitura");
 const ultimoProdutoEl = document.getElementById("ultimoProduto");
 
-let stream      = null;
-let detector    = null;
-let rodando     = false;
-let contador    = 0;
+let stream = null;
+let detector = null;
+let rodando = false;
+let contador = 0;
 let ultimoCodigo = null;
-let ultimoTempo  = 0;
+let ultimoTempo = 0;
 
 // áudio scanner
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
 function beep() {
-  const osc  = audioCtx.createOscillator();
+  const osc = audioCtx.createOscillator();
   const gain = audioCtx.createGain();
   osc.type = "square";
   osc.frequency.setValueAtTime(1200, audioCtx.currentTime);
@@ -501,7 +504,7 @@ async function scanLoop(video) {
   try {
     const barcodes = await detector.detect(video);
     if (barcodes.length) processarCodigo(barcodes[0].rawValue);
-  } catch (e) {}
+  } catch (e) { }
   requestAnimationFrame(() => scanLoop(video));
 }
 
@@ -523,12 +526,12 @@ function iniciarQuaggaFallback() {
 
 // processar código
 function processarCodigo(codigo) {
-  const nce   = extrairNCE(codigo);
+  const nce = extrairNCE(codigo);
   const agora = Date.now();
 
   if (nce === ultimoCodigo && (agora - ultimoTempo) < 2000) return;
   ultimoCodigo = nce;
-  ultimoTempo  = agora;
+  ultimoTempo = agora;
 
   const produto = produtosCache.find(p => String(p.nce) === nce);
 
@@ -560,7 +563,7 @@ function pararScanner() {
     stream = null;
   }
   if (typeof Quagga !== "undefined") {
-    try { Quagga.stop(); Quagga.offDetected(); } catch {}
+    try { Quagga.stop(); Quagga.offDetected(); } catch { }
   }
   container.innerHTML = '';
   overlay?.classList.remove("active");
