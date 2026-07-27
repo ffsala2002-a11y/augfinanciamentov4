@@ -12,13 +12,45 @@ import { iniciarCompartilhar } from './src/js/compartilhar.js';
 import { iniciarFinanciamento, renderFinanciamento } from './src/js/financiamento.js';
 
 
+// ===== ALERTA — definido primeiro =====
+export default function mostrarAlerta(mensagem, tipo = "erro", tempo = 3000) {
+
+  let alerta = document.getElementById("alerta");
+
+  if (!alerta) {
+    alerta = document.createElement("div");
+    alerta.id = "alerta";
+    alerta.className = "alerta";
+    document.body.appendChild(alerta);
+  }
+
+  alerta.innerText = mensagem;
+
+  if (tipo === "erro") {
+    alerta.style.background = "#f44336";
+  } else if (tipo === "sucesso") {
+    alerta.style.background = "#4CAF50";
+  } else {
+    alerta.style.background = "#0068bd";
+  }
+
+  void alerta.offsetWidth;
+  alerta.classList.add("show");
+  navigator.vibrate(90);
+
+  setTimeout(() => {
+    alerta.classList.remove("show");
+  }, tempo);
+}
+
+
 // html carregado
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('home')?.classList.add('active');
 });
 
 
-// ===== PROTEÇÃO DE ROTA LOCAL (rápida, sem esperar Supabase) =====
+// ===== PROTEÇÃO DE ROTA LOCAL =====
 const usuario = JSON.parse(localStorage.getItem('usuario') || 'null');
 
 if (!usuario || !usuario.tokenId || !usuario.sessionKey) {
@@ -27,53 +59,111 @@ if (!usuario || !usuario.tokenId || !usuario.sessionKey) {
 }
 
 
-// ===== VERIFICA TOKEN NO SUPABASE (assíncrona, sem travar o app) =====
+// Controle para não mostrar alerta múltiplas vezes
+let alertaExibido = false;
+
+
+// ===== VERIFICA TOKEN NO SUPABASE =====
 async function verificarAcesso() {
+  const u = JSON.parse(localStorage.getItem('usuario') || 'null');
+
+  if (!u?.tokenId || !u?.sessionKey) {
+    localStorage.removeItem('usuario');
+    window.location.href = './page/login/login.html';
+    return;
+  }
+
   try {
     const { data, error } = await supabase
       .from('tokens')
-      .select('id, ativo, data_expiracao, session_key')
-      .eq('id', usuario.tokenId)
+      .select('ativo, session_key, data_expiracao')
+      .eq('id', u.tokenId)
       .single();
 
-    // Erro de rede ou Supabase indisponível — deixa o usuário continuar
-    // (não expulsa por falha de conexão)
     if (error) {
+      // PGRST116 = row not found = token foi removido do banco
+      if (error.code === 'PGRST116') {
+        if (alertaExibido) return;
+        alertaExibido = true;
+        mostrarAlerta('🚫 Token de acesso removido. Você será desconectado.', 'erro', 3000);
+        setTimeout(() => {
+          localStorage.removeItem('usuario');
+          window.location.href = './page/login/login.html';
+        }, 3000);
+        return;
+      }
+
+      // Outros erros (rede, timeout) — não expulsa
       console.warn('Verificação de token falhou (possível offline):', error.message);
       return;
     }
 
     // Token desativado pelo admin
     if (!data.ativo) {
-      await fazerLogout();
+      if (alertaExibido) return;
+      alertaExibido = true;
+      mostrarAlerta('⛔ Seu acesso foi desativado pelo administrador.', 'erro', 3000);
+      setTimeout(() => fazerLogout(), 3000);
       return;
     }
 
     // Token expirado
-    if (new Date(data.data_expiracao) < new Date()) {
-      await fazerLogout();
+    if (new Date(data.data_expiracao) <= new Date()) {
+      if (alertaExibido) return;
+      alertaExibido = true;
+      mostrarAlerta('⏰ Seu token de acesso expirou.', 'erro', 3000);
+      setTimeout(() => fazerLogout(), 3000);
       return;
     }
 
-    // Session key diferente — outro usuário assumiu ou admin forçou logout
-    if (data.session_key !== usuario.sessionKey) {
-      localStorage.removeItem('usuario');
-      window.location.href = './page/login/login.html';
+    // Se o banco ainda não gravou a session_key, aguarda a próxima verificação
+    if (data.session_key === null) {
+      return;
+    }
+
+    // Session key diferente — outro dispositivo entrou ou admin forçou logout
+    if (data.session_key !== u.sessionKey) {
+      if (alertaExibido) return;
+      alertaExibido = true;
+      mostrarAlerta('⚠️ Sessão encerrada. Token em uso em outro dispositivo.', 'erro', 3000);
+      setTimeout(() => {
+        localStorage.removeItem('usuario');
+        window.location.href = './page/login/login.html';
+      }, 3000);
       return;
     }
 
   } catch (err) {
-    // Qualquer erro inesperado não derruba o app
     console.warn('Erro inesperado na verificação:', err.message);
   }
 }
 
-// Roda verificação em background — sem bloquear o carregamento
-//verificarAcesso();
-setInterval(verificarAcesso, 3000);
+
+// ===== REGISTRA ATIVIDADE NO BANCO =====
+async function registrarAtividade() {
+  if (!usuario?.tokenId) return;
+  try {
+    await supabase
+      .from('tokens')
+      .update({ last_activity: new Date().toISOString() })
+      .eq('id', usuario.tokenId);
+  } catch { }
+}
+
+// Verifica ao carregar e registra atividade
+setTimeout(async () => {
+  await verificarAcesso();
+  await registrarAtividade()
+}, 2000)
+
+// A cada 30 segundos: verifica acesso e atualiza atividade
+setInterval(async () => {
+  await verificarAcesso();
+  await registrarAtividade();
+}, 30000);
 
 
-// initt
+// init
 iniciarBancoImagens();
 
 
@@ -128,13 +218,13 @@ btnModoLocal?.addEventListener('click', () => {
 atualizarBotoesModo();
 
 
-// ===== LOGOUT — limpa session_key no banco =====
+// ===== LOGOUT — limpa session_key e last_activity =====
 async function fazerLogout() {
   try {
     if (usuario?.tokenId) {
       await supabase
         .from('tokens')
-        .update({ session_key: null })
+        .update({ session_key: null, last_activity: null })
         .eq('id', usuario.tokenId);
     }
   } catch { }
@@ -164,11 +254,9 @@ async function inicializarProdutos() {
 
   if (error || !data) {
     mostrarAlerta('⚠️ Sua loja foi removida. Você será deslogado.', 'erro', 3000);
-
     setTimeout(async () => {
       await fazerLogout();
     }, 3000);
-
     return;
   }
 
@@ -210,38 +298,6 @@ async function exibirUltimaImportacao() {
     hour: '2-digit',
     minute: '2-digit',
   });
-}
-
-
-// alerta
-export default function mostrarAlerta(mensagem, tipo = "erro", tempo = 3000) {
-
-  let alerta = document.getElementById("alerta");
-
-  if (!alerta) {
-    alerta = document.createElement("div");
-    alerta.id = "alerta";
-    alerta.className = "alerta";
-    document.body.appendChild(alerta);
-  }
-
-  alerta.innerText = mensagem;
-
-  if (tipo === "erro") {
-    alerta.style.background = "#f44336";
-  } else if (tipo === "sucesso") {
-    alerta.style.background = "#4CAF50";
-  } else {
-    alerta.style.background = "#0068bd";
-  }
-
-  void alerta.offsetWidth;
-  alerta.classList.add("show");
-  navigator.vibrate(90);
-
-  setTimeout(() => {
-    alerta.classList.remove("show");
-  }, tempo);
 }
 
 

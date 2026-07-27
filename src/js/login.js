@@ -11,19 +11,14 @@ const erroSigla =
 let timeErroId;
 
 // Função de erro padronizada
-function mostrarErro(el, msg, audio) {
+function mostrarErro(el, msg) {
   el.textContent = msg;
   el.classList.add("active");
   navigator.vibrate?.(80);
-  if (audio) {
-    audio.currentTime = 0;
-    audio.volume = 0.5;
-    audio.play();
-  }
   clearTimeout(timeErroId);
   timeErroId = setTimeout(() => {
     el.classList.remove("active");
-  }, 1800);
+  }, 2500);
 }
 
 // Evento do botão entrar
@@ -40,8 +35,9 @@ document
     const senha =
       document.getElementById('senhaLogin').value.trim();
 
+    // Token: remove espaços e força maiúsculo
     const token =
-      document.getElementById('tokenAcesso').value.trim();
+      document.getElementById('tokenAcesso').value.trim().toUpperCase();
 
     // Verifica campos vazios
     if (!nome || !sigla || !senha || !token) {
@@ -74,8 +70,27 @@ document
 
     // ===== VERIFICA SE TOKEN JÁ ESTÁ EM USO =====
     if (tokenData.session_key) {
-      mostrarErro(dadosErro, 'Token já está em uso por outro usuário');
-      return;
+
+      const ultimaAtividade = tokenData.last_activity
+        ? new Date(tokenData.last_activity)
+        : null;
+
+      // Sessão ativa = atividade no último 1 minuto
+      const umMinutoAtras = new Date(Date.now() - 1 * 60 * 1000);
+
+      const sessaoAtiva =
+        ultimaAtividade && ultimaAtividade > umMinutoAtras;
+
+      if (sessaoAtiva) {
+        mostrarErro(dadosErro, 'Token já está em uso por outro usuário');
+        return;
+      }
+
+      // Sessão abandonada — limpa e permite entrar
+      await supabase
+        .from('tokens')
+        .update({ session_key: null, last_activity: null })
+        .eq('id', tokenData.id);
     }
 
     // ===== VALIDA LOJA + SENHA =====
@@ -95,10 +110,12 @@ document
     // ===== GERA SESSION KEY ÚNICA =====
     const sessionKey = crypto.randomUUID();
 
-    // Salva session_key no banco
     const { error: sessionError } = await supabase
       .from('tokens')
-      .update({ session_key: sessionKey })
+      .update({
+        session_key:   sessionKey,
+        last_activity: new Date().toISOString()
+      })
       .eq('id', tokenData.id);
 
     if (sessionError) {
@@ -112,8 +129,8 @@ document
       JSON.stringify({
         nome,
         sigla,
-        nomeLoja: lojaData.nome,
-        tokenId:  tokenData.id,
+        nomeLoja:  lojaData.nome,
+        tokenId:   tokenData.id,
         sessionKey
       })
     );
