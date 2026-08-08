@@ -2020,7 +2020,7 @@ body.dark {
 
 .popup-box p {
   font-weight: bold;
-  color: #006118;
+  color: #383838;
 }
 
 .popup.show .popup-box {
@@ -2035,13 +2035,21 @@ body.dark {
 }
 
 .close {
-  font-size: 22px;
+  position: absolute;
+  bottom: 5px;
+  right: 15px;
+  font-size: 12px;
   cursor: pointer;
   transition: 0.2s;
   padding: 0.2rem 0.5rem;
-  border-radius: 10px;
+  border-radius: 5px;
   color: #FFFFFF;
   background: #C80000;
+}
+
+.close.active {
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 .close:hover {

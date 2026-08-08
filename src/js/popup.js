@@ -1,11 +1,38 @@
-/*const btnFechar = document.querySelector(".close");
+const btnFechar = document.querySelector(".close");
 const popup = document.querySelector(".popup");
 const bottomBar = document.querySelector(".bottom-bar");
+const timerResult = document.getElementById("timer");
+
+let intervalId;
+let time = 1000;
 
 
 export function popupMobile() {
+
+  let seconds = 8;
+
+  timerResult.textContent = "05";
+
+  clearInterval(intervalId);
+
+  btnFechar.classList.add("active");
+
+  intervalId = setInterval(() => {
+    seconds--;
+
+    timerResult.textContent = `0${seconds}`;
+
+    if(seconds < 0) {
+      clearInterval(intervalId);
+      btnFechar.classList.remove("active");
+      timerResult.textContent = "";
+
+      return false
+    }
+  }, 1000)
+
   btnFechar.addEventListener('click', () => {
     popup.classList.remove("show");
     bottomBar.classList.remove("event")
   })
-}*/ 
+}
