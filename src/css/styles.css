@@ -1797,7 +1797,7 @@ body {
 
 /* QUANDO O POPUP MOBILE VOLTAR, EVENTS NONE */
 .bottom-bar.event {
-  pointer-events: auto;
+  pointer-events: none;
 }
 
 .bottom-bar.active-bar {
@@ -2048,7 +2048,7 @@ body.dark {
 }
 
 .close.active {
-  opacity: 0.5;
+  opacity: 0.7;
   pointer-events: none;
 }
 
