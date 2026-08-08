@@ -17,6 +17,8 @@ export function popupMobile() {
 
   btnFechar.classList.add("active");
 
+  bottomBar.classList.add("event")
+
   intervalId = setInterval(() => {
     seconds--;
 
