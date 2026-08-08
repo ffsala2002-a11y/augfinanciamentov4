@@ -2,6 +2,7 @@ const btnFechar = document.querySelector(".close");
 const popup = document.querySelector(".popup");
 const bottomBar = document.querySelector(".bottom-bar");
 const timerResult = document.getElementById("timer");
+const btnLateral = document.getElementById("btn-lateral");
 
 let intervalId;
 let time = 1000;
@@ -17,7 +18,9 @@ export function popupMobile() {
 
   btnFechar.classList.add("active");
 
-  bottomBar.classList.add("event")
+  bottomBar.classList.add("event");
+
+  btnLateral.classList.add("event");
 
   intervalId = setInterval(() => {
     seconds--;
@@ -27,6 +30,7 @@ export function popupMobile() {
     if(seconds < 0) {
       clearInterval(intervalId);
       btnFechar.classList.remove("active");
+      btnLateral.classList.remove("event");
       timerResult.textContent = "";
 
       return false

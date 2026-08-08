@@ -176,6 +176,10 @@ body {
   background: transparent;
 }
 
+#btn-lateral.event {
+  pointer-events: none;
+}
+
 #btn-lateral video {
   width: 35px;
   border-radius: 5px;
