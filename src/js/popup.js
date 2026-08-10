@@ -12,33 +12,33 @@ export function popupMobile() {
 
   let seconds = 8;
 
-  timerResult.textContent = "05";
+  timerResult.textContent = "";
 
   clearInterval(intervalId);
 
-  btnFechar.classList.add("active");
+  //btnFechar.classList.add("active");
 
   bottomBar.classList.add("event");
 
   btnLateral.classList.add("event");
 
-  intervalId = setInterval(() => {
+  /*intervalId = setInterval(() => {
     seconds--;
 
     timerResult.textContent = `0${seconds}`;
 
-    if(seconds < 0) {
+    if (seconds < 0) {
       clearInterval(intervalId);
       btnFechar.classList.remove("active");
-      btnLateral.classList.remove("event");
       timerResult.textContent = "";
 
       return false
     }
-  }, 1000)
+  }, 1000)*/
 
   btnFechar.addEventListener('click', () => {
     popup.classList.remove("show");
-    bottomBar.classList.remove("event")
+    bottomBar.classList.remove("event");
+    btnLateral.classList.remove("event");
   })
 }
