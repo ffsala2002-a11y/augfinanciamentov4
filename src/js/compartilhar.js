@@ -357,13 +357,13 @@ function enviarWhatsApp(imagensCache, comPlano, comCartao) {
       msg += `  ${n}x de ${parcela.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}${n === 1 ? ' (à vista)' : ''}\n`;
     }
 
-    msg += `\n🔴 Com juros 2,94% a.m.:\n`;
+    msg += `\n🔴 Com juros:\n`;
 
     for (let n = 7; n <= 12; n++) {
       const taxa    = 2.94 / 100;
       const coef    = (taxa * Math.pow(1 + taxa, n)) / (Math.pow(1 + taxa, n) - 1);
       const parcela = total * coef;
-      msg += `  ${n}x de ${parcela.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}\n`;
+      msg += `  ${n}x de ${parcela.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}, (com juros)\n`;
     }
   }
 
