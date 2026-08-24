@@ -30,16 +30,16 @@
   align-items: center;
   gap: 6px;
   box-shadow:
-    0 4px 20px
-    rgba(0, 0, 0, 0.15);
-    background: #DD0000;
+    0 4px 20px rgba(0, 0, 0, 0.15);
+  background: conic-gradient(from 120deg at 50% 50%, rgb(255, 0, 55) 0%, rgb(244, 45, 88) 100%);
+
 }
 
 
 /* label total */
 .financ-total-label {
   font-size: 13px;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255, 255, 255, 0.5);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -103,8 +103,7 @@
 .financ-input-group input:focus {
   border-color: #DD0000;
   box-shadow:
-    0 0 0 4px
-    rgba(221, 0, 0, 0.08);
+    0 0 0 4px rgba(221, 0, 0, 0.08);
 }
 
 
@@ -130,8 +129,7 @@
 
 
 /* input checkbox */
-.financ-check-label
-input[type="checkbox"] {
+.financ-check-label input[type="checkbox"] {
   display: none;
 }
 
@@ -153,18 +151,14 @@ input[type="checkbox"] {
 
 
 /* checkbox ativo */
-.financ-check-label
-input:checked
-~ .financ-check-box {
+.financ-check-label input:checked~.financ-check-box {
   background: #DD0000;
   border-color: #DD0000;
 }
 
 
 /* ícone checkbox */
-.financ-check-label
-input:checked
-~ .financ-check-box::after {
+.financ-check-label input:checked~.financ-check-box::after {
   content: '✓';
   color: #fff;
   font-size: 13px;
@@ -176,11 +170,11 @@ input:checked
 /* header parcelas */
 .financ-parcelas-header {
   /*background: linear-gradient(135deg,#DD0000,#B80000);*/
-  
+
   background: #FFFFFF;
 
   border-radius: 14px;
-  
+
   border: solid 2px #DADADA73;
 
   padding: 14px 5px;
@@ -192,7 +186,7 @@ input:checked
   color: #fff;
 
   letter-spacing: .3px;
-  
+
   text-align: center;
 
   /*box-shadow:
@@ -221,8 +215,7 @@ input:checked
   background: #ffffff;
   border-radius: 18px;
   box-shadow:
-    0 4px 20px
-    rgba(0, 0, 0, 0.06);
+    0 4px 20px rgba(0, 0, 0, 0.06);
 }
 
 
@@ -268,13 +261,7 @@ input:checked
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background:
-    linear-gradient(
-      135deg,
-      #DD0000,
-      #B80000
-    );
-
+  background: conic-gradient(from 120deg at 50% 50%, rgb(255, 0, 55) 0%, rgb(244, 45, 88) 100%);
   color: #fff;
 
   font-size: 14px;
@@ -290,23 +277,19 @@ input:checked
   flex-shrink: 0;
 
   box-shadow:
-    0 4px 12px
-    rgba(221, 0, 0, 0.25);
+    0 4px 12px rgba(221, 0, 0, 0.25);
 }
 
 
 /* círculo sem juros */
 .financ-parcela-num.sem-juros {
   background:
-    linear-gradient(
-      135deg,
+    linear-gradient(135deg,
       #16A34A,
-      #15803D
-    );
+      #15803D);
 
   box-shadow:
-    0 4px 12px
-    rgba(22, 163, 74, 0.25);
+    0 4px 12px rgba(22, 163, 74, 0.25);
 }
 
 

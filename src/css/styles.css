@@ -11,15 +11,15 @@
   ---borraoFundo: blur(5px);
   ---backgroundFundo: #FFFFFF;
   ---backgroundCardSpiner: #F9FFF900;
-  
+
   ---colorBorderSpiner: #A2A2A2;
   ---colorBorderTopSpiner: #BF0000;
   ---colorTitleSpiner: #FFFFFF;
   ---colorBorderCardSpiner: #D1D1D100;
-  
-  
+
+
   ---configMoveSpiner: spinerMove 0.5s linear infinite;
-  
+
 }
 
 
@@ -60,10 +60,10 @@ body {
   border-radius: 10px;
   font-weight: bold;
   color: #fff;
-  
+
   transform: translateX(1000px);
   opacity: 0;
-  
+
   transition: transform 0.4s ease, opacity 0.4s ease;
   z-index: 9999;
 }
@@ -107,7 +107,7 @@ body {
   align-items: center;
   position: fixed;
   z-index: 2;
-  background: conic-gradient(from 120deg at 50% 50%, rgb(255,0,55) 0%, rgb(244,45,88) 100%);
+  background: conic-gradient(from 120deg at 50% 50%, rgb(255, 0, 55) 0%, rgb(244, 45, 88) 100%);
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
@@ -314,7 +314,7 @@ body {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  background: #D40000;
+  background: conic-gradient(from 120deg at 50% 50%, rgb(255, 0, 55) 0%, rgb(244, 45, 88) 100%);
   border: none;
   padding: 0.5rem;
   border-radius: 12px;
@@ -365,7 +365,8 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #DE0000;
+  background: conic-gradient(from 120deg at 50% 50%, rgb(255, 0, 55) 0%, rgb(244, 45, 88) 100%);
+
   border-radius: 12px;
   padding: 0.5rem 0.7rem;
   margin: 0 0.75rem;
@@ -988,15 +989,15 @@ body {
   0% {
     transform: scale(1);
   }
-  
+
   60% {
     transform: scale(1.08);
   }
-  
+
   80% {
     transform: scale(1.15);
   }
-  
+
   100% {
     transform: scale(1);
   }
@@ -1006,19 +1007,19 @@ body {
   0% {
     transform: rotate(0deg);
   }
-  
+
   25% {
     transform: rotate(5deg);
   }
-  
+
   50% {
     transform: rotate(-5deg);
   }
-  
+
   75% {
     transform: rotate(-10deg);
   }
-  
+
   100% {
     transform: rotate(0deg);
   }
@@ -1167,7 +1168,7 @@ body {
 .imgProduto {
   min-width: 40px;
   max-width: 40px;
-  
+
 }
 
 .imgProduto img {
@@ -1202,7 +1203,8 @@ body {
 
 .main-calculadora .relative .sugestoes table thead tr {
   width: 100%;
-  background: rgba(210, 0, 0, 1);
+  background: conic-gradient(from 120deg at 50% 50%, rgb(255, 0, 55) 0%, rgb(244, 45, 88) 100%);
+
   border-radius: 20px;
 }
 
@@ -1462,7 +1464,8 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 3px;
-  transition: all 0.2s;box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  transition: all 0.2s;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 .btn-garantia .description {
@@ -1570,7 +1573,8 @@ body {
   align-items: center;
   justify-content: center;
   width: 40px;
-  background: radial-gradient(circle, rgb(132, 0, 0) 0%, rgb(255, 0, 0) 100%);
+  background: conic-gradient(from 120deg at 50% 50%, rgb(255, 0, 55) 0%, rgb(244, 45, 88) 100%);
+
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
@@ -1584,27 +1588,27 @@ body {
   0% {
     transform: rotate(0deg);
   }
-  
+
   2% {
     transform: rotate(-10deg);
   }
-  
+
   10% {
     transform: rotate(10deg);
   }
-  
+
   15% {
     transform: rotate(-8deg);
   }
-  
+
   20% {
     transform: rotate(8deg);
   }
-  
+
   25% {
     transform: rotate(0deg);
   }
-  
+
   /* tempo parado */
   100% {
     transform: rotate(0deg);
@@ -1629,7 +1633,7 @@ body {
   gap: 2px;
   flex-shrink: 0;
   background: #DD0000;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
 .carrossel-brand {
@@ -1643,7 +1647,7 @@ body {
 
 .carrossel-produto-nome {
   font-size: 12px;
-  color: rgba(255,255,255,0.75);
+  color: rgba(255, 255, 255, 0.75);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1667,16 +1671,17 @@ body {
   height: 100%;
   transition: transform 0.3s ease;
   will-change: transform;
-  align-items: center; 
+  align-items: center;
 }
 
 .img-carrossel {
   min-width: 100%;
-  max-height: 85%;  
+  max-height: 85%;
   object-fit: contain;
-  padding: 0 16px;    
+  padding: 0 16px;
   border-radius: 30px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.5); /* ← destaca a imagem */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  /* ← destaca a imagem */
 }
 
 /* CONTADOR */
@@ -1684,7 +1689,7 @@ body {
   position: absolute;
   top: 12px;
   right: 12px;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   color: #fff;
   font-size: 12px;
   font-weight: 700;
@@ -1698,7 +1703,7 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   border: none;
   color: #fff;
   font-size: 28px;
@@ -1715,9 +1720,17 @@ body {
   line-height: 1;
 }
 
-.carrossel-seta:active { background: rgba(255,255,255,0.25); }
-.carrossel-seta-esq { left: 10px; }
-.carrossel-seta-dir { right: 10px; }
+.carrossel-seta:active {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.carrossel-seta-esq {
+  left: 10px;
+}
+
+.carrossel-seta-dir {
+  right: 10px;
+}
 
 /* RODAPÉ */
 .carrossel-rodape {
@@ -1740,7 +1753,7 @@ body {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.25);
+  background: rgba(255, 255, 255, 0.25);
   transition: all 0.2s;
 }
 
@@ -1753,8 +1766,8 @@ body {
 /* BOTÃO FECHAR */
 .carrossel-fechar {
   padding: 10px 32px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 20px;
   color: #fff;
   font-size: 13px;
@@ -1763,7 +1776,9 @@ body {
   transition: background 0.2s;
 }
 
-.carrossel-fechar:active { background: rgba(255,255,255,0.18); }
+.carrossel-fechar:active {
+  background: rgba(255, 255, 255, 0.18);
+}
 
 
 
@@ -1778,7 +1793,7 @@ body {
   to {
     transform: translateY(0);
   }
-  
+
   from {
     transform: translateY(1000px);
   }
@@ -1885,7 +1900,7 @@ body {
   overflow: hidden;
   position: relative;
   color: rgba(255, 255, 255, 1);
-  background: #DD0000;
+  background: conic-gradient(from 120deg at 50% 50%, rgb(255, 0, 55) 0%, rgb(244, 45, 88) 100%);
 }
 
 .bottom-bar .box-btn .btn:nth-child(1).active span {
@@ -1916,7 +1931,8 @@ body {
 
 .bottom-bar .box-btn .btn:nth-child(2).active {
   color: rgb(255, 255, 255);
-  background: #DD0000;
+  background: conic-gradient(from 120deg at 50% 50%, rgb(255, 0, 55) 0%, rgb(244, 45, 88) 100%);
+
 }
 
 
@@ -1928,8 +1944,15 @@ body {
 }
 
 @keyframes rootReverse {
-  0% {transform: translateY(120%) scale(0.2); opacity: 0;}
-  100% {transform: translateY(0%) scale(1); opacity: 1;}
+  0% {
+    transform: translateY(120%) scale(0.2);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0%) scale(1);
+    opacity: 1;
+  }
 }
 
 .alerta-responsive {
@@ -1948,7 +1971,7 @@ body {
     visibility: visible;
     background: #000000;
   }
-  
+
   .content {
     position: absolute;
     width: 100%;
@@ -1960,7 +1983,7 @@ body {
     gap: 1rem;
     color: #FFFFFF;
   }
-  
+
   .content h1 {
     font-size: 30px;
   }
@@ -1987,16 +2010,16 @@ body.dark {
   left: 0;
   width: 100%;
   height: 100%;
-  
+
   backdrop-filter: blur(10px);
   background: rgba(0, 0, 0, 0.4);
-  
+
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   z-index: 1;
-  
+
   opacity: 0;
   pointer-events: none;
   transition: 0.4s ease;
@@ -2015,9 +2038,9 @@ body.dark {
   width: 90%;
   max-width: 340px;
   border-radius: 18px;
-  
+
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-  
+
   transform: scale(0.9) translateY(40px);
   transition: 0.4s ease;
 }
@@ -2083,7 +2106,7 @@ body.dark {
   color: #fff;
   padding: 12px 18px;
   border-radius: 10px;
-  
+
   transition: 0.4s ease;
 }
 
@@ -2110,7 +2133,7 @@ body.dark {
     visibility: visible;
     background: #000000;
   }
-  
+
   .content {
     position: absolute;
     width: 100%;
@@ -2122,7 +2145,7 @@ body.dark {
     gap: 1rem;
     color: #FFFFFF;
   }
-  
+
   .content h1 {
     font-size: 30px;
   }
@@ -2267,11 +2290,11 @@ body.dark {
   0% {
     top: 0;
   }
-  
+
   50% {
     top: 100%;
   }
-  
+
   100% {
     top: 0;
   }

@@ -57,7 +57,7 @@
     20px 16px 48px;
   position: relative;
   animation: slideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  background: #580000;
+  background: conic-gradient(from 120deg at 53% 49%, rgb(255,0,55) 0%, rgb(244,45,88) 100%)
 }
 
 

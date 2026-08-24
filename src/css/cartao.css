@@ -18,7 +18,7 @@
   letter-spacing: 0.3px;
   color: #FFFFFF;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-  background: linear-gradient(135deg,#D39225 0%,#E3C200 100%);
+  background: linear-gradient(135deg, #D39225 0%, #E3C200 100%);
 }
 
 .btn-abrir-cartao:active {
@@ -58,7 +58,7 @@
   transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
   padding-bottom: 40px;
   animation:
-    slideUpp 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    slideUpp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .modal-cartao.active .cartao-box {
@@ -82,7 +82,7 @@
   justify-content: space-between;
   padding: 14px 16px;
   background: #FFFFFF;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   flex-shrink: 0;
 }
 
@@ -133,7 +133,9 @@
   transition: background 0.2s;
 }
 
-.cartao-fechar:active { background: #E5E7EB; }
+.cartao-fechar:active {
+  background: #E5E7EB;
+}
 
 /* ===== TOTAL ===== */
 .cartao-total-wrap {
@@ -145,12 +147,12 @@
   align-items: center;
   gap: 6px;
   flex-shrink: 0;
-  background: #DD0000;
+  background: conic-gradient(from 120deg at 53% 49%, rgb(255, 0, 55) 0%, rgb(244, 45, 88) 100%)
 }
 
 .cartao-total-label {
   font-size: 11px;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255, 255, 255, 0.5);
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 600;
@@ -182,13 +184,13 @@
 .cartao-taxa-badge.sem-juros {
   background: rgba(215, 255, 235, 0.89);
   color: #4caf7d;
-  border: 1px solid rgba(76,175,125,0.3);
+  border: 1px solid rgba(76, 175, 125, 0.3);
 }
 
 .cartao-taxa-badge.com-juros {
   background: rgba(50, 50, 50, 1);
   color: #FFFFFF;
-  border: 1px solid rgba(221,0,0,0.25);
+  border: 1px solid rgba(221, 0, 0, 0.25);
 }
 
 /* ===== HEADER PARCELAS ===== */
@@ -201,7 +203,7 @@
   color: #fff;
   flex-shrink: 0;
   margin-bottom: 10px;
-  background: #DD0000;
+  background: conic-gradient(from 120deg at 53% 49%, rgb(255, 0, 55) 0%, rgb(244, 45, 88) 100%)
 }
 
 /* ===== LISTA PARCELAS ===== */
@@ -210,7 +212,7 @@
   background: #FFFFFF;
   border-radius: 16px;
   overflow-Y: scroll;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
 /* ===== ITEM ===== */
@@ -222,8 +224,13 @@
   position: relative;
 }
 
-.cartao-parcela-item:last-child { border-bottom: none; }
-.cartao-parcela-item:active { background: #F9FAFB; }
+.cartao-parcela-item:last-child {
+  border-bottom: none;
+}
+
+.cartao-parcela-item:active {
+  background: #F9FAFB;
+}
 
 .cartao-parcela-row {
   display: flex;
@@ -246,8 +253,13 @@
   color: #fff;
 }
 
-.cartao-num.sem-juros { background: #16A34A; }
-.cartao-num.com-juros { background: #DD0000; }
+.cartao-num.sem-juros {
+  background: #16A34A;
+}
+
+.cartao-num.com-juros {
+  background: conic-gradient(from 120deg at 53% 49%, rgb(255, 0, 55) 0%, rgb(244, 45, 88) 100%)
+}
 
 .cartao-parcela-valores {
   flex: 1;
@@ -284,8 +296,13 @@
   display: block;
 }
 
-.cartao-parcela-juros-tag.sem { color: #16A34A; }
-.cartao-parcela-juros-tag.com { color: #DD0000; }
+.cartao-parcela-juros-tag.sem {
+  color: #16A34A;
+}
+
+.cartao-parcela-juros-tag.com {
+  color: #DD0000;
+}
 
 /* ===== DETALHE EXPANDIDO ===== */
 .cartao-detalhe {
@@ -300,8 +317,13 @@
   border: 1px solid #F3F4F6;
 }
 
-.cartao-detalhe.ativo { display: block; }
-.cartao-detalhe strong { color: #DD0000; }
+.cartao-detalhe.ativo {
+  display: block;
+}
+
+.cartao-detalhe strong {
+  color: #DD0000;
+}
 
 /* ===== EMPTY STATE ===== */
 .cartao-empty {
@@ -310,22 +332,33 @@
   color: #9CA3AF;
 }
 
-.cartao-empty-icon { font-size: 40px; margin-bottom: 10px; }
-.cartao-empty p { font-size: 13px; }
+.cartao-empty-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.cartao-empty p {
+  font-size: 13px;
+}
 
 /* ===== ANIMAÇÕES ===== */
 @keyframes fadeInBgCartao {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideUpp {
-  
+
   from {
     transform:
       translateX(100%);
   }
-  
+
   to {
     transform:
       translateX(0);
