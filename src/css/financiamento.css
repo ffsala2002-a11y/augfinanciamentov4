@@ -29,8 +29,8 @@
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  box-shadow:
-    0 4px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 3px 3.5px 0px -2px rgba(0, 0, 0, 0.856);
+  -webkit-box-shadow: 3px 3.5px 0px -2px rgba(0, 0, 0, 0.705);
   background: conic-gradient(from 120deg at 50% 50%, rgb(255, 0, 55) 0%, rgb(244, 45, 88) 100%);
 
 }

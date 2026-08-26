@@ -1,6 +1,6 @@
 /* botão compartilhar */
 .btn-compartilhar-financ {
-  width: 120px;
+  width: 100px;
   height: 40px;
   display: flex;
   align-items: center;
@@ -9,16 +9,21 @@
   border: none;
   border-radius: 7px;
   font-weight: bold;
+  overflow: hidden;
   color: #FFFFFF;
-  background: linear-gradient(135deg,
-      #25D366 0%,
-      #128C7E 100%);
+  background: linear-gradient(90deg, rgba(7, 215, 242, 0.47) 0%, rgba(255, 255, 255, 1) 50%, rgba(12, 245, 206, 0.37) 100%);
   box-shadow:
     rgba(0, 0, 0, 0.4) 0px 2px 4px,
 
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
 
     rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.btn-compartilhar-financ video {
+  width: 45px;
+  height: 30px;
+  border-radius: 20PX;
 }
 
 

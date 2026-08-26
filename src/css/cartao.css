@@ -2,7 +2,7 @@
    BOTÃO ABRIR CARTÃO
    ===================================================== */
 .btn-abrir-cartao {
-  width: 40%;
+  width: 100px;
   height: 40px;
   border: none;
   border-radius: 7px;
@@ -18,7 +18,11 @@
   letter-spacing: 0.3px;
   color: #FFFFFF;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-  background: linear-gradient(135deg, #D39225 0%, #E3C200 100%);
+  background: linear-gradient(90deg, rgba(255, 229, 0, 0.65) 0%, rgba(255, 255, 255, 1) 50%, rgba(245, 218, 12, 0.49) 100%)
+}
+
+.btn-abrir-cartao video {
+  width: 30px;
 }
 
 .btn-abrir-cartao:active {
