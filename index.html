@@ -5,378 +5,367 @@
     <!-- meta -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    
     <!-- css -->
     <link rel="stylesheet" href="./src/css/styles.css">
     <link rel="stylesheet" href="./src/css/compartilhar.css">
     <link rel="stylesheet" href="./src/css/financiamento.css">
     <link rel="stylesheet" href="./src/css/cartao.css">
     <link rel="stylesheet" href="./src/css/seguro.css">
-
+    <link rel="stylesheet" href="./src/css/loadSpinner.css">
+    
+    <!-- Fonte awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <!-- favicon -->
     <link rel="icon" href="./src/img/copa26-v1.png" type="image/png">
     <link rel="manifest" href="./manifest.json">
-
+    
     <!-- fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Changa+One:ital@0;1&display=swap"
-        rel="stylesheet">
-
+    
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Changa+One:ital@0;1&display=swap" rel="stylesheet">
+    
     <title>AUG FINANCEIRA</title>
 </head>
 
 <body>
-
+    
     <!-- home -->
     <div id="home" class="rota active">
-
+        
         <!-- topo -->
         <div class="topo">
-
-            <!--<video class="promo" src="./src/video/promoaniver.mp4" playsinline webkit-playsinline muted autoplay loop
-                disablePictureInPicture disableRemotePlayback x-webkit-airplay="deny">></video>-->
-
+            
             <h1 class="titulo-aug">
                 AUG FINANCEIRA
             </h1>
-
+            
             <!-- botão lateral -->
             <div class="btn-lateral">
-
+                
                 <button id="btn-lateral">
-
-                    <!--<img src="./src/img/upload.png" alt="Imagem logo arquivo">-->
-
-                    <video src="./src/video/upload.mp4" playsinline webkit-playsinline muted autoplay loop
-                        disablePictureInPicture disableRemotePlayback x-webkit-airplay="deny">></video>
-
+                
+                    <i class="fa-solid fa-file-arrow-up"></i>
+                    
                 </button>
-
+                
             </div>
-
+            
         </div>
-
+        
         <!-- menu lateral -->
         <div class="menu-lateral">
-
+            
             <div class="upload">
-
+                
                 <!-- logo -->
                 <div class="tamb-title">
-
+                    
                     <div class="box-img">
-
-                        <img src="./src/img/logoaugoficial.png" alt="Logo Aug Financeira">
-
+                        
+                        <img src="./src/img/logooficial.png" alt="Logo Aug Financeira">
+                        
                         <span>
                             Aug <span>Financeira</span>
                         </span>
-
+                        
                     </div>
-
+                    
                 </div>
-
+                
                 <!-- card loja -->
                 <div class="card-loja">
-
+                    
                     <div class="box-sigla-loja">
-
-                        <video src="./src/video/shop-store.mp4" playsinline webkit-playsinline muted autoplay loop
-                            disablePictureInPicture disableRemotePlayback x-webkit-airplay="deny">></video>
-
+                        
+                        <i class="fa-solid fa-shop"></i>
+                        
                         <div class="sigla-info">
-
+                            
                             <span class="sigla-label">Loja</span>
-
+                            
                             <span id="nomeLoja"></span>
-
+                            
                         </div>
-
+                        
                     </div>
-
+                    
                     <!-- resumo -->
                     <div class="box-resumo-base">
-
+                        
                         <div class="content-resumo">
-
+                            
                             <p>
                                 <span id="totalProdutos">0</span>
                                 <strong> Produtos disponíveis</strong>
                             </p>
-
+                            
                             <p class="oculto">
                                 <span id="totalSaldo">0</span>
                                 <strong></strong>
                             </p>
-
+                            
                             <p class="garantia-saldo">
                                 <span id="totalGarantias">0</span>
                                 <strong> Garantias disponíveis</strong>
                             </p>
-
+                            
                         </div>
-
+                        
                     </div>
-
+                    
                 </div>
-
+                
                 <!-- atualização -->
                 <div class="box-importacao">
-
+                    
                     <div class="box-title">
-
+                        
                         <h2 class="title">
                             Última Atualização:
                         </h2>
-
+                        
                     </div>
-
+                    
                     <div class="content-resumo">
-
+                        
                         <p>
                             <span id="dataImportacao">
                                 Carregando...
                             </span>
                         </p>
-
+                        
                     </div>
-
+                    
                 </div>
-
+                
                 <!-- importação -->
                 <div class="upload-txt">
-
+                    
                     <div class="box-title">
-
-                        <video src="./src/video/pasta.mp4" playsinline webkit-playsinline muted autoplay loop
-                            disablePictureInPicture disableRemotePlayback x-webkit-airplay="deny">></video>
-
-                        <!--<img src="./src/img/open-folder.png" alt="Imagem icone pasta">-->
-
+                        
+                        <i class="fa-solid fa-folder-open"></i>
+                        
                         <h2 class="title">
                             Importação Local
                         </h2>
-
+                        
                     </div>
-
+                    
                     <!-- inputs -->
                     <div class="box-import">
-
+                        
                         <div class="box-input1">
-
+                            
                             <img src="./src/img/import.png" alt="imagem logo arquivo">
-
+                            
                             <input type="file" id="fileProdutos" hidden>
-
+                            
                             <label for="fileProdutos">
                                 Importar Produtos
                             </label>
-
+                            
                         </div>
-
+                        
                         <div class="box-input2">
-
+                            
                             <img src="./src/img/warranty.png" alt="imagem logo garantia">
-
+                            
                             <input type="file" id="fileGarantias" hidden>
-
+                            
                             <label for="fileGarantias">
                                 Importar Garantias
                             </label>
-
+                            
                         </div>
-
+                        
                     </div>
-
+                    
                     <!-- botões -->
                     <div class="box-salvar-limpar">
-
+                        
                         <div class="flex mt-10 buttons">
-
+                            
                             <button class="desativado" id="btnSalvar">
                                 Salvar Base (Botão desativado)
                             </button>
-
+                            
                             <button class="secondary desativado" id="btnLimparBase">
                                 Limpar Base (Botão desativado)
                             </button>
-
+                            
                         </div>
-
+                        
                         <p id="msg" class="msg"></p>
-
+                        
                     </div>
-
+                    
                 </div>
-
+                
                 <!-- modo -->
                 <div class="box-modo">
-
+                    
                     <div class="box-title">
-
-                        <video src="./src/video/data-collection.mp4" playsinline webkit-playsinline muted autoplay loop
-                            disablePictureInPicture disableRemotePlayback x-webkit-airplay="deny">></video>
-
+                        
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        
                         <h2 class="title">
                             Fonte dos Dados
                         </h2>
-
+                        
                     </div>
-
+                    
                     <div class="content-modo">
-
+                        
                         <div class="toggle-modo">
-
+                            
                             <button class="desativado" id="btnModoNuvem">
                                 ☁️ Nuvem (Botão desabilitado)
                             </button>
-
+                            
                             <button class="desativado" id="btnModoLocal">
                                 💾 Local (Botão desativado)
                             </button>
-
+                            
                         </div>
-
+                        
                     </div>
-
+                    
                 </div>
-
+                
                 <!-- avatar -->
                 <div class="box-avatar">
-
-                    <img src="./src/img/avatar.png" alt="icone avatar" />
-
+                    
+                    <i class="fa-solid fa-circle-user"></i>
+                    
                     <button class="sair-conta" id="btnLogout">
                         Sair da conta
                     </button>
-
+                    
                 </div>
-
+                
                 <!-- copyright -->
                 <div class="box-priv">
-
+                    
                     <p class="priv">
                         © 2026 DiegoDev — Todos os direitos reservados.
                     </p>
-
+                    
                 </div>
-
+                
             </div>
-
+            
         </div>
-
+        
         <!-- fundo -->
         <div class="fundo"></div>
-
+        
         <!-- calculadora -->
         <div class="main-calculadora">
-
+            
             <!-- busca -->
             <div class="relative">
-
+                
                 <div class="box-input">
-
-                    <img class="img-lupa" src="./src/img/seach.png" alt="Imagem logo pesquisa">
-
+                    
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    
                     <input required class="campo-input" type="text" id="busca">
-
+                    
                     <!-- scanner botão -->
-                    <video id="btn-scan" class="btn-scan" src="./src/video/barcode.mp4"
-                        alt="video icone leitor de código de barras" playsinline webkit-playsinline muted autoplay loop
-                        disablePictureInPicture disableRemotePlayback x-webkit-airplay="deny">>
-                    </video>
-
+                    <i class="fa-solid fa-barcode btn-scan" id="btn-scan"></i>
+                    
                     <label class="label-movie" for="busca">
                         Buscar por NCE ou DESCRIÇÃO
                     </label>
-
+                    
                     <label id="deleteInput" class="delete-input">
-                        <img src="./src/img/close.png">
+                        <i class="fa-solid fa-xmark"></i>
                     </label>
-
+                    
                 </div>
-
+                
                 <!-- scanner -->
                 <div id="scannerOverlay" class="scanner-overlay">
-
+                    
                     <div class="scanner-box">
-
+                        
                         <!-- scanner header -->
                         <div class="scanner-header">
-
+                            
                             <span class="titlle-scan">
                                 Leitor de código de barras
                             </span>
-
+                            
                             <button class="fechar-scan" id="fecharScanner">
                                 ✕
                             </button>
-
+                            
                         </div>
-
+                        
                         <!-- scanner area -->
                         <div class="scanner-area">
-
+                            
                             <div id="scanner-container"></div>
-
+                            
                             <div class="laser"></div>
-
+                            
                         </div>
-
+                        
                         <!-- scanner info -->
                         <div class="scanner-info">
-
+                            
                             <div class="box-item-scan">
                                 Itens adicionandos:
                                 <strong id="contadorLeitura">0</strong>
                             </div>
-
+                            
                             <div id="ultimoProduto" class="ultimo-produto"></div>
-
+                            
                         </div>
-
+                        
                     </div>
-
+                    
                 </div>
-
+                
                 <!-- sugestões -->
                 <div id="sugestoes" class="sugestoes">
-
+                    
                     <table>
-
+                        
                         <thead>
-
+                            
                             <tr>
-
+                                
                                 <th>IMG</th>
                                 <th>NCE</th>
                                 <th>Descrição</th>
                                 <th>Preço</th>
                                 <th>Saldo</th>
-
+                                
                             </tr>
-
+                            
                         </thead>
-
+                        
                         <tbody id="sugestoesBody"></tbody>
-
+                        
                     </table>
-
+                    
                 </div>
-
+                
             </div>
-
+            
             <!-- lista -->
             <div class="box-list">
-
+                
                 <div id="lista"></div>
-
+                
             </div>
-
+            
         </div>
-
+        
         <!-- popup -->
         <!--<div id="popup" class="popup show">
 
@@ -399,147 +388,147 @@
             </div>
 
         </div>-->
-
+        
     </div>
-
+    
     <!-- financiamento -->
     <div id="financ" class="rota">
-
+        
         <div class="box-financ">
-
+            
             <!-- total -->
             <div class="financ-total-card">
-
+                
                 <span class="financ-total-label">
                     Total/Avista
                 </span>
-
+                
                 <strong class="financ-total-valor" id="financTotalValor">
                     R$ 0,00
                 </strong>
-
+                
             </div>
-
+            
             <!-- inputs -->
             <div class="financ-inputs">
-
+                
                 <div class="financ-input-group">
-
+                    
                     <label for="entrada">
                         Valor de Entrada
                     </label>
-
+                    
                     <input type="text" id="entrada" value="R$ 0,00" placeholder="R$ 0,00">
-
+                    
                 </div>
-
+                
                 <div class="financ-input-group">
-
+                    
                     <label for="taxa">
                         Taxa de Juros (a.m.)
                     </label>
-
+                    
                     <input type="number" id="taxa" value="9.9" step="0.01" placeholder="0.00">
-
+                    
                 </div>
-
+                
             </div>
-
+            
             <!-- checkboxes -->
             <div class="financ-checks">
-
+                
                 <label class="financ-check-label">
-
+                
                     <input type="checkbox" id="semJuros3x">
-
+                    
                     <span class="financ-check-box"></span>
-
+                    
                     <span>
                         Até 3x sem juros
                     </span>
-
+                    
                 </label>
-
+                
                 <label class="financ-check-label">
-
+                
                     <input type="checkbox" id="parc18x">
-
+                    
                     <span class="financ-check-box"></span>
-
+                    
                     <span>
                         Mostrar até 18x
                     </span>
-
+                    
                 </label>
-
+                
             </div>
-
+            
             <!-- header -->
             <div class="financ-parcelas-header">
-
+                
                 <span>
                     <!-- Botão Cartão de Crédito -->
                     <button id="btnAbrirCartao" class="btn-abrir-cartao">
-                        <video src="./src/video/cardCredit.mp4" autoplay muted loop></video>
+                        <i class="fa-solid fa-credit-card"></i>
                     </button>
-
+                    
                     <!-- compartilhar -->
                     <button id="btnCompartilharFinanc" class="btn-compartilhar-financ">
-                        <video src="./src/video/share.mp4" autoplay muted loop></video>
+                        <i class="fa-solid fa-share-nodes"></i>
                     </button>
                 </span>
-
+                
             </div>
-
+            
             <!-- parcelas -->
             <div class="financ-parcelas-lista" id="financParcelasList">
-
+                
                 <!-- JS renderiza aqui -->
-
+                
             </div>
-
+            
         </div>
-
+        
     </div>
-
+    
     <!-- bottom bar -->
     <div class="bottom-bar">
-
+        
         <div class="box-btn">
-
+            
             <div class="btn active" onclick="mudarRota('home', this)">
-
-                <img src="./src/img/box.png" alt="Imagem caixa de produto">
-
+                
+                <i class="fa-solid fa-box"></i>
+                
                 <span>
                     Produtos
                 </span>
-
+                
             </div>
-
+            
             <div class="btn" onclick="mudarRota('financ', this)">
-
-                <img src="./src/img/accounts.png" alt="Imagem da calculadora">
-
+                
+                <i class="fa-solid fa-calculator"></i>
+                
                 <span>
-                    Financiamento
+                    Crediário
                 </span>
-
+                
             </div>
-
+            
         </div>
-
+        
     </div>
-
+    
     <!-- modaal -->
     <div id="modalCarrossel">
-
+        
         <!-- TOPO -->
         <div class="carrossel-topo">
             <div class="carrossel-brand">AUG FINANCEIRA</div>
             <div class="carrossel-produto-nome" id="carrosselNome"></div>
         </div>
-
+        
         <!-- ÁREA DAS IMAGENS -->
         <div class="carrossel-area">
             <div class="carrossel-container">
@@ -551,46 +540,50 @@
             <button class="carrossel-seta carrossel-seta-esq" id="setaEsq">‹</button>
             <button class="carrossel-seta carrossel-seta-dir" id="setaDir">›</button>
         </div>
-
+        
         <!-- INDICADORES + FECHAR -->
         <div class="carrossel-rodape">
             <div id="indicadores" class="indicadores-galeria"></div>
             <button id="fecharModal" class="carrossel-fechar">✕ Fechar</button>
         </div>
-
+        
     </div>
-
+    
     <!-- spinner -->
     <div id="fundo-spiner" class="fundo-spiner">
-
-        <video src="./src/video/auglogooficial.mp4" class="video-spin" loop muted></video>
-
-        <p id="textSpin" class="title-spiner"></p>
-
+        
+        <!-- From Uiverse.io by catraco -->
+        <div class="loader">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path d="M64 32C28.7 32 0 60.7 0 96v64c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm280 72a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm48 24a24 24 0 1 1 48 0 24 24 0 1 1 -48 0zM64 288c-35.3 0-64 28.7-64 64v64c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V352c0-35.3-28.7-64-64-64H64zm280 72a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm56 24a24 24 0 1 1 48 0 24 24 0 1 1 -48 0z"></path>
+            </svg>
+            <span></span>
+        </div>
+        
     </div>
-
+    
     <!-- toast -->
     <!--<div id="toast" class="toast">
         🎉 Atualizações aplicadas!
     </div>-->
-
+    
     <!-- sons -->
     <!--<audio id="som">
     
         <source src="https://www.soundjay.com/buttons/sounds/button-3.mp3" type="audio/mpeg">
         
     </audio>-->
-
+    
     <audio id="nuvemAtivo" src="./src/audio/nuvemAtivo.mp3"></audio>
-
+    
     <audio id="localAtivo" src="./src/audio/localAtivo.mp3"></audio>
-
+    
     <script>
         if ("serviceWorker" in navigator) {
             navigator.serviceWorker.register("./sw.js");
         }
     </script>
-
+    
 </body>
 
 <!-- scripts -->

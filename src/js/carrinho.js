@@ -315,7 +315,7 @@ export function render() {
     btnApagar.className = 'btn-apagar';
 
     btnApagar.innerHTML =
-      `<img src="./src/img/trash-can.png">`;
+      `<i class="fa-solid fa-trash"></i>`;
 
     btnApagar.onclick = () => {
       carrinho.splice(index, 1);

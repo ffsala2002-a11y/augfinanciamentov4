@@ -432,25 +432,20 @@ const textSpin = document.getElementById("textSpin");
 const videoSpin = document.querySelector(".video-spin");
 
 let timeId;
+let tempo = 2500;
 
 function mostrarSpinner() {
   if (!fundoSpiner) return;
-  videoSpin.currentTime = 0;
-  videoSpin.play();
-  textSpin.textContent = "Sem conexão...";
   fundoSpiner.classList.remove("active");
 }
 
 function esconderSpinner() {
   if (!fundoSpiner) return;
-  videoSpin.currentTime = 0;
-  videoSpin.play();
-  textSpin.textContent = "";
   clearTimeout(timeId);
   timeId = setTimeout(() => {
     fundoSpiner.classList.add("active");
     videoSpin.pause();
-  }, 2200);
+  }, tempo);
 }
 
 window.addEventListener("load", () => {

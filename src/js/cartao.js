@@ -405,7 +405,7 @@ function _criarModalNoDOM() {
       <div class="cartao-handle"></div>
       <div class="cartao-header">
         <div class="cartao-header-info">
-          <span class="cartao-icon">💳</span>
+          <span class="cartao-icon"><i class="fa-solid fa-credit-card"></i></span>
           <div>
             <h2 class="cartao-titulo">Cartão de Crédito</h2>
             <p class="cartao-sub">Simulação de parcelamento</p>

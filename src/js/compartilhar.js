@@ -69,17 +69,17 @@ export function iniciarCompartilhar() {
         <div class="comp-toggle-row">
 
           <button id="compSemPlano" class="comp-toggle ativo">
-            <span class="comp-toggle-icon">📦</span>
+            <span class="comp-toggle-icon"><i class="fa-solid fa-box"></i></span>
             <span>Só os produtos</span>
           </button>
 
           <button id="compComPlano" class="comp-toggle">
-            <span class="comp-toggle-icon">💳</span>
+            <span class="comp-toggle-icon"><i class="fa-solid fa-calculator"></i></span>
             <span>Crediário</span>
           </button>
 
           <button id="compComCartao" class="comp-toggle">
-            <span class="comp-toggle-icon">🏦</span>
+            <span class="comp-toggle-icon"><i class="fa-solid fa-credit-card"></i></span>
             <span>Cartão</span>
           </button>
 

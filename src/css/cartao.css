@@ -21,8 +21,9 @@
   background: linear-gradient(90deg, rgba(255, 229, 0, 0.65) 0%, rgba(255, 255, 255, 1) 50%, rgba(245, 218, 12, 0.49) 100%)
 }
 
-.btn-abrir-cartao video {
-  width: 30px;
+.btn-abrir-cartao i {
+  font-size: 25px;
+  color: var(--color-black);
 }
 
 .btn-abrir-cartao:active {
