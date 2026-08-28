@@ -1,10 +1,10 @@
-const CACHE_NAME = "aug-v2";
+const CACHE_NAME = "aug-v3";
 
 const FILES = [
   "./",
   "./index.html",
   "./manifest.json",
-  "./src/img/logoaugoficial.png"
+  "./src/img/logooficial.png"
 ];
 
 self.addEventListener("install", event => {
