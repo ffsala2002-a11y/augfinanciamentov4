@@ -519,10 +519,10 @@ background-color: var(--color-white);
 
 .fundo-hidden {
   width: 100%;
-  height: 560px;
+  height: 565px;
   position: absolute;
   z-index: 5;
-  top: 26.9%;
+  top: 26%;
   border-radius: 50px;
   display: flex;
   flex-direction: column;
