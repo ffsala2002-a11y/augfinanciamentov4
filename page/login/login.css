@@ -140,17 +140,18 @@ body {
   opacity: 0.7;
 }
 
-.box-campos button {
+.box-campos #btnEntrar {
   width: 80%;
   padding: 1rem 0.5rem;
   position: absolute;
   bottom: 1rem;
   border-radius: 10pxgoogle;
-  background: #74FF7A;
   font-weight: bold;
   font-size: 18px;
   border: none;
   border-radius: 8px;
+  color: #fff;
+  background: linear-gradient(90deg, rgba(0, 124, 75, 1) 0%, #08d79b 50%, rgba(12, 245, 121, 1) 100%);
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
@@ -215,7 +216,7 @@ body {
   text-decoration: none;
   font-size: 20px;
   color: #E9E9E9;
-  background-color: rgb(0, 133, 7);
+  background: linear-gradient(90deg, rgba(31, 42, 255, 1) 0%, rgba(0, 37, 171, 1) 100%);
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
