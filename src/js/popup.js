@@ -7,7 +7,9 @@ const fundo = document.querySelector(".fundo-popup");
 const btnScan = document.querySelector(".btn-scan");
 
 let intervalId;
+let timeId;
 let time = 1000;
+let timeSet = 6000;
 
 
 export function popupMobile() {
@@ -17,16 +19,21 @@ export function popupMobile() {
   timerResult.textContent = "";
 
   clearInterval(intervalId);
+  clearTimeout(timeId);
+
+  timeId = setTimeout(() => {
+    popup.classList.add("show");
+
+    bottomBar.classList.add("event");
+
+    btnLateral.classList.add("event");
+
+    fundo.classList.add("active");
+
+    btnScan.style.cssText = `pointer-events: none;`;
+  }, timeSet)
 
   //btnFechar.classList.add("active");
-
-  bottomBar.classList.add("event");
-
-  btnLateral.classList.add("event");
-
-  fundo.classList.add("active");
-
-  btnScan.style.cssText = `pointer-events: none;`;
 
   /*intervalId = setInterval(() => {
     seconds--;
