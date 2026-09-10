@@ -1,0 +1,530 @@
+#finance {
+    display: none;
+}
+
+.topo {
+    width: 100%;
+    height: 70px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    z-index: 3;
+    border-radius: 0 0 30px 30px;
+    position: relative;
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-elevated);
+}
+
+.topo .box-input {
+    position: absolute;
+    top: 0.6rem;
+    left: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 87%;
+}
+
+.topo .box-input .campo-input {
+    width: 100%;
+    padding: 0.7rem 2rem;
+    max-width: 100%;
+    border-radius: 20px;
+    border: none;
+    color: var(--color-black);
+    outline: none;
+    font-size: 17px;
+    background: var(--color-white);
+    box-shadow: var(--shadow-card);
+}
+
+.topo .box-input .delete-input {
+    position: absolute;
+    right: 2rem;
+    top: 0.5rem;
+    visibility: hidden;
+    opacity: 0;
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.topo .box-input .delete-input i {
+    font-size: 20px;
+}
+
+.topo .box-input .campo-input:focus~.delete-input,
+.topo .box-input .campo-input:valid~.delete-input {
+    visibility: visible;
+    opacity: 1;
+    top: 0.3rem;
+    right: 2.8rem;
+    transition: 0.5s ease;
+}
+
+.topo .box-input .label-movie {
+    position: absolute;
+    left: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.5s ease;
+    color: var(--color-black);
+    font-weight: bold;
+}
+
+.topo .box-input .campo-input:focus~.label-movie,
+.topo .box-input .campo-input:valid~.label-movie {
+    top: -3px;
+    left: -1px;
+    padding: 0.3rem;
+    border-radius: 20px;
+    border-bottom-left-radius: 1px;
+    color: var(--color-black);
+    font-weight: bold;
+    font-size: 11px;
+}
+
+
+.topo .box-input input::-moz-placeholder {
+    color: var(--color-white);
+}
+
+.topo .box-input input::placeholder {
+    color: var(--color-white);
+}
+
+.topo .box-input .fa-magnifying-glass {
+    position: absolute;
+    left: 0.3rem;
+    width: 26px;
+}
+
+
+.topo .btn-lateral {
+    position: absolute;
+    /*border: solid 1.5px gray;*/
+    border-radius: 10px;
+    border-bottom-left-radius: 20px;
+    left: 0.5rem;
+    top: 1rem;
+    z-index: 5;
+    /*background: radial-gradient(circle, rgba(200, 0, 0, 1) 0%, rgba(146, 0, 0, 1) 100%);*/
+}
+
+#btn-lateral {
+    border: none;
+    cursor: pointer;
+    background: transparent;
+}
+
+#btn-lateral i {
+    font-size: 25px;
+    color: var(--color-white);
+}
+
+#btn-lateral.event {
+    pointer-events: none;
+}
+
+#btn-lateral:after {
+    content: '';
+    position: absolute;
+    top: -0.3rem;
+    right: -0rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #75FF45;
+}
+
+#btn-lateral img {
+    width: 35px;
+    border-bottom-left-radius: 18px;
+}
+
+.main-calculadora {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: -2rem;
+    left: 1.2rem;
+    z-index: 2;
+    width: 90vw;
+    margin: 0 auto;
+}
+
+.main-calculadora .relative {
+    position: relative;
+    top: 3.6rem;
+    z-index: 3;
+    width: 90vw;
+    margin: 0 auto;
+}
+
+.btn-scan {
+    width: 28px;
+    position: absolute;
+    right: 0.5rem;
+    font-size: 20px;
+    box-shadow: var(--shadow-elevated);
+}
+
+.fechar-scan {
+    background: #FF4F4F;
+    color: var(--color-white);
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+}
+
+/* OVERLAY */
+
+.scanner-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.scanner-overlay.active {
+    display: flex;
+}
+
+/* BOX */
+
+.scanner-box {
+    width: 95%;
+    max-width: 420px;
+    background: var(--color-white);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* HEADER */
+
+.scanner-header {
+    background: var(--gradient-primary);
+    color: var(--color-white);
+    padding: 10px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titlle-scan {
+    font-weight: bold;
+}
+
+/* AREA DO VIDEO */
+
+.scanner-area {
+    position: relative;
+    width: 100%;
+    height: 90px;
+    background: var(--color-black);
+    overflow: hidden;
+}
+
+/* CONTROLE DO VIDEO/CANVAS DO QUAGGA */
+
+#scanner-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#scanner-container video,
+#scanner-container canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* LASER */
+
+.laser {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: red;
+    box-shadow: 0 0 10px red;
+    border-style: double;
+    z-index: 2;
+    animation: scan 2s linear infinite;
+}
+
+@keyframes scan {
+    0% {
+        top: 0;
+    }
+
+    50% {
+        top: 100%;
+    }
+
+    100% {
+        top: 0;
+    }
+}
+
+/* INFO */
+
+.scanner-info {
+    padding: 12px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.box-item-scan {
+    background: #D6D6D6;
+    width: 70%;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 0.5rem;
+}
+
+.ultimo-produto {
+    margin-top: 8px;
+    color: #333;
+    line-height: 1.3;
+}
+
+.preco-scan {
+    color: #14AA00;
+}
+
+.main-calculadora .relative .sugestoes {
+    position: absolute;
+    top: 3rem;
+    left: -1.1rem;
+    z-index: 3;
+    width: 110%;
+    margin: 0 auto;
+    padding-bottom: 10rem;
+    height: 700px;
+    display: none;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 1);
+}
+
+/*Img sugestao*/
+
+.imgProduto {
+    min-width: 40px;
+    max-width: 40px;
+}
+
+.imgProduto img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+/* Responsivo */
+
+@media (max-width: 420px) {
+    .titulo-aug {
+        font-size: 20px;
+        letter-spacing: 2px;
+    }
+}
+
+.main-calculadora .relative .sugestoes table {
+    /*border: solid 1px;*/
+    width: 100%;
+    font-size: 12px;
+    padding: 0.8rem;
+    cursor: pointer;
+    border-collapse: separate;
+    border-spacing: 0 20px;
+    background: var(--color-white);
+}
+
+/*.main-calculadora .relative .sugestoes table thead {
+
+}*/
+
+.main-calculadora .relative .sugestoes table thead tr {
+    width: 100%;
+    background: var(--gradient-primary);
+    border-radius: 20px;
+}
+
+.main-calculadora .relative .sugestoes table thead tr th {
+    padding: 10px;
+    border: solid 1px;
+    color: var(--color-white);
+    border-radius: 5px;
+}
+
+.main-calculadora .relative .sugestoes table #sugestoesBody {
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+.main-calculadora .relative .sugestoes table #sugestoesBody tr td {
+    margin-top: 10px;
+    padding: 6px;
+    color: var(--color-black);
+    font-weight: bold;
+    text-align: center;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 0px, rgba(0, 0, 0, 0.3) 1px 0px 1px 0px, rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
+}
+
+.main-calculadora .relative .sugestoes table #sugestoesBody tr td .img-sugestao {
+    width: 35px;
+    border-radius: 5px;
+}
+
+.main-calculadora .relative .sugestoes table #sugestoesBody tr td:first-child {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.main-calculadora .relative .sugestoes table #sugestoesBody tr td:last-child {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.main-calculadora .relative .sugestoes table #sugestoesBody tr td .descricao {
+    font-size: 10px;
+}
+
+.main-calculadora .relative .sugestoes table #sugestoesBody tr td .preco {
+    color: #00B80A;
+}
+
+.main-calculadora .relative .sugestoes table #sugestoesBody tr td .saldo {
+    color: #FF6E00;
+}
+
+
+.bottom-bar {
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    backdrop-filter: blur(3px);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+}
+
+/* QUANDO O POPUP MOBILE VOLTAR, EVENTS NONE */
+
+.bottom-bar.event {
+    pointer-events: none;
+}
+
+.bottom-bar.active-bar {
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.4s ease;
+}
+
+.bottom-bar .box-btn {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.bottom-bar .box-btn .btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #F3F3F3;
+    transition: background-color 0.2s;
+    box-shadow: var(--shadow-elevated);
+}
+
+.bottom-bar .box-btn .btn:nth-child(1) {
+    width: 70px;
+    height: 70px;
+    border-radius: 40%;
+    gap: 2px;
+}
+
+.bottom-bar .box-btn .btn:nth-child(1) span {
+    font-size: 7px;
+    font-weight: bold;
+}
+
+.bottom-bar .box-btn .btn:nth-child(1) i {
+    font-size: 25px;
+}
+
+.bottom-bar .box-btn .btn:nth-child(1) span {
+    font-size: 12px;
+}
+
+.bottom-bar .box-btn .btn:nth-child(1).active {
+    overflow: hidden;
+    position: relative;
+    color: rgba(255, 255, 255, 1);
+    background: var(--gradient-primary);
+}
+
+.bottom-bar .box-btn .btn:nth-child(1).active span {
+    display: none;
+}
+
+.bottom-bar .box-btn .btn:nth-child(2).active span {
+    display: none;
+}
+
+.bottom-bar .box-btn .btn:nth-child(2) {
+    width: 70px;
+    height: 70px;
+    border-radius: 40%;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+}
+
+.bottom-bar .box-btn .btn:nth-child(2) i {
+    font-size: 25px;
+}
+
+.bottom-bar .box-btn .btn:nth-child(2) span {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.bottom-bar .box-btn .btn:nth-child(2).active {
+    color: rgb(255, 255, 255);
+    background: var(--gradient-primary);
+}
+
+.main-calculadora {
+    height: 100%;
+    position: fixed;
+    top: -10rem;
+    border: solid;
+}
+
+.main-calculadora .relative {
+    position: relative;
+    top: 10rem;
+    width: 90vw;
+    margin: 0 auto;
+}

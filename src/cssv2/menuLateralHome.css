@@ -1,0 +1,820 @@
+.menu-lateral {
+    min-width: 350px;
+    max-width: 350px;
+    min-height: 100vh;
+    padding-bottom: 6rem;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transform: translateX(-110%);
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #F2F4F8;
+}
+
+.menu-lateral.active-lateral {
+    transform: translateX(0);
+}
+
+.menu-lateral .upload {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    padding-bottom: 2rem;
+    position: static;
+    top: auto;
+}
+
+.menu-lateral .upload .tamb-title {
+    width: 100%;
+    height: 80px;
+    position: relative;
+    top: auto;
+    left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-white);
+    border-radius: 0;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    background: var(--color-white);
+}
+
+.menu-lateral .upload .tamb-title .box-img {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    position: absolute;
+    top: auto;
+    left: auto;
+}
+
+.menu-lateral .upload .tamb-title .box-img::after {
+    display: none;
+}
+
+.menu-lateral .upload .tamb-title .box-img img {
+    width: 70px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 12px;
+    position: static;
+    z-index: auto;
+}
+
+.menu-lateral .upload .tamb-title .box-img span {
+    font-size: 18px;
+    font-family: "Changa One", sans-serif;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--color-charcoal);
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: var(--color-charcoal);
+    animation: none;
+    text-shadow: none;
+}
+
+.menu-lateral .upload .tamb-title .box-img span span {
+    color: var(--color-red-alt);
+    -webkit-text-fill-color: var(--color-red-alt);
+}
+
+.box-avatar {
+    width: 90%;
+    padding: 1rem;
+    margin: 0 auto;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: var(--shadow-soft);
+    background: var(--color-bg-near-black);
+}
+
+.box-avatar i {
+    font-size: 50px;
+    color: var(--color-white);
+}
+
+.sair-conta {
+    position: static;
+    top: auto;
+    left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--gradient-primary);
+    border: none;
+    padding: 0.5rem;
+    border-radius: 12px;
+    color: var(--color-white);
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background 0.2s;
+    box-shadow: var(--shadow-elevated);
+}
+
+.sair-conta:hover {
+    background: #B30000;
+}
+
+.card-loja {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    margin: -0.7rem 1rem;
+    padding: 1rem;
+    background: #F4FFF6;
+    border: 1.8px solid var(--color-green-border);
+    border-radius: 18px;
+    gap: 0;
+    box-shadow: 0 2px 8px rgba(0, 180, 50, 0.07);
+    overflow: hidden;
+}
+
+.card-loja .box-resumo-base .content-resumo>img {
+    width: 46px;
+    height: 46px;
+    padding: 10px;
+    background: #22C55E;
+    border-radius: 50%;
+    flex-shrink: 0;
+    object-fit: contain;
+    animation: checkMovie 3s ease infinite;
+    position: static;
+    top: auto;
+    left: auto;
+}
+
+.card-loja .box-sigla-loja {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-primary);
+    border-radius: 12px;
+    padding: 0.5rem 0.7rem;
+    margin: 0 0.75rem;
+    flex-shrink: 0;
+    gap: 0.1rem;
+    position: relative;
+    top: auto;
+    left: -1.4rem;
+    z-index: auto;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    min-width: 60px;
+    text-align: center;
+}
+
+.card-loja .box-sigla-loja i {
+    font-size: 25px;
+    color: var(--color-white);
+}
+
+.card-loja .box-sigla-loja .sigla-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+}
+
+.card-loja .box-sigla-loja .sigla-label {
+    font-size: 10px;
+    color: #E5E5E5;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.card-loja .box-sigla-loja #nomeLoja {
+    font-size: 15px;
+    font-weight: 900;
+    color: #FFE400;
+    line-height: 1.2;
+}
+
+.card-loja .box-resumo-base {
+    flex: 1;
+    position: relative;
+    top: auto;
+    left: -1.8rem;
+    font-size: 12px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+}
+
+.card-loja .box-resumo-base .box-title {
+    display: none;
+}
+
+.card-loja .box-resumo-base .content-resumo {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    position: static;
+    text-align: center;
+}
+
+.card-loja .box-resumo-base .content-resumo p {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-left: 1.5px solid #C4E8CC;
+    padding: 0.4rem 0.5rem;
+    gap: 0.1rem;
+}
+
+.card-loja .box-resumo-base .content-resumo p.oculto {
+    display: none !important;
+}
+
+.card-loja .box-resumo-base .content-resumo p span {
+    font-size: 22px;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--color-brand-blue);
+    /* azul — produtos */
+}
+
+.card-loja .box-resumo-base .content-resumo p strong {
+    font-size: 11px;
+    color: var(--color-text-dark);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Palavra "disponíveis" via CSS */
+
+.card-loja .box-resumo-base .content-resumo p strong::after {
+    content: "com sucesso";
+    display: block;
+    color: var(--color-text-muted);
+    font-weight: 400;
+    font-size: 10px;
+}
+
+/* Verde para garantias */
+
+.card-loja .box-resumo-base .content-resumo p.garantia-saldo span {
+    color: var(--color-green-success);
+}
+
+/* Ícone de produto (pseudo) */
+
+.card-loja .box-resumo-base .content-resumo p:not(.garantia-saldo):not(.oculto) strong::before {
+    content: "📦";
+    display: block;
+    font-size: 20px;
+    margin-bottom: 2px;
+}
+
+/* Ícone de garantia (pseudo) */
+
+.card-loja .box-resumo-base .content-resumo p.garantia-saldo strong::before {
+    content: "🛡️";
+    display: block;
+    font-size: 20px;
+    margin-bottom: 2px;
+}
+
+/* Esconde sigla-loja se estiver FORA do card-loja */
+
+.menu-lateral .upload>.box-sigla-loja,
+.menu-lateral .upload>.box-resumo-base {
+    display: none;
+}
+
+.box-importacao {
+    position: absolute;
+    top: 12rem;
+    left: 4rem;
+    /*border: solid 1px;*/
+    padding: 0rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 10px;
+}
+
+.box-importacao .box-title .title {
+    font-size: 11px;
+}
+
+/* -- SEÇÃO IMPORTAÇÃO LOCAL --*/
+
+
+.menu-lateral .upload .upload-txt {
+    min-width: unset;
+    max-width: unset;
+    width: calc(100% - 2rem);
+    margin: 0 1rem;
+    position: static;
+    top: auto;
+    padding: 1.1rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--color-border-lighter);
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    text-align: left;
+    background: var(--color-bg-near-black);
+}
+
+/* ── Título da seção ── */
+
+.menu-lateral .upload .upload-txt .box-title {
+    position: static;
+    top: auto;
+    width: 100%;
+    min-height: auto;
+    max-height: none;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.menu-lateral .upload .upload-txt .box-title i {
+    font-size: 30px;
+    color: var(--color-white);
+}
+
+.menu-lateral .upload .upload-txt .box-title .title {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--color-white);
+    margin-left: 0;
+    line-height: 1.2;
+}
+
+/* Subtítulo (adicione <p class="section-subtitle"> no HTML após .box-title, ou via CSS::after) */
+
+.menu-lateral .upload .upload-txt .box-title .title::after {
+    content: "Importe produtos e garantias para sua base local";
+    display: block;
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--color-text-muted);
+    margin-top: 2px;
+}
+
+/* ── Área dos botões de importação ── */
+
+.menu-lateral .upload .upload-txt .box-import {
+    position: static;
+    min-height: auto;
+    max-height: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    padding: 0;
+}
+
+/* Imagens originais — ocultas (substituídas por pseudo-elementos) */
+
+.menu-lateral .upload .upload-txt .box-import .box-input1 img,
+.menu-lateral .upload .upload-txt .box-import .box-input2 img {
+    display: none;
+}
+
+/* ── Importar Produtos (verde) ── */
+
+.menu-lateral .upload .upload-txt .box-import .box-input1 {
+    display: flex;
+    width: 100%;
+}
+
+.menu-lateral .upload .upload-txt .box-import .box-input1 label {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    background: #1A8C44;
+    color: var(--color-white);
+    padding: 0.9rem 1.2rem;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+    box-shadow: var(--shadow-elevated);
+}
+
+.menu-lateral .upload .upload-txt .box-import .box-input1 label::before {
+    content: "↓";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    background: rgba(255, 255, 255, 0.22);
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.menu-lateral .upload .upload-txt .box-import .box-input1 label::after {
+    content: "›";
+    position: absolute;
+    right: 1.2rem;
+    font-size: 26px;
+    font-weight: 200;
+    line-height: 1;
+    opacity: 0.8;
+}
+
+.menu-lateral .upload .upload-txt .box-import .box-input1 label:hover {
+    background: #147A39;
+}
+
+/* ── Importar Garantias (azul) ── */
+
+.menu-lateral .upload .upload-txt .box-import .box-input2 {
+    display: flex;
+    width: 100%;
+    position: static;
+}
+
+.menu-lateral .upload .upload-txt .box-import .box-input2 label {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    background: #2B60D0;
+    color: var(--color-white);
+    padding: 0.9rem 1.2rem;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+    box-shadow: var(--shadow-elevated);
+}
+
+.menu-lateral .upload .upload-txt .box-import .box-input2 label::before {
+    content: "🛡";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.menu-lateral .upload .upload-txt .box-import .box-input2 label::after {
+    content: "›";
+    position: absolute;
+    right: 1.2rem;
+    font-size: 26px;
+    font-weight: 200;
+    line-height: 1;
+    opacity: 0.8;
+}
+
+.menu-lateral .upload .upload-txt .box-import .box-input2 label:hover {
+    background: #2251B5;
+}
+
+/* ── Botões Salvar / Limpar ── */
+
+.menu-lateral .upload .upload-txt .box-salvar-limpar .flex,
+.menu-lateral .upload .buttons {
+    position: static;
+    display: flex;
+    gap: 0.65rem;
+    margin-top: 0;
+    left: auto;
+}
+
+.menu-lateral .upload .upload-txt .box-salvar-limpar button,
+.menu-lateral .upload .buttons button {
+    flex: 1;
+    width: auto !important;
+    height: auto !important;
+    padding: 0.75rem 0.6rem !important;
+    border-radius: 13px !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    cursor: pointer;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    background: var(--color-white) !important;
+    border: 1.5px solid var(--color-border-light) !important;
+    position: relative;
+    transition: all 0.2s;
+    overflow: hidden;
+}
+
+/* ── Salvar Base ── */
+
+#btnSalvar {
+    color: var(--color-green-success) !important;
+    border-color: var(--color-green-border) !important;
+    box-shadow: var(--shadow-elevated);
+}
+
+#btnSalvar.desativado {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+#btnSalvar::before {
+    content: "💾";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    background: #DCFCE7;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+#btnSalvar::after {
+    content: "›";
+    position: absolute;
+    right: 0.7rem;
+    font-size: 18px;
+    color: var(--color-text-muted);
+    font-weight: 300;
+}
+
+#btnSalvar:hover {
+    background: #F0FFF4 !important;
+}
+
+/* ── Limpar Base ── */
+
+#btnLimparBase {
+    color: #DC2626 !important;
+    border-color: #FCA5A5 !important;
+    box-shadow: var(--shadow-elevated);
+}
+
+#btnLimparBase.desativado {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+#btnLimparBase::before {
+    content: "🗑";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    background: #FEE2E2;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+#btnLimparBase::after {
+    content: "›";
+    position: absolute;
+    right: 0.7rem;
+    font-size: 18px;
+    color: var(--color-text-muted);
+    font-weight: 300;
+}
+
+#btnLimparBase:hover {
+    background: #FFF5F5 !important;
+}
+
+#msg {
+    font-size: 12px;
+    margin-top: 0.4rem;
+    text-align: center;
+    color: #6B7280;
+}
+
+
+/* --FONTE DOS DADOS --*/
+
+
+.box-modo {
+    width: calc(100% - 2rem);
+    margin: 0 1rem;
+    position: static;
+    top: auto;
+    left: auto;
+    border-radius: 20px;
+    border: 1px solid var(--color-border-lighter);
+    padding: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    background: var(--color-bg-near-black);
+}
+
+/* ── Título Fonte dos Dados ── */
+
+.box-modo .box-title {
+    position: static;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.box-modo .box-title i {
+    font-size: 30px;
+    color: var(--color-white);
+}
+
+.box-modo .box-title .title {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--color-white);
+    margin-left: 0;
+    line-height: 1.2;
+}
+
+.box-modo .box-title .title::after {
+    content: "Selecione a origem dos dados para importação";
+    display: block;
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--color-text-muted);
+    margin-top: 2px;
+}
+
+.box-modo .content-modo {
+    width: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* ── Opções Nuvem / Local ── */
+
+.toggle-modo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.toggle-modo button {
+    width: 100%;
+    padding: 0.85rem 1.1rem;
+    border: 1.8px solid var(--color-border-light);
+    border-radius: 14px;
+    background: var(--color-white);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    transition: all 0.25s;
+    position: relative;
+    box-shadow: var(--shadow-elevated);
+}
+
+#btnModoNuvem {
+    background: var(--color-white);
+    border-color: var(--color-border-light);
+    color: var(--color-text-dark);
+}
+
+#btnModoNuvem.desativado {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+#btnModoLocal {
+    border-color: var(--color-brand-blue);
+    color: var(--color-brand-blue);
+    font-weight: 700;
+    background: var(--color-white);
+}
+
+#btnModoLocal.desativado {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+#btnModoNuvem.ativo {
+    border-color: var(--color-brand-blue);
+    color: var(--color-brand-blue);
+    font-weight: 700;
+}
+
+#btnModoNuvem.ativo::after {
+    border-color: var(--color-brand-blue);
+    background: var(--color-brand-blue);
+    box-shadow: inset 0 0 0 4px var(--color-white);
+}
+
+.menu-lateral .upload .box-priv {
+    position: static;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    background: transparent;
+    padding: 0.5rem 1rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 0.3rem;
+}
+
+.menu-lateral .upload .box-priv::before {
+    content: "🔐";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    background: var(--color-brand-blue);
+    border-radius: 50%;
+    font-size: 13px;
+    flex-shrink: 0;
+}
+
+.menu-lateral .upload .box-priv .priv {
+    position: static;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    text-align: center;
+}
+
+@keyframes checkMovie {
+    0% {
+        transform: scale(1);
+    }
+
+    60% {
+        transform: scale(1.08);
+    }
+
+    80% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes swing {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(5deg);
+    }
+
+    50% {
+        transform: rotate(-5deg);
+    }
+
+    75% {
+        transform: rotate(-10deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}

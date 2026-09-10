@@ -6,13 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- css -->
-    <link rel="stylesheet" href="./src/css/styles.css">
-    <link rel="stylesheet" href="./src/css/compartilhar.css">
-    <link rel="stylesheet" href="./src/css/financiamento.css">
-    <link rel="stylesheet" href="./src/css/cartao.css">
-    <link rel="stylesheet" href="./src/css/seguro.css">
-    <link rel="stylesheet" href="./src/css/loadSpinner.css">
+    <link rel="stylesheet" href="./src/cssv2/main.css">
 
     <!-- Fonte awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
@@ -41,10 +35,6 @@
         <!-- topo -->
         <div class="topo">
 
-            <h1 class="titulo-aug">
-                AUG FINANCEIRA
-            </h1>
-
             <!-- botão lateral -->
             <div class="btn-lateral">
 
@@ -53,6 +43,25 @@
                     <i class="fa-solid fa-file-arrow-up"></i>
 
                 </button>
+
+            </div>
+
+            <div class="box-input">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input required class="campo-input" type="text" id="busca">
+
+                <!-- scanner botão -->
+                <i class="fa-solid fa-barcode btn-scan" id="btn-scan"></i>
+
+                <label class="label-movie" for="busca">
+                    Buscar por NCE ou DESCRIÇÃO
+                </label>
+
+                <label id="deleteInput" class="delete-input">
+                    <i class="fa-solid fa-xmark"></i>
+                </label>
 
             </div>
 
@@ -143,12 +152,7 @@
                     </div>
 
                 </div>
-
-                <!-- fundo hidden -->
-                <div class="fundo-hidden">
-                    <h2>⚠️ Funcionalidades temporariamente desabilitadas.</h2>
-                    <p>Estamos trabalhando para disponibilizá-las novamente em breve.</p>   
-                </div>
+                
 
                 <!-- importação -->
                 <div class="upload-txt">
@@ -277,25 +281,6 @@
             <!-- busca -->
             <div class="relative">
 
-                <div class="box-input">
-
-                    <i class="fa-solid fa-magnifying-glass"></i>
-
-                    <input required class="campo-input" type="text" id="busca">
-
-                    <!-- scanner botão -->
-                    <i class="fa-solid fa-barcode btn-scan" id="btn-scan"></i>
-
-                    <label class="label-movie" for="busca">
-                        Buscar por NCE ou DESCRIÇÃO
-                    </label>
-
-                    <label id="deleteInput" class="delete-input">
-                        <i class="fa-solid fa-xmark"></i>
-                    </label>
-
-                </div>
-
                 <!-- scanner -->
                 <div id="scannerOverlay" class="scanner-overlay">
 
@@ -389,7 +374,7 @@
                 </div>
 
                 <p>
-                    A partir do 05/09/2026, o uso do App Web (AUG FINANCEIRA) estará sujeito a cobrança. As condições dos valores estarão
+                    A partir do <spa class="date">01/09/2026</spa>, o uso do App Web (AUG FINANCEIRA) estará sujeito a cobrança. As condições dos valores estarão
                     disponível nesta data. obrigado pela compreensão!
 
                 </p>
@@ -399,6 +384,8 @@
         </div>-->
 
     </div>
+
+
 
     <!-- financiamento -->
     <div id="financ" class="rota">
@@ -558,10 +545,10 @@
 
     </div>
 
-    <!-- spinner -->
+    
     <div id="fundo-spiner" class="fundo-spiner">
 
-        <!-- From Uiverse.io by catraco -->
+        
         <div class="loader">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                 <path

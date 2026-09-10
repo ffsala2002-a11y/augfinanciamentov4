@@ -1,0 +1,129 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+
+    /* Cores base */
+    --color-white: #FFFFFF;
+    --color-black: #000000;
+    --color-brand-blue: #2563EB;
+    --color-text-muted: #9CA3AF;
+    --color-text-dark: #374151;
+    --color-border-light: #E5E7EB;
+    --color-border-lighter: #EFEFEF;
+    --color-bg-near-black: #050505;
+    --color-bg-light-gray: #EBEBEB;
+    --color-charcoal: #1A1A1A;
+    --color-black-soft: #0d0d0d;
+    --color-red: #DD0000;
+    --color-red-alt: #D40000;
+    --color-green-success: #16A34A;
+    --color-green-border: #B3E5C0;
+
+
+    /* Gradiente e sombras reutilizados no app */
+    --gradient-primary: conic-gradient(from 120deg at 50% 50%, rgb(255, 0, 55) 0%, rgb(244, 45, 88) 100%);
+    --shadow-elevated: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    --shadow-soft: 0 2px 10px rgba(0, 0, 0, 0.06);
+    --shadow-card: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
+
+    /* Tokens da tela de loading (spiner) */
+    --blur-fundo: blur(5px);
+    --bg-fundo: var(--color-white);
+    --bg-card-spiner: #F9FFF900;
+    --color-border-spiner: #A2A2A2;
+    --color-border-top-spiner: #BF0000;
+    --color-title-spiner: var(--color-white);
+    --color-border-card-spiner: #D1D1D100;
+    --anim-spiner-move: spinerMove 0.5s linear infinite;
+
+
+    /* Tema claro/escuro do popup */
+    --theme-bg: var(--color-white);
+    --theme-text: #222;
+
+    --bg-black: linear-gradient(90deg, #212121 0%, #4f4f4f 100%);
+}
+
+body.dark {
+    --theme-bg: #1e1e1e;
+    --theme-text: var(--color-white);
+    background: #121212;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: var(--bg-black);
+}
+
+.rota {
+    position: relative;
+    inset: 0;
+    display: none;
+    background-color: var(--color-white);
+    z-index: 1;
+}
+
+.rota.active {
+    display: flex;
+    animation: rootReverse 0.3s ease;
+    /* mostra a página ativa */
+}
+
+@keyframes rootReverse {
+    0% {
+        transform: translateY(120%) scale(0.2);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0%) scale(1);
+        opacity: 1;
+    }
+}
+
+.alerta-responsive {
+    visibility: hidden;
+}
+
+.alerta {
+    position: fixed;
+    top: 1rem;
+    right: 0.3rem;
+    min-width: 260px;
+    padding: 1rem;
+    border-radius: 10px;
+    font-weight: bold;
+    color: var(--color-white);
+    transform: translateX(1000px);
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    z-index: 9999;
+}
+
+.alerta.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.fundo {
+    position: fixed;
+    z-index: 3;
+    inset: 0;
+    opacity: 0;
+    display: none;
+    transition: 0.7s ease;
+    background: rgba(22, 22, 22, 0.877);
+}
+
+.fundo.active-fundo {
+    opacity: 1;
+    display: block;
+}
