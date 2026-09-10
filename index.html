@@ -53,9 +53,9 @@
                 <input required class="campo-input" type="text" id="busca">
 
                 <!-- scanner botão -->
-                <i class="fa-solid fa-barcode btn-scan" id="btn-scan"></i>
+                <i class="fa-solid fa-barcode btn-scan none" id="btn-scan"></i>
 
-                <label class="label-movie" for="busca">
+                <label class="label-movie none" for="busca">
                     Buscar por NCE ou DESCRIÇÃO
                 </label>
 
@@ -152,7 +152,7 @@
                     </div>
 
                 </div>
-                
+
 
                 <!-- importação -->
                 <div class="upload-txt">
@@ -361,27 +361,33 @@
         </div>
 
         <!-- popup -->
-        <!--<div id="popup" class="popup show">
+        <div id="popup" class="popup show">
 
             <div class="popup-box">
 
                 <div class="popup-header">
 
-                    <h2>Aviso de cobrança ⚠️</h2>
+                    <h2>⚠️| Atualizções no Sistema</h2>
 
                     <span class="close">fechar <span id="timer"></span></span>
 
                 </div>
 
-                <p>
+                <!--<p>
                     A partir do <spa class="date">01/09/2026</spa>, o uso do App Web (AUG FINANCEIRA) estará sujeito a cobrança. As condições dos valores estarão
                     disponível nesta data. obrigado pela compreensão!
 
+                </p>-->
+
+                <p>
+                    O layout do sistema está passando por atualizações.
                 </p>
 
             </div>
 
-        </div>-->
+        </div>
+
+        <div class="fundo-popup"></div>
 
     </div>
 
@@ -545,10 +551,10 @@
 
     </div>
 
-    
+
     <div id="fundo-spiner" class="fundo-spiner">
 
-        
+
         <div class="loader">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                 <path
@@ -559,18 +565,6 @@
         </div>
 
     </div>
-
-    <!-- toast -->
-    <!--<div id="toast" class="toast">
-        🎉 Atualizações aplicadas!
-    </div>-->
-
-    <!-- sons -->
-    <!--<audio id="som">
-    
-        <source src="https://www.soundjay.com/buttons/sounds/button-3.mp3" type="audio/mpeg">
-        
-    </audio>-->
 
     <audio id="nuvemAtivo" src="./src/audio/nuvemAtivo.mp3"></audio>
 
