@@ -1,4 +1,4 @@
-.main-calculadora .box-list {
+.main-list-cards .box-list {
     width: 110%;
     height: 100%;
     position: absolute;
@@ -9,7 +9,7 @@
     background: var(--color-white);
 }
 
-.main-calculadora .box-list #lista {
+.main-list-cards .box-list #lista {
     display: flex;
     width: 100%;
     height: 120%;
@@ -21,7 +21,11 @@
     position: relative;
 }
 
-.main-calculadora .box-list #lista .item {
+.main-list-cards .box-list #lista::-webkit-scrollbar-thumb {
+    background-color: #0028F5;
+}
+
+.main-list-cards .box-list #lista .item {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -38,7 +42,7 @@
     box-shadow: var(--shadow-card);
 }
 
-.main-calculadora .box-list #lista .item .box-descricao {
+.main-list-cards .box-list #lista .item .box-descricao {
     width: 50%;
     position: absolute;
     z-index: 2;
@@ -47,7 +51,7 @@
     /*border: solid 1px green;*/
 }
 
-.main-calculadora .box-list #lista .item .box-descricao .descricao {
+.main-list-cards .box-list #lista .item .box-descricao .descricao {
     font-size: 11px;
     font-weight: bold;
     color: var(--color-black);
@@ -64,7 +68,7 @@
     /*border: solid 1.5px #E1E1E1;*/
 }
 
-.main-calculadora .box-list #lista .item .info-produto {
+.main-list-cards .box-list #lista .item .info-produto {
     width: 80%;
     height: 60%;
     display: flex;
@@ -121,7 +125,7 @@
     color: var(--color-black);
 }
 
-.main-calculadora .box-list #lista .item .valor-total {
+.main-list-cards .box-list #lista .item .valor-total {
     position: absolute;
     top: 7rem;
     left: 6.7rem;
@@ -182,7 +186,7 @@
     transform: scale(0.96);
 }
 
-.rota .main-calculadora .box-list #lista .item .box-quantidade {
+.rota .main-list-cards .box-list #lista .item .box-quantidade {
     position: absolute;
     right: 1rem;
     top: 8.8rem;
@@ -193,12 +197,12 @@
     font-weight: bold;
 }
 
-.main-calculadora .box-list #lista .item .buttons {
+.main-list-cards .box-list #lista .item .buttons {
     display: flex;
     gap: 0.5rem;
 }
 
-.main-calculadora .box-list #lista .item .buttons button {
+.main-list-cards .box-list #lista .item .buttons button {
     right: 1rem;
     top: 4rem;
     padding: 0.3rem 1rem;
@@ -209,7 +213,7 @@
     color: rgb(0, 0, 0);
 }
 
-.main-calculadora .box-list #lista .item .buttons .btn-minus {
+.main-list-cards .box-list #lista .item .buttons .btn-minus {
     right: 4rem;
     color: #0028F5;
     border: solid 1px;
@@ -217,7 +221,7 @@
     box-shadow: var(--shadow-elevated);
 }
 
-.main-calculadora .box-list #lista .item .buttons .btn-plus {
+.main-list-cards .box-list #lista .item .buttons .btn-plus {
     right: 1rem;
     color: #11C300;
     border: solid 1px;
@@ -225,7 +229,7 @@
     box-shadow: var(--shadow-elevated);
 }
 
-.main-calculadora .box-list #lista .item button {
+.main-list-cards .box-list #lista .item button {
     right: 1rem;
     top: 4rem;
     padding: 0.3rem 1rem;
@@ -236,7 +240,7 @@
     color: white;
 }
 
-.main-calculadora .box-list #lista .item .btn-apagar {
+.main-list-cards .box-list #lista .item .btn-apagar {
     position: absolute;
     z-index: 2;
     top: 1rem;
@@ -249,7 +253,7 @@
     box-shadow: var(--shadow-elevated);
 }
 
-.main-calculadora .box-list #lista .item .btn-apagar i {
+.main-list-cards .box-list #lista .item .btn-apagar i {
     width: 18px;
     animation: balancarBtnApagar 2s ease infinite;
 }

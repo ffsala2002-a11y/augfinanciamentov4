@@ -148,7 +148,7 @@
     border-bottom-left-radius: 18px;
 }
 
-.main-calculadora {
+.main-list-cards {
     width: 100%;
     height: 100%;
     position: fixed;
@@ -159,7 +159,7 @@
     margin: 0 auto;
 }
 
-.main-calculadora .relative {
+.main-list-cards .relative {
     position: relative;
     top: 3.6rem;
     z-index: 3;
@@ -306,7 +306,7 @@
     color: #14AA00;
 }
 
-.main-calculadora .relative .sugestoes {
+.main-list-cards .relative .sugestoes {
     position: absolute;
     top: 3rem;
     left: -1.1rem;
@@ -345,7 +345,7 @@
     }
 }
 
-.main-calculadora .relative .sugestoes table {
+.main-list-cards .relative .sugestoes table {
     /*border: solid 1px;*/
     width: 100%;
     font-size: 12px;
@@ -356,28 +356,28 @@
     background: var(--color-white);
 }
 
-/*.main-calculadora .relative .sugestoes table thead {
+/*.main-list-cards .relative .sugestoes table thead {
 
 }*/
 
-.main-calculadora .relative .sugestoes table thead tr {
+.main-list-cards .relative .sugestoes table thead tr {
     width: 100%;
     background: var(--gradient-primary);
     border-radius: 20px;
 }
 
-.main-calculadora .relative .sugestoes table thead tr th {
+.main-list-cards .relative .sugestoes table thead tr th {
     padding: 10px;
     border: solid 1px;
     color: var(--color-white);
     border-radius: 5px;
 }
 
-.main-calculadora .relative .sugestoes table #sugestoesBody {
+.main-list-cards .relative .sugestoes table #sugestoesBody {
     background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
 }
 
-.main-calculadora .relative .sugestoes table #sugestoesBody tr td {
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td {
     margin-top: 10px;
     padding: 6px;
     color: var(--color-black);
@@ -387,30 +387,30 @@
     box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 0px, rgba(0, 0, 0, 0.3) 1px 0px 1px 0px, rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
 }
 
-.main-calculadora .relative .sugestoes table #sugestoesBody tr td .img-sugestao {
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td .img-sugestao {
     width: 35px;
     border-radius: 5px;
 }
 
-.main-calculadora .relative .sugestoes table #sugestoesBody tr td:first-child {
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td:first-child {
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
 }
 
-.main-calculadora .relative .sugestoes table #sugestoesBody tr td:last-child {
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td:last-child {
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;
 }
 
-.main-calculadora .relative .sugestoes table #sugestoesBody tr td .descricao {
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td .descricao {
     font-size: 10px;
 }
 
-.main-calculadora .relative .sugestoes table #sugestoesBody tr td .preco {
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td .preco {
     color: #00B80A;
 }
 
-.main-calculadora .relative .sugestoes table #sugestoesBody tr td .saldo {
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td .saldo {
     color: #FF6E00;
 }
 
@@ -518,14 +518,14 @@
     background: var(--gradient-primary);
 }
 
-.main-calculadora {
+.main-list-cards {
     height: 100%;
     position: fixed;
     top: -10rem;
     border: solid;
 }
 
-.main-calculadora .relative {
+.main-list-cards .relative {
     position: relative;
     top: 10rem;
     width: 90vw;
