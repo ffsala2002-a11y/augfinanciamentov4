@@ -1,4 +1,4 @@
-const CACHE_NAME = "aug-v3";
+const CACHE_NAME = "aug-v4";
 
 const FILES = [
   "./",
