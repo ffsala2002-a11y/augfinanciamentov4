@@ -194,41 +194,33 @@ body {
   opacity: 1;
 }
 
-.box-button-loja {
-  width: 100%;
+.box-btn-token {
+  position: absolute;
+  bottom: 2.5rem;
   display: flex;
-  justify-content: center;
+  width: 100%;
   align-items: center;
+  justify-content: center;
 }
 
-.box-button-loja .btn-loja {
-  width: 90%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 26rem;
-  right: 0.5rem;
+.box-btn-token .btn-token {
+  padding: 1rem;
+  border-radius: 10px;
   border: none;
-  border-radius: 8px;
-  padding: 15px;
   font-weight: bold;
-  text-decoration: none;
-  font-size: 20px;
-  color: #E9E9E9;
-  background: linear-gradient(90deg, rgba(31, 42, 255, 1) 0%, rgba(0, 37, 171, 1) 100%);
+  color: #fff;
+  background-color: #0424d4;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
-.box-button-loja .btn-loja span {
-  position: absolute;
-  bottom: 11px;
-  font-size: 12px;
+.box-btn-token .btn-token:hover {
+  transform: translateY(-3px) scale(1.1);
 }
+
 
 .box-dev {
   width: 100%;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   display: flex;
   justify-content: center;
