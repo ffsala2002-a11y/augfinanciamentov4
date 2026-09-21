@@ -1,4 +1,4 @@
-const timer = 2000;
+const timer = 500;
 
 let timeId;
 
