@@ -210,7 +210,7 @@ ESTOU ORGANIZANDO ESSE CSS
 .financ-parcelas-lista {
   width: 100%;
   height: 90%;
-  padding-bottom: 25rem;
+  padding-bottom: 27rem;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
