@@ -2,6 +2,7 @@
 
   :root {
       --bg: #f2f2f3;
+      --bl: #000;
       --surface: rgb(20, 20, 20);
       --border: rgba(255, 255, 255, 0.08);
       --gold: #c9a84c;
@@ -11,11 +12,15 @@
       --green: #4caf7d;
       --blue: #4c8fe0;
       --text: #f0f0f0;
-      --muted: #6b7280;
+      --muted: #d3d3d3;
       --radius: 14px;
 
       --gradient-primary: conic-gradient(from 120deg at 50% 50%, rgb(255, 0, 55) 0%, rgb(244, 45, 88) 100%);
+      --gradient-secun: linear-gradient(90deg, #06b46d 0%, #08d79b 50%, #0df6cf 100%);
+
+      --boxShadowButton: rgba(0,0,0,0.33) 0px 3px 0px 0px;;
   }
+
 
   *,
   *::before,
@@ -110,7 +115,7 @@
       font-family: 'Syne', sans-serif;
       font-size: 11px;
       font-weight: 700;
-      color: var(--muted);
+      color: var(--bg);
       letter-spacing: 1.5px;
       text-transform: uppercase;
       margin-bottom: 14px;
@@ -184,9 +189,10 @@
   }
 
   .btn-gold {
-      background: linear-gradient(135deg, var(--gold), var(--gold2));
-      color: #0d0d0d;
-      box-shadow: 0 4px 16px var(--gold-glow);
+    font-weight: bold;
+    color: #0a0909;
+    background: var(--gradient-secun);
+    box-shadow: var(--boxShadowButton);
   }
 
   .btn-green {
@@ -207,7 +213,7 @@
       align-items: center;
       gap: 12px;
       padding: 12px 14px;
-      background: rgba(76, 175, 125, 0.08);
+      background: rgba(3, 238, 120, 0.288);
       border: 1px solid rgba(76, 175, 125, 0.2);
       border-radius: 12px;
   }
@@ -226,11 +232,12 @@
       font-weight: 800;
       color: var(--text);
       line-height: 1.2;
+      color: var(--bl);
   }
 
   .loja-info-sigla {
       font-size: 11px;
-      color: var(--green);
+      color: #1100fd;
       font-weight: 600;
       letter-spacing: 1px;
   }
@@ -334,8 +341,9 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      color: var(--muted);
-      font-size: 11px;
+      color: var(--bl);
+      font-size: 14px;
+      font-weight: bold;
   }
 
   .separador::before,

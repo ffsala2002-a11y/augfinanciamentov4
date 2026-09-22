@@ -1,0 +1,13 @@
+{
+  "name": "AUG IMPORTADOR",
+  "short_name": "Importador",
+  "start_url": "./importador.html",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "../../src/img/importador.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

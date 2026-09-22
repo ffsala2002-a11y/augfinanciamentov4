@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <link rel="icon" href="../../src/img/importador.png" type="image/png">
   <link rel="stylesheet" href="./importador.css">
+  <link rel="manifest" href="./manifest-importador.json">
 </head>
 
 <body>
@@ -25,12 +26,12 @@
 
     <!-- VERIFICAÇÃO DA LOJA -->
     <div class="card">
-      <div class="card-titulo">🔍 Verificar Loja</div>
+      <div class="card-titulo">Verificar Loja</div>
       <div class="input-group">
         <input type="text" id="inputSigla" placeholder="Sigla da loja (ex: AUG)" maxlength="10" autocomplete="off">
         <input type="password" id="inputSenha" placeholder="Senha da loja" autocomplete="off">
         <button class="btn btn-gold" id="btnVerificar">
-          🔍 Verificar Loja
+          Verificar Loja
         </button>
       </div>
       <div class="status-msg" id="statusVerificar"></div>
@@ -115,4 +116,5 @@
 
 </body>
 <script type="module" src="../../src/js/importador.js"></script>
+
 </html>
