@@ -5,7 +5,7 @@ ESTOU ORGANIZANDO ESSE CSS
 
 /* From Uiverse.io by catraco */
 .loader {
-  --color: #a5a5b0;
+  --color: #e70000;
   --size: 40px;
   position: relative;
   width: var(--size);
@@ -42,7 +42,7 @@ ESTOU ORGANIZANDO ESSE CSS
   position: fixed;
   z-index: 999;
   inset: 0;
-  background: var(--bg-fundo);
+  backdrop-filter: blur(50px);
 }
 
 .fundo-spiner.active {

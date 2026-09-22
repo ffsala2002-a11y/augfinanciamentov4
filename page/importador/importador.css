@@ -1,6 +1,7 @@
   @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap');
 
   :root {
+
       --bg: #f2f2f3;
       --bl: #000;
       --surface: rgb(20, 20, 20);
@@ -18,7 +19,8 @@
       --gradient-primary: conic-gradient(from 120deg at 50% 50%, rgb(255, 0, 55) 0%, rgb(244, 45, 88) 100%);
       --gradient-secun: linear-gradient(90deg, #06b46d 0%, #08d79b 50%, #0df6cf 100%);
 
-      --boxShadowButton: rgba(0,0,0,0.33) 0px 3px 0px 0px;;
+      --boxShadowButton: rgba(0, 0, 0, 0.33) 0px 3px 0px 0px;
+
   }
 
 
@@ -189,10 +191,10 @@
   }
 
   .btn-gold {
-    font-weight: bold;
-    color: #0a0909;
-    background: var(--gradient-secun);
-    box-shadow: var(--boxShadowButton);
+      font-weight: bold;
+      color: #0a0909;
+      background: var(--gradient-secun);
+      box-shadow: var(--boxShadowButton);
   }
 
   .btn-green {
