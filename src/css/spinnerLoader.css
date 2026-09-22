@@ -95,6 +95,7 @@
     position: fixed;
     z-index: 999;
     inset: 0;
+    transition: 0.6s ease;
     background-color: #202020;
 }
 
