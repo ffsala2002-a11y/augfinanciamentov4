@@ -432,7 +432,7 @@ const textSpin = document.getElementById("textSpin");
 const videoSpin = document.querySelector(".video-spin");
 
 let timeId;
-let tempo = 2500;
+let tempo = 4000;
 
 function mostrarSpinner() {
   if (!fundoSpiner) return;

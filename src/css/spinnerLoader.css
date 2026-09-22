@@ -1,0 +1,105 @@
+/* From Uiverse.io by vajion_7943 */
+#svg_svg {
+    zoom: 0.3;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+}
+
+.estrobo_animation {
+    animation:
+        floatAndBounce 4s infinite ease-in-out,
+        strobe 0.8s infinite;
+}
+
+.estrobo_animationV2 {
+    animation:
+        floatAndBounce 4s infinite ease-in-out,
+        strobev2 0.8s infinite;
+}
+
+#float_server {
+    animation: floatAndBounce 4s infinite ease-in-out;
+}
+
+@keyframes floatAndBounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes strobe {
+
+    0%,
+    50%,
+    100% {
+        fill: #17e300;
+    }
+
+    25%,
+    75% {
+        fill: #17e300b4;
+    }
+}
+
+@keyframes strobev2 {
+
+    0%,
+    50%,
+    100% {
+        fill: rgb(255, 95, 74);
+    }
+
+    25%,
+    75% {
+        fill: rgb(255, 208, 1);
+    }
+}
+
+/* Animación de los colores del gradiente */
+@keyframes animateGradient {
+    0% {
+        stop-color: #19180f;
+    }
+
+    50% {
+        stop-color: #ffdd00;
+    }
+
+    100% {
+        stop-color: #e71a1a;
+    }
+}
+
+/* Animación aplicada a los puntos del gradiente */
+#paint13_linear_163_1030 stop {
+    animation: animateGradient 4s infinite alternate;
+}
+
+
+.fundo-spiner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 999;
+    inset: 0;
+    background-color: #202020;
+}
+
+.fundo-spiner.active {
+    visibility: 0;
+    opacity: 0;
+    pointer-events: none;
+}
