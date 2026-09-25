@@ -1,4 +1,10 @@
-  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 
   :root {
 
@@ -20,37 +26,18 @@
       --gradient-secun: linear-gradient(90deg, #06b46d 0%, #08d79b 50%, #0df6cf 100%);
 
       --boxShadowButton: rgba(0, 0, 0, 0.33) 0px 3px 0px 0px;
+      --shadow-elevated: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 
   }
 
 
-  *,
-  *::before,
-  *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-  }
-
-  html,
   body {
-      width: 100%;
-      min-height: 100vh;
+      width: 100vw;
+      height: 100vh;
       font-family: 'DM Sans', sans-serif;
       background: var(--bg);
       color: var(--text);
-      overflow-x: hidden;
-  }
-
-  body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background:
-          radial-gradient(ellipse 100% 50% at 50% 0%, rgba(201, 168, 76, 0.07) 0%, transparent 60%),
-          radial-gradient(ellipse 80% 40% at 10% 100%, rgba(76, 143, 224, 0.04) 0%, transparent 60%);
-      pointer-events: none;
-      z-index: 0;
+      overflow: hidden;
   }
 
   /* ===== TOPO ===== */
@@ -65,6 +52,7 @@
       align-items: center;
       justify-content: space-between;
       background: var(--gradient-primary);
+      box-shadow: var(--shadow-elevated);
   }
 
   .topo-brand {
@@ -97,20 +85,32 @@
 
   /* ===== CONTEÚDO ===== */
   .content {
+      width: 100%;
+      height: 100%;
       padding: 24px 16px 48px;
       position: relative;
       z-index: 1;
       display: flex;
       flex-direction: column;
+      align-items: center;
       gap: 14px;
+      overflow: auto;
+      padding-bottom: 10rem;
   }
 
   /* ===== CARD ===== */
   .card {
+      width: 550px;
+      width: 600px;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 20px 16px;
+      transition: 0.5s ease;
+  }
+
+  .card:hover {
+    transform: scale(1.05);
   }
 
   .card-titulo {
@@ -177,7 +177,12 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      transition: all 0.15s;
+      transition: 0.5s ease;
+      box-shadow: var(--shadow-elevated);
+  }
+
+  .btn:hover {
+    transform: scale(1.05);
   }
 
   .btn:active {
@@ -369,3 +374,10 @@
       background: var(--border);
       border-radius: 4px;
   }
+
+
+  @media (max-width: 600px) {
+    .card {
+        width: 370px;
+    }
+}
