@@ -113,7 +113,7 @@ document
     const { error: sessionError } = await supabase
       .from('tokens')
       .update({
-        session_key:   sessionKey,
+        session_key: sessionKey,
         last_activity: new Date().toISOString()
       })
       .eq('id', tokenData.id);
@@ -129,12 +129,35 @@ document
       JSON.stringify({
         nome,
         sigla,
-        nomeLoja:  lojaData.nome,
-        tokenId:   tokenData.id,
+        nomeLoja: lojaData.nome,
+        tokenId: tokenData.id,
         sessionKey
       })
     );
 
-    // Redireciona para o app
-    window.location.href = '../../index.html';
+    function redirectPage() {
+
+      let timeId;
+
+      const loaderSpin = document.querySelector(".loader");
+      const longFazers = document.querySelector(".longfazers");
+      const fundoSpin = document.getElementById("fundoSpin");
+
+      loaderSpin.classList.remove("hidden");
+      longFazers.classList.remove("hidden");
+      fundoSpin.classList.remove("hidden");
+
+      clearTimeout(timeId);
+
+      timeId = setTimeout(() => {
+        loaderSpin.classList.add("hidden");
+        longFazers.classList.add("hidden");
+        fundoSpin.classList.add("hidden");
+
+        // Redireciona para o app
+        window.location.href = '../../index.html';
+      }, 3000);
+    };
+
+    redirectPage()
   });
