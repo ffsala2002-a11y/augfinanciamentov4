@@ -135,23 +135,21 @@ document
       })
     );
 
+
     function redirectPage() {
 
       let timeId;
 
-      const loaderSpin = document.querySelector(".loader");
-      const longFazers = document.querySelector(".longfazers");
+      const loaderSpin = document.querySelector(".container_SevMini");
       const fundoSpin = document.getElementById("fundoSpin");
 
       loaderSpin.classList.remove("hidden");
-      longFazers.classList.remove("hidden");
       fundoSpin.classList.remove("hidden");
 
       clearTimeout(timeId);
 
       timeId = setTimeout(() => {
         loaderSpin.classList.add("hidden");
-        longFazers.classList.add("hidden");
         fundoSpin.classList.add("hidden");
 
         // Redireciona para o app
