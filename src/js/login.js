@@ -46,12 +46,14 @@ document
     // Verifica campos vazios
     if (!nome || !sigla || !senha || !token) {
       mostrarErro(dadosErro, 'Preencha todos os campos');
+      btnEntrar.disabled = false;
       return;
     }
 
     // Verifica tamanho da sigla
     if (sigla.length < 3) {
       mostrarErro(erroSigla, 'A sigla deve ter pelo menos 3 caracteres');
+      btnEntrar.disabled = false;
       return;
     }
 
@@ -69,6 +71,7 @@ document
 
     if (tokenError || !tokenData) {
       mostrarErro(dadosErro, 'Token inválido, expirado ou desativado');
+      btnEntrar.disabled = false;
       return;
     }
 
@@ -87,6 +90,7 @@ document
 
       if (sessaoAtiva) {
         mostrarErro(dadosErro, 'Token já está em uso por outro usuário');
+        btnEntrar.disabled = false;
         return;
       }
 
@@ -108,6 +112,7 @@ document
 
     if (lojaError || !lojaData) {
       mostrarErro(dadosErro, 'Sigla ou senha incorretos');
+      btnEntrar.disabled = false;
       return;
     }
 
@@ -124,6 +129,7 @@ document
 
     if (sessionError) {
       mostrarErro(dadosErro, 'Erro ao iniciar sessão');
+      btnEntrar.disabled = false;
       return;
     }
 
