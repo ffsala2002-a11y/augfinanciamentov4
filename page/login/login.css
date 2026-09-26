@@ -160,6 +160,12 @@ body {
   transform: scale(0.8);
 }
 
+.box-campos #btnEntrar:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .erro {
   position: absolute;
   top: 12rem;

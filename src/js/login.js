@@ -26,6 +26,10 @@ document
   .getElementById('btnEntrar')
   .addEventListener('click', async () => {
 
+    const btnEntrar = document.getElementById('btnEntrar');
+
+    btnEntrar.disabled = true;
+
     const nome =
       document.getElementById('nomeUsuario').value.trim();
 
@@ -151,6 +155,8 @@ document
       timeId = setTimeout(() => {
         loaderSpin.classList.add("hidden");
         fundoSpin.classList.add("hidden");
+
+        btnEntrar.disabled = false;
 
         // Redireciona para o app
         window.location.href = '../../index.html';
