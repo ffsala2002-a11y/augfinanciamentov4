@@ -21,7 +21,7 @@ const placeholder =
 
 // URL base do projeto
 const BASE_URL =
-  "https://ffsala2002-a11y.github.io/augfinanciamentov4";
+  "https://augfinanciamentov4.vercel.app";
 
 
 // ================= TOTAL COM GARANTIA =================
