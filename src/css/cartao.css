@@ -157,7 +157,7 @@ ESTOU ORGANIZANDO ESSE CSS
   align-items: center;
   gap: 6px;
   flex-shrink: 0;
-  background: conic-gradient(from 120deg at 53% 49%, rgb(255, 0, 55) 0%, rgb(244, 45, 88) 100%)
+  background: var(--gradient-primary);
 }
 
 .cartao-total-label {
@@ -213,7 +213,7 @@ ESTOU ORGANIZANDO ESSE CSS
   color: #fff;
   flex-shrink: 0;
   margin-bottom: 10px;
-  background: conic-gradient(from 120deg at 53% 49%, rgb(255, 0, 55) 0%, rgb(244, 45, 88) 100%)
+  background: var(--gradient-primary);
 }
 
 /* ===== LISTA PARCELAS ===== */
@@ -268,7 +268,7 @@ ESTOU ORGANIZANDO ESSE CSS
 }
 
 .cartao-num.com-juros {
-  background: conic-gradient(from 120deg at 53% 49%, rgb(255, 0, 55) 0%, rgb(244, 45, 88) 100%)
+  background: var(--gradient-primary);
 }
 
 .cartao-parcela-valores {
