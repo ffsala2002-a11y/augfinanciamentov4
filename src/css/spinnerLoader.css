@@ -1,88 +1,90 @@
-/* From Uiverse.io by vajion_7943 */
-#svg_svg {
-    zoom: 0.3;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 999;
+/* From Uiverse.io by andrew-manzyk */
+.loader {
+    --cloud-color: #4387f4;
+    --arrows-color: #80b1ff;
+    --time-animation: 1s;
+    transform: scale(1);
 }
 
-.estrobo_animation {
-    animation:
-        floatAndBounce 4s infinite ease-in-out,
-        strobe 0.8s infinite;
+.loader #cloud {
+    width: 100px;
+    height: 100px;
 }
 
-.estrobo_animationV2 {
-    animation:
-        floatAndBounce 4s infinite ease-in-out,
-        strobev2 0.8s infinite;
+.loader #cloud rect {
+    fill: var(--cloud-color);
 }
 
-#float_server {
-    animation: floatAndBounce 4s infinite ease-in-out;
+.loader #cloud g:nth-child(3) {
+    transform-origin: 50% 72.8938%;
+    fill: var(--arrows-color);
+    filter: drop-shadow(0 0 8px black);
+    animation: rotation var(--time-animation) linear infinite;
 }
 
-@keyframes floatAndBounce {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-20px);
-    }
+.loader #shapes g g circle {
+    animation: cloud calc(var(--time-animation) * 2) linear infinite;
 }
 
-@keyframes strobe {
-
-    0%,
-    50%,
-    100% {
-        fill: #17e300;
-    }
-
-    25%,
-    75% {
-        fill: #17e300b4;
-    }
+.loader #shapes g g circle:nth-child(2) {
+    animation-delay: calc((var(--time-animation) * 2) / -3);
 }
 
-@keyframes strobev2 {
-
-    0%,
-    50%,
-    100% {
-        fill: rgb(255, 95, 74);
-    }
-
-    25%,
-    75% {
-        fill: rgb(255, 208, 1);
-    }
+.loader #shapes g g circle:nth-child(3) {
+    animation-delay: calc((var(--time-animation) * 2) / -1.5);
 }
 
-/* Animación de los colores del gradiente */
-@keyframes animateGradient {
+.loader svg #lines g line {
+    stroke-width: 5;
+    transform-origin: 50% 50%;
+    rotate: -65deg;
+    animation: lines calc(var(--time-animation) / 1.33) linear infinite;
+}
+
+@keyframes rotation {
     0% {
-        stop-color: #19180f;
+        transform: rotate(0deg);
     }
 
     50% {
-        stop-color: #ffdd00;
+        transform: rotate(180deg);
     }
 
     100% {
-        stop-color: #e71a1a;
+        transform: rotate(360deg);
     }
 }
 
-/* Animación aplicada a los puntos del gradiente */
-#paint13_linear_163_1030 stop {
-    animation: animateGradient 4s infinite alternate;
+@keyframes lines {
+    0% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(8px);
+    }
 }
+
+@keyframes cloud {
+    0% {
+        cx: 20;
+        cy: 60;
+        r: 15;
+    }
+
+    50% {
+        cx: 50;
+        cy: 45;
+        r: 20;
+    }
+
+    100% {
+        cx: 80;
+        cy: 60;
+        r: 15;
+    }
+}
+
 
 
 .fundo-spiner {
