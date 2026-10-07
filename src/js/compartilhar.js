@@ -21,7 +21,7 @@ const placeholder =
 
 // URL base do projeto
 const BASE_URL =
-  "https://augfinanciamentov4.vercel.app";
+  "https://augfinance.vercel.app";
 
 
 // ================= TOTAL COM GARANTIA =================
