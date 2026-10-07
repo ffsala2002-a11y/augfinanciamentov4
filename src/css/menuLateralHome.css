@@ -41,7 +41,8 @@
     background: var(--color-white);
     border-radius: 0;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    background: var(--color-white);
+    /*background: var(--color-white);*/
+    background-color: #000000;
 }
 
 .menu-lateral .upload .tamb-title .box-img {
@@ -58,7 +59,7 @@
 }
 
 .menu-lateral .upload .tamb-title .box-img img {
-    width: 70px;
+    width: 100px;
     height: 100px;
     object-fit: contain;
     border-radius: 12px;

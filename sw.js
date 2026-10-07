@@ -1,10 +1,10 @@
-const CACHE_NAME = "aug-v4";
+const CACHE_NAME = "aug-v5";
 
 const FILES = [
   "./",
   "./index.html",
   "./manifest.json",
-  "./src/img/logooficial.png"
+  "./src/img/logoaugfinance.png"
 ];
 
 self.addEventListener("install", event => {

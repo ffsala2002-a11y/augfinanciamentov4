@@ -5,12 +5,12 @@
     "display": "standalone",
     "icons": [
         {
-            "src": "./src/img/logooficial.png",
+            "src": "./src/img/logoaugfinance.png",
             "sizes": "512x512",
             "type": "image/png"
         },
         {
-            "src": "./src/img/logooficial.png",
+            "src": "./src/img/logoaugfinance.png",
             "sizes": "512x512",
             "type": "image/png"
         }
