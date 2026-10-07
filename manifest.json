@@ -1,6 +1,6 @@
 {
-    "name": "AUG FINANCEIRA",
-    "short_name": "AUG FINANCEIRA",
+    "name": "AUG FINANCE",
+    "short_name": "AUG FINANCE",
     "start_url": "./index.html",
     "display": "standalone",
     "icons": [
