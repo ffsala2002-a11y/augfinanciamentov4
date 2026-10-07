@@ -19,6 +19,19 @@
     transform: translateX(0);
 }
 
+.menu-lateral .btn-close-lateral {
+    position: fixed;
+    z-index: 2;
+    top: 1.5rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    border: none;
+    font-size: 17px;
+    color: rgb(255, 255, 255);
+    background: var(--gradient-primary);
+}
+
 .menu-lateral .upload {
     width: 100%;
     display: flex;
