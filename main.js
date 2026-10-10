@@ -10,6 +10,7 @@ import { iniciarCartao, renderCartao } from './src/js/cartao.js';
 import { getProdutos, getGarantias, getModo, setModo } from './src/js/modoBase.js';
 import { iniciarCompartilhar } from './src/js/compartilhar.js';
 import { iniciarFinanciamento, renderFinanciamento } from './src/js/financiamento.js';
+import './src/js/iaFichaTecnica.js';
 
 
 // ===== ALERTA — definido primeiro =====
@@ -444,7 +445,7 @@ function esconderSpinner() {
   clearTimeout(timeId);
   timeId = setTimeout(() => {
     fundoSpiner.classList.add("active");
-    videoSpin.pause();
+    if (videoSpin && typeof videoSpin.pause === "function") videoSpin.pause();
   }, tempo);
 }
 

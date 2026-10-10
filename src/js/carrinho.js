@@ -129,6 +129,8 @@ export function render() {
       document.createElement('div');
 
     div.classList.add('item');
+    div.dataset.nce = p.nce || '';
+    div.dataset.descricao = p.descricao || '';
 
     const g =
       garantias.find(k => k.nce === p.nce);
@@ -167,6 +169,15 @@ export function render() {
           <p class="descricao">
             ${p.descricao}
           </p>
+
+          <button
+            type="button"
+            class="btn-ficha-ia"
+            data-modo="gerar"
+            title="Gerar ficha técnica com IA">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span class="btn-ficha-label">Ficha IA</span>
+          </button>
 
         </div>
 
@@ -326,6 +337,14 @@ export function render() {
     div.appendChild(btnApagar);
     lista.appendChild(div);
   });
+
+  // Atualiza botões com status do banco (cache por NCE)
+  setTimeout(async () => {
+    try {
+      const { inicializarBotoesFicha } = await import('./iaFichaTecnica.js');
+      await inicializarBotoesFicha();
+    } catch { /* silencioso */ }
+  }, 0);
 }
 
 // ===== CARROSSEL =====

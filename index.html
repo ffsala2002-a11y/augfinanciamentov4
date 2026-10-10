@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="./src/css/main.css">
+    <link rel="stylesheet" href="./src/css/iaFichaTecnica.css">
 
     <!-- Fonte awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
@@ -561,6 +562,122 @@
     </div>
 
 
+
+    <!-- MODAL FICHA TÉCNICA IA -->
+    <div id="modalFichaTecnicaIA" class="ia-modal" aria-hidden="true" hidden>
+        <div class="ia-modal-backdrop" data-ia-close></div>
+
+        <section class="ia-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="iaFichaTitulo">
+            <header class="ia-modal-header">
+                <div class="ia-modal-brand">
+                    <span class="ia-brand-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+                    <div>
+                        <span class="ia-eyebrow">INTELIGÊNCIA ARTIFICIAL</span>
+                        <h2 id="iaFichaTitulo">Ficha técnica</h2>
+                    </div>
+                </div>
+
+
+                <!-- badge cache -->
+                <span id="iaFichaCacheBadge" class="ia-cache-badge" style="display:none">✓ Ficha salva</span>
+
+                <!--ATIVAR AQUI DEPOIS-->
+                <!--<div>
+                     botão forceRefresh 
+                    <button id="iaFichaAtualizar" type="button" class="btn-outline-sm" title="Regenerar ficha com IA">
+                        <i class="fa-solid fa-rotate-right"></i> Atualizar ficha
+                    </button>
+                </div>-->
+
+
+
+                <button type="button" class="ia-close" id="fecharFichaTecnicaIA" aria-label="Fechar">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </header>
+
+            <div id="iaFichaLoading" class="ia-state ia-loading">
+                <div class="ia-orbit"><i class="fa-solid fa-sparkles"></i></div>
+                <h3>Montando a ficha técnica...</h3>
+                <p>A IA está organizando as informações do produto.</p>
+                <div class="ia-progress"><span></span></div>
+            </div>
+
+            <div id="iaFichaErro" class="ia-state ia-error" hidden>
+                <div class="ia-state-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                <h3>Não foi possível gerar a ficha</h3>
+                <p id="iaFichaErroTexto">Tente novamente em alguns instantes.</p>
+                <button type="button" class="ia-retry" id="iaFichaTentarNovamente">
+                    <i class="fa-solid fa-rotate-right"></i> Tentar novamente
+                </button>
+            </div>
+
+            <div id="iaFichaConteudo" class="ia-content" hidden>
+                <div class="ia-product-hero">
+                    <div class="ia-product-image-wrap">
+                        <img id="iaFichaImagem" class="ia-product-image" alt="">
+                    </div>
+                    <div class="ia-product-main">
+                        <div class="ia-badges" id="iaFichaBadges"></div>
+                        <h3 id="iaFichaProduto"></h3>
+                        <p id="iaFichaResumo"></p>
+                        <div class="ia-meta" id="iaFichaMeta"></div>
+                    </div>
+                </div>
+
+                <div class="ia-section">
+                    <div class="ia-section-title"><i class="fa-solid fa-bolt"></i><span>Principais
+                            características</span></div>
+                    <div class="ia-highlights" id="iaFichaDestaques"></div>
+                </div>
+
+                <div class="ia-section">
+                    <div class="ia-section-title"><i class="fa-solid fa-microchip"></i><span>Especificações
+                            técnicas</span></div>
+                    <div class="ia-spec-grid" id="iaFichaSpecs"></div>
+                </div>
+
+                <div class="ia-columns">
+                    <div class="ia-section">
+                        <div class="ia-section-title"><i class="fa-solid fa-box-open"></i><span>Conteúdo da
+                                embalagem</span></div>
+                        <ul class="ia-list" id="iaFichaConteudoEmbalagem"></ul>
+                    </div>
+                    <div class="ia-section">
+                        <div class="ia-section-title"><i class="fa-solid fa-circle-check"></i><span>Compatibilidade /
+                                uso</span></div>
+                        <ul class="ia-list" id="iaFichaCompatibilidade"></ul>
+                    </div>
+                </div>
+
+                <div class="ia-columns">
+                    <div class="ia-section ia-note-section">
+                        <div class="ia-section-title"><i class="fa-solid fa-shield-halved"></i><span>Observações</span>
+                        </div>
+                        <ul class="ia-list" id="iaFichaObservacoes"></ul>
+                    </div>
+                    <div class="ia-section ia-note-section">
+                        <div class="ia-section-title"><i class="fa-solid fa-circle-info"></i><span>Confiabilidade</span>
+                        </div>
+                        <p class="ia-confianca" id="iaFichaConfianca"></p>
+                    </div>
+                </div>
+
+                <div class="ia-section ia-sources-section">
+                    <div class="ia-section-title"><i class="fa-solid fa-book-open"></i><span>Fontes consultadas</span>
+                    </div>
+                    <div class="ia-fontes" id="iaFichaFontes"></div>
+                </div>
+
+                <div class="ia-disclaimer">
+                    <i class="fa-solid fa-robot"></i>
+                    <span>Ficha montada por IA usando a descrição do produto, a base técnica cadastrada e, quando
+                        necessário, pesquisa do fabricante. Confirme dados críticos na documentação oficial.</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
     <div id="fundo-spiner" class="fundo-spiner">
 
         <!-- From Uiverse.io by andrew-manzyk -->
@@ -632,7 +749,9 @@
     <audio id="localAtivo" src="./src/audio/localAtivo.mp3"></audio>
 
     <script>
-        if ("serviceWorker" in navigator) {
+        // Service worker is disabled on localhost during development so old JS
+        // cannot be served from a stale cache. It remains enabled in production.
+        if ("serviceWorker" in navigator && !/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) {
             navigator.serviceWorker.register("./sw.js");
         }
     </script>

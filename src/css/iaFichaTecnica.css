@@ -1,0 +1,556 @@
+
+/* ============================================================
+   FICHA TÉCNICA IA
+   ============================================================ */
+
+body.ia-modal-open {
+    overflow: hidden;
+}
+
+.btn-ficha-ia {
+    display: inline-flex !important;
+    position: absolute;
+    top: -2.7rem !important;
+    left: -6.5rem !important;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: fit-content !important;
+    min-width: 82px;
+    margin-top: 7px;
+    padding: 6px 10px !important;
+    border: 0 !important;
+    border-radius: 999px !important;
+    background: linear-gradient(135deg, #101828, #344054) !important;
+    color: #fff !important;
+    font-size: 10px !important;
+    font-weight: 800;
+    letter-spacing: .15px;
+    box-shadow: 0 5px 14px rgba(16,24,40,.18);
+    cursor: pointer;
+    transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+}
+
+.btn-ficha-ia:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(16,24,40,.25);
+}
+
+.btn-ficha-ia:active {
+    transform: scale(.96);
+}
+
+.btn-ficha-ia:disabled {
+    cursor: wait;
+    opacity: .65;
+}
+
+.btn-ficha-ia.loading i {
+    animation: iaSpin .8s linear infinite;
+}
+
+@keyframes iaSpin {
+    to { transform: rotate(360deg); }
+}
+
+.ia-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+}
+
+.ia-modal[hidden] {
+    display: none;
+}
+
+.ia-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(9, 16, 29, .72);
+    backdrop-filter: blur(8px);
+}
+
+.ia-modal-dialog {
+    position: relative;
+    width: min(960px, 100%);
+    max-height: min(92vh, 920px);
+    overflow: hidden;
+    border-radius: 28px;
+    background: #f7f9fc;
+    color: #101828;
+    box-shadow: 0 30px 100px rgba(0,0,0,.32);
+    animation: iaModalIn .24s ease-out;
+}
+
+@keyframes iaModalIn {
+    from { opacity: 0; transform: translateY(18px) scale(.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.ia-modal-header {
+    position: sticky;
+    top: 0;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 22px;
+    background: rgba(255,255,255,.92);
+    border-bottom: 1px solid #eaecf0;
+    backdrop-filter: blur(14px);
+}
+
+.ia-modal-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.ia-brand-icon {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 13px;
+    background: linear-gradient(135deg, #101828, #667085);
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(16,24,40,.18);
+}
+
+.ia-eyebrow {
+    display: block;
+    margin-bottom: 2px;
+    color: #667085;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+}
+
+.ia-modal-header h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.ia-close {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border: 0;
+    border-radius: 12px;
+    background: #f2f4f7;
+    color: #344054;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.ia-content {
+    max-height: calc(min(92vh, 920px) - 79px);
+    overflow: auto;
+    padding: 20px;
+}
+
+.ia-content::-webkit-scrollbar {
+    width: 7px;
+}
+
+.ia-content::-webkit-scrollbar-thumb {
+    border-radius: 99px;
+    background: #d0d5dd;
+}
+
+.ia-product-hero {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 22px;
+    padding: 18px;
+    border: 1px solid #eaecf0;
+    border-radius: 22px;
+    background: #fff;
+}
+
+.ia-product-image-wrap {
+    display: grid;
+    place-items: center;
+    min-height: 180px;
+    overflow: hidden;
+    border-radius: 17px;
+    background: #f2f4f7;
+}
+
+.ia-product-image {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+}
+
+.ia-product-main {
+    min-width: 0;
+    align-self: center;
+}
+
+.ia-product-main h3 {
+    margin: 9px 0 7px;
+    font-size: clamp(19px, 3vw, 28px);
+    line-height: 1.08;
+    font-weight: 950;
+}
+
+.ia-product-main p {
+    max-width: 700px;
+    margin: 0;
+    color: #667085;
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+.ia-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.ia-badges span {
+    padding: 5px 9px;
+    border-radius: 999px;
+    background: #eef4ff;
+    color: #175cd3;
+    font-size: 9px;
+    font-weight: 900;
+}
+
+.ia-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.ia-meta-item {
+    min-width: 80px;
+    padding: 8px 10px;
+    border-radius: 12px;
+    background: #f8fafc;
+}
+
+.ia-meta-item span {
+    display: block;
+    color: #98a2b3;
+    font-size: 8px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.ia-meta-item strong {
+    display: block;
+    margin-top: 2px;
+    font-size: 11px;
+}
+
+.ia-section {
+    margin-top: 16px;
+    padding: 17px;
+    border: 1px solid #eaecf0;
+    border-radius: 20px;
+    background: #fff;
+}
+
+.ia-section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 13px;
+    color: #344054;
+    font-size: 12px;
+    font-weight: 950;
+}
+
+.ia-section-title i {
+    color: #475467;
+}
+
+.ia-highlights {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+}
+
+.ia-highlight {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    padding: 11px 12px;
+    border-radius: 13px;
+    background: #f8fafc;
+    color: #344054;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+.ia-highlight i {
+    flex: 0 0 auto;
+    margin-top: 2px;
+    color: #12b76a;
+}
+
+.ia-spec-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.ia-spec {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 11px 12px;
+    border-bottom: 1px solid #f2f4f7;
+    background: #fcfcfd;
+}
+
+.ia-spec span {
+    color: #667085;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.ia-spec strong {
+    max-width: 60%;
+    text-align: right;
+    color: #101828;
+    font-size: 10px;
+    font-weight: 900;
+}
+
+.ia-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.ia-list {
+    display: grid;
+    gap: 7px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.ia-list li {
+    position: relative;
+    padding-left: 17px;
+    color: #475467;
+    font-size: 11px;
+    line-height: 1.45;
+}
+
+.ia-list li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #667085;
+    font-weight: 900;
+}
+
+.ia-empty {
+    color: #98a2b3 !important;
+}
+
+.ia-confianca {
+    margin: 0;
+    color: #667085;
+    font-size: 11px;
+    line-height: 1.55;
+}
+
+
+.ia-fontes {
+    display: grid;
+    gap: 8px;
+}
+
+.ia-fontes a {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 10px 12px;
+    border: 1px solid #eaecf0;
+    border-radius: 12px;
+    background: #fff;
+    color: #175cd3;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 750;
+    transition: transform .15s ease, border-color .15s ease;
+}
+
+.ia-fontes a:hover {
+    transform: translateY(-1px);
+    border-color: #b2ddff;
+}
+
+.ia-fontes a i {
+    flex: 0 0 auto;
+}
+
+.ia-sources-section {
+    margin-top: 14px;
+}
+
+.ia-disclaimer {
+    display: flex;
+    gap: 9px;
+    align-items: flex-start;
+    margin-top: 16px;
+    padding: 12px 14px;
+    border: 1px dashed #d0d5dd;
+    border-radius: 14px;
+    color: #667085;
+    font-size: 9px;
+    line-height: 1.5;
+}
+
+.ia-disclaimer i {
+    margin-top: 1px;
+}
+
+.ia-state {
+    min-height: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
+}
+
+.ia-orbit {
+    display: grid;
+    place-items: center;
+    width: 72px;
+    height: 72px;
+    margin-bottom: 18px;
+    border: 1px solid #d0d5dd;
+    border-radius: 50%;
+    background: #fff;
+    color: #344054;
+    box-shadow: 0 10px 30px rgba(16,24,40,.12);
+    animation: iaFloat 1.5s ease-in-out infinite;
+}
+
+.ia-orbit i {
+    font-size: 25px;
+    animation: iaSpin 1.8s linear infinite;
+}
+
+@keyframes iaFloat {
+    50% { transform: translateY(-5px); }
+}
+
+.ia-state h3 {
+    margin: 0 0 7px;
+    font-size: 17px;
+}
+
+.ia-state p {
+    margin: 0;
+    color: #667085;
+    font-size: 12px;
+}
+
+.ia-progress {
+    width: min(280px, 80%);
+    height: 5px;
+    margin-top: 20px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: #eaecf0;
+}
+
+.ia-progress span {
+    display: block;
+    width: 45%;
+    height: 100%;
+    border-radius: inherit;
+    background: #344054;
+    animation: iaProgress 1.1s ease-in-out infinite;
+}
+
+@keyframes iaProgress {
+    0% { transform: translateX(-110%); }
+    100% { transform: translateX(330%); }
+}
+
+.ia-error .ia-state-icon {
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    margin-bottom: 15px;
+    border-radius: 17px;
+    background: #fff1f3;
+    color: #d92d20;
+    font-size: 23px;
+}
+
+.ia-retry {
+    margin-top: 18px;
+    padding: 10px 15px;
+    border: 0;
+    border-radius: 12px;
+    background: #101828;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+@media (max-width: 650px) {
+    .ia-modal {
+        padding: 8px;
+    }
+
+    .ia-modal-dialog {
+        max-height: 96vh;
+        border-radius: 22px;
+    }
+
+    .ia-content {
+        max-height: calc(96vh - 79px);
+        padding: 12px;
+    }
+
+    .ia-product-hero {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .ia-product-image-wrap,
+    .ia-product-image {
+        height: 145px;
+        min-height: 145px;
+    }
+
+    .ia-highlights,
+    .ia-spec-grid,
+    .ia-columns {
+        grid-template-columns: 1fr;
+    }
+
+    .ia-section {
+        padding: 14px;
+    }
+
+    .ia-meta-item {
+        flex: 1 1 40%;
+    }
+
+    .ia-modal-header {
+        padding: 14px 16px;
+    }
+}

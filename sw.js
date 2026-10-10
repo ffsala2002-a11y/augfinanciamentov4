@@ -1,4 +1,4 @@
-const CACHE_NAME = "aug-v5";
+const CACHE_NAME = "aug-v6-ia";
 
 const FILES = [
   "./",
@@ -35,6 +35,13 @@ self.addEventListener("activate", event => {
 
 
 self.addEventListener("fetch", event => {
+  const url = new URL(event.request.url);
+
+  // Never cache or intercept API/function calls.
+  if (url.pathname.includes("/functions/v1/") || event.request.method !== "GET") {
+    return;
+  }
+
   event.respondWith(
     fetch(event.request)
       .catch(() => caches.match(event.request))
