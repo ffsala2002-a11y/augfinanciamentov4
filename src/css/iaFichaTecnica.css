@@ -8,7 +8,7 @@ body.ia-modal-open {
 }
 
 .btn-ficha-ia {
-    display: none !important;
+    display: inline-flex !important;
     position: absolute;
     top: -2.7rem !important;
     left: -6.5rem !important;
