@@ -342,6 +342,34 @@ let buscaAtual = 0;
 const placeholder =
   "https://raw.githubusercontent.com/ffsala2002-a11y/produtos-imagens/main/img-produtos/sem_img.png";
 
+// ── Helpers de sugestão ──────────────────────────────────────────────────────
+
+/** Retorna a quantidade do produto (por NCE) que já está no carrinho */
+function qtdNoCarrinho(nce) {
+  const item = carrinho.find(p => String(p.nce) === String(nce));
+  return item ? item.quantidade : 0;
+}
+
+/** Atualiza o badge de carrinho de todas as linhas visíveis */
+function atualizarBadgesSugestao() {
+  sugestoesBody.querySelectorAll('tr[data-nce]').forEach(tr => {
+    const nce   = tr.dataset.nce;
+    const badge = tr.querySelector('.badge-carrinho');
+    const qtd   = qtdNoCarrinho(nce);
+    if (!badge) return;
+    if (qtd > 0) {
+      badge.textContent    = `✓ ${qtd}`;
+      badge.style.display  = 'inline-flex';
+      tr.classList.add('sugestao-no-carrinho');
+    } else {
+      badge.style.display  = 'none';
+      tr.classList.remove('sugestao-no-carrinho');
+    }
+  });
+}
+
+// ── Busca com sugestão persistente ───────────────────────────────────────────
+
 busca.addEventListener('input', () => {
 
   const idBusca = ++buscaAtual;
@@ -367,7 +395,10 @@ busca.addEventListener('input', () => {
 
     if (idBusca !== buscaAtual) return;
 
-    const tr = document.createElement('tr');
+    const tr  = document.createElement('tr');
+    const qtd = qtdNoCarrinho(p.nce);
+
+    tr.dataset.nce = p.nce;
 
     tr.innerHTML = `
       <td>
@@ -385,27 +416,63 @@ busca.addEventListener('input', () => {
       <td>
         <span class="saldo">${p.saldo}</span>
       </td>
+      <td>
+        <span class="badge-carrinho" style="
+          display: ${qtd > 0 ? 'inline-flex' : 'none'};
+          align-items: center;
+          gap: 4px;
+          background: #22c55e;
+          color: #fff;
+          font-size: 12px;
+          font-weight: 700;
+          padding: 3px 8px;
+          border-radius: 999px;
+          white-space: nowrap;
+        ">${qtd > 0 ? `✓ ${qtd}` : ''}</span>
+      </td>
     `;
+
+    if (qtd > 0) tr.classList.add('sugestao-no-carrinho');
 
     pegarImagens(p.nce).then(imgs => {
       if (idBusca !== buscaAtual) return;
-      const imgEl = tr.querySelector("img");
+      const imgEl = tr.querySelector('img');
       if (imgEl) {
-        imgEl.src = imgs[0];
+        imgEl.src    = imgs[0];
         imgEl.onerror = () => { imgEl.src = placeholder; };
       }
     });
 
-    tr.onclick = () => {
+    tr.addEventListener('click', (e) => {
+      e.stopPropagation();
+
       adicionarCarrinho(p);
-      busca.value = '';
-      sugestoes.style.display = 'none';
-    };
+
+      // Atualiza só o badge desta linha — lista permanece aberta
+      const badge = tr.querySelector('.badge-carrinho');
+      const novaQtd = qtdNoCarrinho(p.nce);
+      if (badge) {
+        badge.textContent   = `✓ ${novaQtd}`;
+        badge.style.display = 'inline-flex';
+      }
+      tr.classList.add('sugestao-no-carrinho');
+
+      // Feedback visual rápido na linha clicada
+      tr.classList.add('sugestao-flash');
+      setTimeout(() => tr.classList.remove('sugestao-flash'), 300);
+    });
 
     sugestoesBody.appendChild(tr);
   });
 
   sugestoes.style.display = filtrados.length ? 'block' : 'none';
+});
+
+// Fecha sugestões ao clicar fora
+document.addEventListener('click', (e) => {
+  if (!sugestoes.contains(e.target) && e.target !== busca) {
+    sugestoes.style.display = 'none';
+  }
 });
 
 document

@@ -5,6 +5,19 @@
     <!-- meta -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SECURITY: Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://pagead2.googlesyndication.com;
+      style-src 'self' https://cdnjs.cloudflare.com https://fonts.googleapis.com;
+      font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+      img-src 'self' data: https: blob:;
+      connect-src 'self' https://fkykscrjucytptwfgvrd.supabase.co https://api.groq.com https://raw.githubusercontent.com;
+      frame-ancestors 'none';
+    ">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
 
     <link rel="stylesheet" href="./src/css/main.css">
     <link rel="stylesheet" href="./src/css/iaFichaTecnica.css">
@@ -346,6 +359,7 @@
                                 <th>Descrição</th>
                                 <th>Preço</th>
                                 <th>Saldo</th>
+                                <th>Carrinho</th>
 
                             </tr>
 
@@ -537,7 +551,7 @@
 
         <!-- TOPO -->
         <div class="carrossel-topo">
-            <div class="carrossel-brand">AUG FINANCE</div>
+            <div class="carrossel-brand">AUG FINANCEIRA</div>
             <div class="carrossel-produto-nome" id="carrosselNome"></div>
         </div>
 
@@ -576,21 +590,6 @@
                         <h2 id="iaFichaTitulo">Ficha técnica</h2>
                     </div>
                 </div>
-
-
-                <!-- badge cache -->
-                <span id="iaFichaCacheBadge" class="ia-cache-badge" style="display:none">✓ Ficha salva</span>
-
-                <!--ATIVAR AQUI DEPOIS-->
-                <!--<div>
-                     botão forceRefresh 
-                    <button id="iaFichaAtualizar" type="button" class="btn-outline-sm" title="Regenerar ficha com IA">
-                        <i class="fa-solid fa-rotate-right"></i> Atualizar ficha
-                    </button>
-                </div>-->
-
-
-
                 <button type="button" class="ia-close" id="fecharFichaTecnicaIA" aria-label="Fechar">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
@@ -626,53 +625,45 @@
                 </div>
 
                 <div class="ia-section">
-                    <div class="ia-section-title"><i class="fa-solid fa-bolt"></i><span>Principais
-                            características</span></div>
+                    <div class="ia-section-title"><i class="fa-solid fa-bolt"></i><span>Principais características</span></div>
                     <div class="ia-highlights" id="iaFichaDestaques"></div>
                 </div>
 
                 <div class="ia-section">
-                    <div class="ia-section-title"><i class="fa-solid fa-microchip"></i><span>Especificações
-                            técnicas</span></div>
+                    <div class="ia-section-title"><i class="fa-solid fa-microchip"></i><span>Especificações técnicas</span></div>
                     <div class="ia-spec-grid" id="iaFichaSpecs"></div>
                 </div>
 
                 <div class="ia-columns">
                     <div class="ia-section">
-                        <div class="ia-section-title"><i class="fa-solid fa-box-open"></i><span>Conteúdo da
-                                embalagem</span></div>
+                        <div class="ia-section-title"><i class="fa-solid fa-box-open"></i><span>Conteúdo da embalagem</span></div>
                         <ul class="ia-list" id="iaFichaConteudoEmbalagem"></ul>
                     </div>
                     <div class="ia-section">
-                        <div class="ia-section-title"><i class="fa-solid fa-circle-check"></i><span>Compatibilidade /
-                                uso</span></div>
+                        <div class="ia-section-title"><i class="fa-solid fa-circle-check"></i><span>Compatibilidade / uso</span></div>
                         <ul class="ia-list" id="iaFichaCompatibilidade"></ul>
                     </div>
                 </div>
 
                 <div class="ia-columns">
                     <div class="ia-section ia-note-section">
-                        <div class="ia-section-title"><i class="fa-solid fa-shield-halved"></i><span>Observações</span>
-                        </div>
+                        <div class="ia-section-title"><i class="fa-solid fa-shield-halved"></i><span>Observações</span></div>
                         <ul class="ia-list" id="iaFichaObservacoes"></ul>
                     </div>
                     <div class="ia-section ia-note-section">
-                        <div class="ia-section-title"><i class="fa-solid fa-circle-info"></i><span>Confiabilidade</span>
-                        </div>
+                        <div class="ia-section-title"><i class="fa-solid fa-circle-info"></i><span>Confiabilidade</span></div>
                         <p class="ia-confianca" id="iaFichaConfianca"></p>
                     </div>
                 </div>
 
                 <div class="ia-section ia-sources-section">
-                    <div class="ia-section-title"><i class="fa-solid fa-book-open"></i><span>Fontes consultadas</span>
-                    </div>
+                    <div class="ia-section-title"><i class="fa-solid fa-book-open"></i><span>Fontes consultadas</span></div>
                     <div class="ia-fontes" id="iaFichaFontes"></div>
                 </div>
 
                 <div class="ia-disclaimer">
                     <i class="fa-solid fa-robot"></i>
-                    <span>Ficha montada por IA usando a descrição do produto, a base técnica cadastrada e, quando
-                        necessário, pesquisa do fabricante. Confirme dados críticos na documentação oficial.</span>
+                    <span>Ficha montada por IA usando a descrição do produto, a base técnica cadastrada e, quando necessário, pesquisa do fabricante. Confirme dados críticos na documentação oficial.</span>
                 </div>
             </div>
         </section>
