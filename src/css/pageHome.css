@@ -358,22 +358,34 @@
 
 /* Larguras fixas para cada coluna */
 .main-list-cards .relative .sugestoes table thead tr th:nth-child(1),
-.main-list-cards .relative .sugestoes table #sugestoesBody tr td:nth-child(1) { width: 42px; }
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td:nth-child(1) {
+    width: 42px;
+}
 
 .main-list-cards .relative .sugestoes table thead tr th:nth-child(2),
-.main-list-cards .relative .sugestoes table #sugestoesBody tr td:nth-child(2) { width: 52px; }
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td:nth-child(2) {
+    width: 52px;
+}
 
 .main-list-cards .relative .sugestoes table thead tr th:nth-child(3),
-.main-list-cards .relative .sugestoes table #sugestoesBody tr td:nth-child(3) { /* Descrição ocupa o resto */ }
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td:nth-child(3) {
+    /* Descrição ocupa o resto */
+}
 
 .main-list-cards .relative .sugestoes table thead tr th:nth-child(4),
-.main-list-cards .relative .sugestoes table #sugestoesBody tr td:nth-child(4) { width: 62px; }
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td:nth-child(4) {
+    width: 62px;
+}
 
 .main-list-cards .relative .sugestoes table thead tr th:nth-child(5),
-.main-list-cards .relative .sugestoes table #sugestoesBody tr td:nth-child(5) { width: 42px; }
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td:nth-child(5) {
+    width: 42px;
+}
 
 .main-list-cards .relative .sugestoes table thead tr th:nth-child(6),
-.main-list-cards .relative .sugestoes table #sugestoesBody tr td:nth-child(6) { width: 44px; }
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td:nth-child(6) {
+    width: 44px;
+}
 
 /*.main-list-cards .relative .sugestoes table thead {
 
@@ -456,8 +468,13 @@
 
 /* Flash de feedback ao clicar */
 @keyframes sugestao-flash-anim {
-    0%   { background: rgba(34, 197, 94, 0.35); }
-    100% { background: rgba(34, 197, 94, 0.08); }
+    0% {
+        background: rgba(34, 197, 94, 0.35);
+    }
+
+    100% {
+        background: rgba(34, 197, 94, 0.08);
+    }
 }
 
 .main-list-cards .relative .sugestoes table #sugestoesBody tr.sugestao-flash {

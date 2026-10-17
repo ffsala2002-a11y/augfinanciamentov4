@@ -353,16 +353,16 @@ function qtdNoCarrinho(nce) {
 /** Atualiza o badge de carrinho de todas as linhas visíveis */
 function atualizarBadgesSugestao() {
   sugestoesBody.querySelectorAll('tr[data-nce]').forEach(tr => {
-    const nce   = tr.dataset.nce;
+    const nce = tr.dataset.nce;
     const badge = tr.querySelector('.badge-carrinho');
-    const qtd   = qtdNoCarrinho(nce);
+    const qtd = qtdNoCarrinho(nce);
     if (!badge) return;
     if (qtd > 0) {
-      badge.textContent    = `✓ ${qtd}`;
-      badge.style.display  = 'inline-flex';
+      badge.textContent = `✓ ${qtd}`;
+      badge.style.display = 'inline-flex';
       tr.classList.add('sugestao-no-carrinho');
     } else {
-      badge.style.display  = 'none';
+      badge.style.display = 'none';
       tr.classList.remove('sugestao-no-carrinho');
     }
   });
@@ -395,7 +395,7 @@ busca.addEventListener('input', () => {
 
     if (idBusca !== buscaAtual) return;
 
-    const tr  = document.createElement('tr');
+    const tr = document.createElement('tr');
     const qtd = qtdNoCarrinho(p.nce);
 
     tr.dataset.nce = p.nce;
@@ -438,7 +438,7 @@ busca.addEventListener('input', () => {
       if (idBusca !== buscaAtual) return;
       const imgEl = tr.querySelector('img');
       if (imgEl) {
-        imgEl.src    = imgs[0];
+        imgEl.src = imgs[0];
         imgEl.onerror = () => { imgEl.src = placeholder; };
       }
     });
@@ -452,7 +452,7 @@ busca.addEventListener('input', () => {
       const badge = tr.querySelector('.badge-carrinho');
       const novaQtd = qtdNoCarrinho(p.nce);
       if (badge) {
-        badge.textContent   = `✓ ${novaQtd}`;
+        badge.textContent = `✓ ${novaQtd}`;
         badge.style.display = 'inline-flex';
       }
       tr.classList.add('sugestao-no-carrinho');
@@ -503,7 +503,7 @@ document
   .getElementById("deleteInput")
   .addEventListener('click', () => {
     busca.value = "";
-    busca.focus();
+    //busca.focus();
     fecharSugestoes();
   });
 
