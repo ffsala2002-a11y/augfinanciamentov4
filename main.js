@@ -476,9 +476,10 @@ busca.addEventListener('input', () => {
   }
 });
 
-/** Fecha sugestões e desfoca o teclado */
+/** Fecha sugestões, limpa o campo e desfoca o teclado */
 function fecharSugestoes() {
   sugestoes.style.display = 'none';
+  busca.value = '';
   busca.blur();
 }
 
