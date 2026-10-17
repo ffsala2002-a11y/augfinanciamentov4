@@ -465,13 +465,36 @@ busca.addEventListener('input', () => {
     sugestoesBody.appendChild(tr);
   });
 
-  sugestoes.style.display = filtrados.length ? 'block' : 'none';
+  if (filtrados.length) {
+    sugestoes.style.display = 'block';
+    // Empurra estado no histórico para interceptar o botão Voltar do Android
+    if (!history.state?.sugestaoAberta) {
+      history.pushState({ sugestaoAberta: true }, '');
+    }
+  } else {
+    sugestoes.style.display = 'none';
+  }
+});
+
+/** Fecha sugestões e desfoca o teclado */
+function fecharSugestoes() {
+  sugestoes.style.display = 'none';
+  busca.blur();
+}
+
+// Botão Voltar do Android: fecha sugestão em vez de navegar
+window.addEventListener('popstate', (e) => {
+  if (sugestoes.style.display !== 'none') {
+    fecharSugestoes();
+    // Reempurra o estado para não sair da página em cliques seguintes
+    history.pushState(null, '');
+  }
 });
 
 // Fecha sugestões ao clicar fora
 document.addEventListener('click', (e) => {
   if (!sugestoes.contains(e.target) && e.target !== busca) {
-    sugestoes.style.display = 'none';
+    fecharSugestoes();
   }
 });
 
@@ -480,7 +503,7 @@ document
   .addEventListener('click', () => {
     busca.value = "";
     busca.focus();
-    sugestoes.style.display = 'none';
+    fecharSugestoes();
   });
 
 

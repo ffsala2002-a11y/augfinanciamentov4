@@ -346,15 +346,34 @@
 }
 
 .main-list-cards .relative .sugestoes table {
-    /*border: solid 1px;*/
     width: 100%;
     font-size: 12px;
-    padding: 0.8rem;
+    padding: 0.4rem 0.5rem;
     cursor: pointer;
     border-collapse: separate;
-    border-spacing: 0 20px;
+    border-spacing: 0 8px;
     background: var(--color-white);
+    table-layout: fixed;
 }
+
+/* Larguras fixas para cada coluna */
+.main-list-cards .relative .sugestoes table thead tr th:nth-child(1),
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td:nth-child(1) { width: 42px; }
+
+.main-list-cards .relative .sugestoes table thead tr th:nth-child(2),
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td:nth-child(2) { width: 52px; }
+
+.main-list-cards .relative .sugestoes table thead tr th:nth-child(3),
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td:nth-child(3) { /* Descrição ocupa o resto */ }
+
+.main-list-cards .relative .sugestoes table thead tr th:nth-child(4),
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td:nth-child(4) { width: 62px; }
+
+.main-list-cards .relative .sugestoes table thead tr th:nth-child(5),
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td:nth-child(5) { width: 42px; }
+
+.main-list-cards .relative .sugestoes table thead tr th:nth-child(6),
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td:nth-child(6) { width: 44px; }
 
 /*.main-list-cards .relative .sugestoes table thead {
 
@@ -367,10 +386,14 @@
 }
 
 .main-list-cards .relative .sugestoes table thead tr th {
-    padding: 10px;
+    padding: 8px 4px;
     border: solid 1px;
     color: var(--color-white);
     border-radius: 5px;
+    font-size: 11px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .main-list-cards .relative .sugestoes table #sugestoesBody {
@@ -378,13 +401,20 @@
 }
 
 .main-list-cards .relative .sugestoes table #sugestoesBody tr td {
-    margin-top: 10px;
-    padding: 6px;
+    padding: 6px 4px;
     color: var(--color-black);
     font-weight: bold;
     text-align: center;
+    vertical-align: middle;
     background: rgba(255, 255, 255, 1);
     box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 0px, rgba(0, 0, 0, 0.3) 1px 0px 1px 0px, rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
+    overflow: hidden;
+}
+
+/* Coluna de descrição: alinhada à esquerda e com quebra de linha */
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td:nth-child(3) {
+    text-align: left;
+    padding-left: 6px;
 }
 
 .main-list-cards .relative .sugestoes table #sugestoesBody tr td .img-sugestao {
@@ -403,7 +433,12 @@
 }
 
 .main-list-cards .relative .sugestoes table #sugestoesBody tr td .descricao {
-    font-size: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.3;
+    word-break: break-word;
+    white-space: normal;
+    display: block;
 }
 
 .main-list-cards .relative .sugestoes table #sugestoesBody tr td .preco {
@@ -421,13 +456,8 @@
 
 /* Flash de feedback ao clicar */
 @keyframes sugestao-flash-anim {
-    0% {
-        background: rgba(34, 197, 94, 0.35);
-    }
-
-    100% {
-        background: rgba(34, 197, 94, 0.08);
-    }
+    0%   { background: rgba(34, 197, 94, 0.35); }
+    100% { background: rgba(34, 197, 94, 0.08); }
 }
 
 .main-list-cards .relative .sugestoes table #sugestoesBody tr.sugestao-flash {
@@ -438,15 +468,15 @@
 .main-list-cards .relative .sugestoes table #sugestoesBody tr td .badge-carrinho {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
-    background: #027969;
+    gap: 2px;
+    background: #02859c;
     color: #fff;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
-    padding: 3px 8px;
+    padding: 2px 5px;
     border-radius: 999px;
     white-space: nowrap;
-    min-width: 32px;
+    min-width: 28px;
     justify-content: center;
 }
 
