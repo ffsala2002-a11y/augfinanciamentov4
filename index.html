@@ -5,374 +5,370 @@
     <!-- meta -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-
+    
     <link rel="stylesheet" href="./src/css/main.css">
     <link rel="stylesheet" href="./src/css/iaFichaTecnica.css">
-
+    
     <!-- Fonte awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
-        integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <!-- favicon -->
     <link rel="icon" href="./src/img/logoaugfinance.png" type="image/png">
     <link rel="manifest" href="./manifest.json">
-
+    
     <!-- fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Changa+One:ital@0;1&display=swap"
-        rel="stylesheet">
-
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1103174438387109"
-        crossorigin="anonymous"></script>
-
+    
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Changa+One:ital@0;1&display=swap" rel="stylesheet">
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1103174438387109" crossorigin="anonymous"></script>
+    
     <title>AUG FINANCEIRA</title>
 </head>
 
 <body>
-
+    
     <!-- home -->
     <div id="home" class="rota active">
-
+        
         <!-- topo -->
         <div class="topo">
-
+            
             <!-- botão lateral -->
             <div class="btn-lateral">
-
+                
                 <button id="btn-lateral">
-
+                
                     <i class="fa-solid fa-file-arrow-up"></i>
-
+                    
                 </button>
-
+                
             </div>
-
+            
             <div class="box-input">
-
+                
                 <i class="fa-solid fa-magnifying-glass"></i>
-
+                
                 <input required class="campo-input" type="text" id="busca">
-
+                
                 <!-- scanner botão -->
                 <i class="fa-solid fa-barcode btn-scan none" id="btn-scan"></i>
-
+                
                 <label class="label-movie none" for="busca">
                     Buscar por NCE ou DESCRIÇÃO
                 </label>
-
+                
                 <label id="deleteInput" class="delete-input">
                     <i class="fa-solid fa-xmark"></i>
                 </label>
-
+                
             </div>
-
+            
         </div>
-
+        
         <!-- menu lateral -->
         <div class="menu-lateral">
-
+            
             <button id="btnCloseLateral" class="btn-close-lateral">
                 X
             </button>
-
+            
             <div class="upload">
-
+                
                 <!-- logo -->
                 <div class="tamb-title">
-
+                    
                     <div class="box-img">
-
+                        
                         <img src="./src/img/logoaugfinance.png" alt="Logo Aug Financeira">
-
-                        <!--<span>
-                            Aug <span>Financeira</span>
-                        </span>-->
-
+                        
+                        <span>
+                            Aug <span>Finance</span>
+                        </span>
+                        
                     </div>
-
+                    
                 </div>
-
+                
                 <!-- card loja -->
                 <div class="card-loja">
-
+                    
                     <div class="box-sigla-loja">
-
+                        
                         <i class="fa-solid fa-shop"></i>
-
+                        
                         <div class="sigla-info">
-
+                            
                             <span class="sigla-label">Loja</span>
-
+                            
                             <span id="nomeLoja"></span>
-
+                            
                         </div>
-
+                        
                     </div>
-
+                    
                     <!-- resumo -->
                     <div class="box-resumo-base">
-
+                        
                         <div class="content-resumo">
-
+                            
                             <p>
                                 <span id="totalProdutos">0</span>
                                 <strong> Produtos disponíveis</strong>
                             </p>
-
+                            
                             <p class="oculto">
                                 <span id="totalSaldo">0</span>
                                 <strong></strong>
                             </p>
-
+                            
                             <p class="garantia-saldo">
                                 <span id="totalGarantias">0</span>
                                 <strong> Garantias disponíveis</strong>
                             </p>
-
+                            
                         </div>
-
+                        
                     </div>
-
+                    
                 </div>
-
+                
                 <!-- atualização -->
                 <div class="box-importacao">
-
+                    
                     <div class="box-title">
-
+                        
                         <h2 class="title">
                             Última Atualização:
                         </h2>
-
+                        
                     </div>
-
+                    
                     <div class="content-resumo">
-
+                        
                         <p>
                             <span id="dataImportacao">
                                 Carregando...
                             </span>
                         </p>
-
+                        
                     </div>
-
+                    
                 </div>
-
-
+                
+                
                 <!-- importação -->
                 <div class="upload-txt">
-
+                    
                     <div class="box-title">
-
+                        
                         <i class="fa-solid fa-folder-open"></i>
-
+                        
                         <h2 class="title">
                             Importação Local
                         </h2>
-
+                        
                     </div>
-
+                    
                     <!-- inputs -->
                     <div class="box-import">
-
+                        
                         <div class="box-input1">
-
+                            
                             <img src="./src/img/import.png" alt="imagem logo arquivo">
-
+                            
                             <input type="file" id="fileProdutos" hidden>
-
+                            
                             <label for="fileProdutos">
                                 Importar Produtos
                             </label>
-
+                            
                         </div>
-
+                        
                         <div class="box-input2">
-
+                            
                             <img src="./src/img/warranty.png" alt="imagem logo garantia">
-
+                            
                             <input type="file" id="fileGarantias" hidden>
-
+                            
                             <label for="fileGarantias">
                                 Importar Garantias
                             </label>
-
+                            
                         </div>
-
+                        
                     </div>
-
+                    
                     <!-- botões -->
                     <div class="box-salvar-limpar">
-
+                        
                         <div class="flex mt-10 buttons">
-
+                            
                             <button class="desativado" id="btnSalvar">
                                 Salvar Base (Botão desativado)
                             </button>
-
+                            
                             <button class="secondary desativado" id="btnLimparBase">
                                 Limpar Base (Botão desativado)
                             </button>
-
+                            
                         </div>
-
+                        
                         <p id="msg" class="msg"></p>
-
+                        
                     </div>
-
+                    
                 </div>
-
+                
                 <!-- modo -->
                 <div class="box-modo">
-
+                    
                     <div class="box-title">
-
+                        
                         <i class="fa-solid fa-cloud-arrow-up"></i>
-
+                        
                         <h2 class="title">
                             Fonte dos Dados
                         </h2>
-
+                        
                     </div>
-
+                    
                     <div class="content-modo">
-
+                        
                         <div class="toggle-modo">
-
+                            
                             <button class="desativado" id="btnModoNuvem">
                                 ☁️ Nuvem (Botão desabilitado)
                             </button>
-
+                            
                             <button class="desativado" id="btnModoLocal">
                                 💾 Local (Botão desativado)
                             </button>
-
+                            
                         </div>
-
+                        
                     </div>
-
+                    
                 </div>
-
+                
                 <!-- avatar -->
                 <div class="box-avatar">
-
+                    
                     <i class="fa-solid fa-circle-user"></i>
-
+                    
                     <button class="sair-conta" id="btnLogout">
                         Sair da conta
                     </button>
-
+                    
                 </div>
-
+                
                 <!-- copyright -->
                 <div class="box-priv">
-
+                    
                     <p class="priv">
                         ©2026augfinanceira — Todos os direitos reservados.
                     </p>
-
+                    
                 </div>
-
+                
             </div>
-
+            
         </div>
-
+        
         <!-- fundo -->
         <div class="fundo"></div>
-
+        
         <!-- Main list Cards -->
         <div class="main-list-cards">
-
+            
             <!-- busca -->
             <div class="relative">
-
+                
                 <!-- scanner -->
                 <div id="scannerOverlay" class="scanner-overlay">
-
+                    
                     <div class="scanner-box">
-
+                        
                         <!-- scanner header -->
                         <div class="scanner-header">
-
+                            
                             <span class="titlle-scan">
                                 Leitor de código de barras
                             </span>
-
+                            
                             <button class="fechar-scan" id="fecharScanner">
                                 ✕
                             </button>
-
+                            
                         </div>
-
+                        
                         <!-- scanner area -->
                         <div class="scanner-area">
-
+                            
                             <div id="scanner-container"></div>
-
+                            
                             <div class="laser"></div>
-
+                            
                         </div>
-
+                        
                         <!-- scanner info -->
                         <div class="scanner-info">
-
+                            
                             <div class="box-item-scan">
                                 Itens adicionandos:
                                 <strong id="contadorLeitura">0</strong>
                             </div>
-
+                            
                             <div id="ultimoProduto" class="ultimo-produto"></div>
-
+                            
                         </div>
-
+                        
                     </div>
-
+                    
                 </div>
-
+                
                 <!-- sugestões -->
                 <div id="sugestoes" class="sugestoes">
-
+                    
                     <table>
-
+                        
                         <thead>
-
+                            
                             <tr>
-
+                                
                                 <th>IMG</th>
                                 <th>NCE</th>
                                 <th>Descrição</th>
                                 <th>Preço</th>
                                 <th>Saldo</th>
                                 <th>Carrinho</th>
-
+                                
                             </tr>
-
+                            
                         </thead>
-
+                        
                         <tbody id="sugestoesBody"></tbody>
-
+                        
                     </table>
-
+                    
                 </div>
-
+                
             </div>
-
+            
             <!-- lista -->
             <div class="box-list">
-
+                
                 <div id="lista"></div>
-
+                
             </div>
-
+            
         </div>
-
+        
         <!-- popup -->
         <!--<div id="popup" class="popup">
 
@@ -399,153 +395,153 @@
             </div>
 
         </div>-->
-
+        
         <div class="fundo-popup"></div>
-
+        
     </div>
-
-
-
+    
+    
+    
     <!-- financiamento -->
     <div id="financ" class="rota">
-
+        
         <div class="box-financ">
-
+            
             <!-- total -->
             <div class="financ-total-card">
-
+                
                 <span class="financ-total-label">
                     Total/Avista
                 </span>
-
+                
                 <strong class="financ-total-valor" id="financTotalValor">
                     R$ 0,00
                 </strong>
-
+                
             </div>
-
+            
             <!-- inputs -->
             <div class="financ-inputs">
-
+                
                 <div class="financ-input-group">
-
+                    
                     <label for="entrada">
                         Valor de Entrada
                     </label>
-
+                    
                     <input type="text" id="entrada" value="R$ 0,00" placeholder="R$ 0,00">
-
+                    
                 </div>
-
+                
                 <div class="financ-input-group">
-
+                    
                     <label for="taxa">
                         Taxa de Juros (a.m.)
                     </label>
-
+                    
                     <input type="number" id="taxa" value="9.9" step="0.01" placeholder="0.00">
-
+                    
                 </div>
-
+                
             </div>
-
+            
             <!-- checkboxes -->
             <div class="financ-checks">
-
+                
                 <label class="financ-check-label">
-
+                
                     <input type="checkbox" id="semJuros3x">
-
+                    
                     <span class="financ-check-box"></span>
-
+                    
                     <span>
                         Até 3x sem juros
                     </span>
-
+                    
                 </label>
-
+                
                 <label class="financ-check-label">
-
+                
                     <input type="checkbox" id="parc18x">
-
+                    
                     <span class="financ-check-box"></span>
-
+                    
                     <span>
                         Mostrar até 18x
                     </span>
-
+                    
                 </label>
-
+                
             </div>
-
+            
             <!-- header -->
             <div class="financ-parcelas-header">
-
+                
                 <span>
                     <!-- Botão Cartão de Crédito -->
                     <button id="btnAbrirCartao" class="btn-abrir-cartao">
                         <i class="fa-solid fa-credit-card"></i>
                         Cartão
                     </button>
-
+                    
                     <!-- compartilhar -->
                     <button id="btnCompartilharFinanc" class="btn-compartilhar-financ">
                         <i class="fa-solid fa-share-nodes"></i>
                         Compatilhar
                     </button>
                 </span>
-
+                
             </div>
-
+            
             <!-- parcelas -->
             <div class="financ-parcelas-lista" id="financParcelasList">
-
+                
                 <!-- JS renderiza aqui -->
-
+                
             </div>
-
+            
         </div>
-
+        
     </div>
-
+    
     <!-- bottom bar -->
     <div class="bottom-bar">
-
+        
         <div class="box-btn">
-
+            
             <div class="btn active" onclick="mudarRota('home', this)">
-
+                
                 <i class="fa-solid fa-box"></i>
-
+                
                 <span>
                     Produtos
                 </span>
-
+                
             </div>
-
+            
             <div class="btn" onclick="mudarRota('financ', this)">
-
+                
                 <i class="fa-solid fa-calculator"></i>
-
+                
                 <span>
                     Crediário
                 </span>
-
+                
             </div>
-
+            
         </div>
-
+        
     </div>
-
+    
     <!-- modaal -->
     <div id="modalCarrossel">
-
+        
         <!-- TOPO -->
         <div class="carrossel-topo">
             <div class="carrossel-brand">AUG FINANCEIRA</div>
             <div class="carrossel-produto-nome" id="carrosselNome"></div>
         </div>
-
+        
         <!-- ÁREA DAS IMAGENS -->
         <div class="carrossel-area">
             <div class="carrossel-container">
@@ -557,21 +553,21 @@
             <button class="carrossel-seta carrossel-seta-esq" id="setaEsq">‹</button>
             <button class="carrossel-seta carrossel-seta-dir" id="setaDir">›</button>
         </div>
-
+        
         <!-- INDICADORES + FECHAR --->
         <div class="carrossel-rodape">
             <div id="indicadores" class="indicadores-galeria"></div>
             <button id="fecharModal" class="carrossel-fechar">✕ Fechar</button>
         </div>
-
+        
     </div>
-
-
-
+    
+    
+    
     <!-- MODAL FICHA TÉCNICA IA -->
     <div id="modalFichaTecnicaIA" class="ia-modal" aria-hidden="true" hidden>
         <div class="ia-modal-backdrop" data-ia-close></div>
-
+        
         <section class="ia-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="iaFichaTitulo">
             <header class="ia-modal-header">
                 <div class="ia-modal-brand">
@@ -585,14 +581,14 @@
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </header>
-
+            
             <div id="iaFichaLoading" class="ia-state ia-loading">
                 <div class="ia-orbit"><i class="fa-solid fa-sparkles"></i></div>
                 <h3>Montando a ficha técnica...</h3>
                 <p>A IA está organizando as informações do produto.</p>
                 <div class="ia-progress"><span></span></div>
             </div>
-
+            
             <div id="iaFichaErro" class="ia-state ia-error" hidden>
                 <div class="ia-state-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
                 <h3>Não foi possível gerar a ficha</h3>
@@ -601,7 +597,7 @@
                     <i class="fa-solid fa-rotate-right"></i> Tentar novamente
                 </button>
             </div>
-
+            
             <div id="iaFichaConteudo" class="ia-content" hidden>
                 <div class="ia-product-hero">
                     <div class="ia-product-image-wrap">
@@ -614,17 +610,17 @@
                         <div class="ia-meta" id="iaFichaMeta"></div>
                     </div>
                 </div>
-
+                
                 <div class="ia-section">
                     <div class="ia-section-title"><i class="fa-solid fa-bolt"></i><span>Principais características</span></div>
                     <div class="ia-highlights" id="iaFichaDestaques"></div>
                 </div>
-
+                
                 <div class="ia-section">
                     <div class="ia-section-title"><i class="fa-solid fa-microchip"></i><span>Especificações técnicas</span></div>
                     <div class="ia-spec-grid" id="iaFichaSpecs"></div>
                 </div>
-
+                
                 <div class="ia-columns">
                     <div class="ia-section">
                         <div class="ia-section-title"><i class="fa-solid fa-box-open"></i><span>Conteúdo da embalagem</span></div>
@@ -635,7 +631,7 @@
                         <ul class="ia-list" id="iaFichaCompatibilidade"></ul>
                     </div>
                 </div>
-
+                
                 <div class="ia-columns">
                     <div class="ia-section ia-note-section">
                         <div class="ia-section-title"><i class="fa-solid fa-shield-halved"></i><span>Observações</span></div>
@@ -646,12 +642,12 @@
                         <p class="ia-confianca" id="iaFichaConfianca"></p>
                     </div>
                 </div>
-
+                
                 <div class="ia-section ia-sources-section">
                     <div class="ia-section-title"><i class="fa-solid fa-book-open"></i><span>Fontes consultadas</span></div>
                     <div class="ia-fontes" id="iaFichaFontes"></div>
                 </div>
-
+                
                 <div class="ia-disclaimer">
                     <i class="fa-solid fa-robot"></i>
                     <span>Ficha montada por IA usando a descrição do produto, a base técnica cadastrada e, quando necessário, pesquisa do fabricante. Confirme dados críticos na documentação oficial.</span>
@@ -659,9 +655,9 @@
             </div>
         </section>
     </div>
-
+    
     <div id="fundo-spiner" class="fundo-spiner">
-
+        
         <!-- From Uiverse.io by andrew-manzyk -->
         <div class="loader">
             <svg id="cloud" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
@@ -712,24 +708,22 @@
                 </defs>
                 <rect x="0" y="0" width="100" height="100" rx="0" ry="0" mask="url(#clipping)"></rect>
                 <g>
-                    <path
-                        d="M33.52,68.12 C35.02,62.8 39.03,58.52 44.24,56.69 C49.26,54.93 54.68,55.61 59.04,58.4 C59.04,58.4 56.24,60.53 56.24,60.53 C55.45,61.13 55.68,62.37 56.63,62.64 C56.63,62.64 67.21,65.66 67.21,65.66 C67.98,65.88 68.75,65.3 68.74,64.5 C68.74,64.5 68.68,53.5 68.68,53.5 C68.67,52.51 67.54,51.95 66.75,52.55 C66.75,52.55 64.04,54.61 64.04,54.61 C57.88,49.79 49.73,48.4 42.25,51.03 C35.2,53.51 29.78,59.29 27.74,66.49 C27.29,68.08 28.22,69.74 29.81,70.19 C30.09,70.27 30.36,70.31 30.63,70.31 C31.94,70.31 33.14,69.44 33.52,68.12Z">
+                    <path d="M33.52,68.12 C35.02,62.8 39.03,58.52 44.24,56.69 C49.26,54.93 54.68,55.61 59.04,58.4 C59.04,58.4 56.24,60.53 56.24,60.53 C55.45,61.13 55.68,62.37 56.63,62.64 C56.63,62.64 67.21,65.66 67.21,65.66 C67.98,65.88 68.75,65.3 68.74,64.5 C68.74,64.5 68.68,53.5 68.68,53.5 C68.67,52.51 67.54,51.95 66.75,52.55 C66.75,52.55 64.04,54.61 64.04,54.61 C57.88,49.79 49.73,48.4 42.25,51.03 C35.2,53.51 29.78,59.29 27.74,66.49 C27.29,68.08 28.22,69.74 29.81,70.19 C30.09,70.27 30.36,70.31 30.63,70.31 C31.94,70.31 33.14,69.44 33.52,68.12Z">
                     </path>
-                    <path
-                        d="M69.95,74.85 C68.35,74.4 66.7,75.32 66.25,76.92 C64.74,82.24 60.73,86.51 55.52,88.35 C50.51,90.11 45.09,89.43 40.73,86.63 C40.73,86.63 43.53,84.51 43.53,84.51 C44.31,83.91 44.08,82.67 43.13,82.4 C43.13,82.4 32.55,79.38 32.55,79.38 C31.78,79.16 31.02,79.74 31.02,80.54 C31.02,80.54 31.09,91.54 31.09,91.54 C31.09,92.53 32.22,93.09 33.01,92.49 C33.01,92.49 35.72,90.43 35.72,90.43 C39.81,93.63 44.77,95.32 49.84,95.32 C52.41,95.32 55,94.89 57.51,94.01 C64.56,91.53 69.99,85.75 72.02,78.55 C72.47,76.95 71.54,75.3 69.95,74.85Z">
+                    <path d="M69.95,74.85 C68.35,74.4 66.7,75.32 66.25,76.92 C64.74,82.24 60.73,86.51 55.52,88.35 C50.51,90.11 45.09,89.43 40.73,86.63 C40.73,86.63 43.53,84.51 43.53,84.51 C44.31,83.91 44.08,82.67 43.13,82.4 C43.13,82.4 32.55,79.38 32.55,79.38 C31.78,79.16 31.02,79.74 31.02,80.54 C31.02,80.54 31.09,91.54 31.09,91.54 C31.09,92.53 32.22,93.09 33.01,92.49 C33.01,92.49 35.72,90.43 35.72,90.43 C39.81,93.63 44.77,95.32 49.84,95.32 C52.41,95.32 55,94.89 57.51,94.01 C64.56,91.53 69.99,85.75 72.02,78.55 C72.47,76.95 71.54,75.3 69.95,74.85Z">
                     </path>
                 </g>
             </svg>
         </div>
-
-
+        
+        
     </div>
-
-
+    
+    
     <audio id="nuvemAtivo" src="./src/audio/nuvemAtivo.mp3"></audio>
-
+    
     <audio id="localAtivo" src="./src/audio/localAtivo.mp3"></audio>
-
+    
     <script>
         // Service worker is disabled on localhost during development so old JS
         // cannot be served from a stale cache. It remains enabled in production.
@@ -737,7 +731,7 @@
             navigator.serviceWorker.register("./sw.js");
         }
     </script>
-
+    
 </body>
 
 <!-- scripts -->
