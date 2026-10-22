@@ -709,12 +709,6 @@ function pararScanner() {
   overlay?.classList.remove("active");
 }
 
-        // Service worker is disabled on localhost during development so old JS
-        // cannot be served from a stale cache. It remains enabled in production.
-        if ("serviceWorker" in navigator && !/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) {
-            navigator.serviceWorker.register("./sw.js");
-        }
-
 
 // init final
 uploadLateral();
