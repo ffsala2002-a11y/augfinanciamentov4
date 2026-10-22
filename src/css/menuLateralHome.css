@@ -61,10 +61,10 @@
 .menu-lateral .upload .tamb-title .box-img {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: -1rem;
     position: absolute;
     top: auto;
-    left: auto;
+    left: 2rem;
 }
 
 .menu-lateral .upload .tamb-title .box-img::after {
@@ -77,6 +77,7 @@
     object-fit: contain;
     border-radius: 12px;
     position: static;
+    left: 0;
     z-index: auto;
 }
 

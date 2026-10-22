@@ -169,16 +169,15 @@
 .btn-garantia span {
     font-size: 13px;
     font-weight: 800;
-    color: #00AE11;
+    color: #00A710;
 }
 
 .btn-garantia.ativo {
-    background: rgba(0, 241, 47, 0.9);
-    border-color: #F16800;
+    background: rgba(196, 0, 0, 1);
 }
 
 .btn-garantia.ativo span {
-    color: var(--color-black);
+    color: var(--color-white);
 }
 
 .btn-garantia:active {

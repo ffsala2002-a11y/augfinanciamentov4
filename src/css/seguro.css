@@ -184,12 +184,11 @@
 .btn-seguro-celular {
   width: 100%;
   padding: 10px 12px;
-  background: conic-gradient(from 120deg at 53% 49%, rgb(255, 0, 55) 0%, rgb(244, 45, 88) 100%);
-  color: #fff;
+  color: #000000 !important;
   border: none;
   border-radius: 10px;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: bold;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -197,6 +196,7 @@
   gap: 6px;
   transition: all 0.15s;
   margin-top: 13.5rem;
+  background: #D4D4D4;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
@@ -206,8 +206,8 @@
 }
 
 .btn-seguro-celular.selecionado {
-  background: #157c00;
-  color: #DD0000;
+  background: #BC0000;
+  color: #FFFFFF !important;
   border: 2px solid #DD0000;
 }
 
