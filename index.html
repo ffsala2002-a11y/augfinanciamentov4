@@ -474,27 +474,62 @@
                 
             </div>
             
-            <!-- header -->
-            <div class="financ-parcelas-header">
+            <!-- parcelas -->
+            <div class="financ-parcelas-lista" id="financParcelasList">
                 
-                <span>
-                    <!-- Botão Cartão de Crédito -->
-                    <button id="btnAbrirCartao" class="btn-abrir-cartao">
-                        <i class="fa-solid fa-credit-card"></i>
-                        Cartão
-                    </button>
+                <!-- JS renderiza aqui -->
+                
+            </div>
+            
+        </div>
+        
+    </div>
+    
+    <!-- cartão de crédito -->
+    <div id="cartao" class="rota">
+        
+        <div class="box-cartao">
+            
+            <!-- cabeçalho -->
+            <div class="cartao-header">
+                
+                <div class="cartao-header-info">
                     
-                    <!-- compartilhar -->
-                    <button id="btnCompartilharFinanc" class="btn-compartilhar-financ">
-                        <i class="fa-solid fa-share-nodes"></i>
-                        Compatilhar
-                    </button>
-                </span>
+                    <span class="cartao-icon">
+                        <i class="fa-solid fa-credit-card"></i>
+                    </span>
+                    
+                    <div>
+                        <h2 class="cartao-titulo">Cartão de Crédito</h2>
+                        <p class="cartao-sub">Simulação de parcelamento</p>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+            <!-- total -->
+            <div class="cartao-total-wrap">
+                
+                <span class="cartao-total-label">Valor Total</span>
+                
+                <strong class="cartao-total-valor" id="cartaoTotalValor">
+                    R$ 0,00
+                </strong>
+                
+                <div class="cartao-taxa-info">
+                    <span class="cartao-taxa-badge sem-juros">1x–6x sem juros</span>
+                    <span class="cartao-taxa-badge com-juros">7x–12x 2,94% a.m.</span>
+                </div>
                 
             </div>
             
             <!-- parcelas -->
-            <div class="financ-parcelas-lista" id="financParcelasList">
+            <div class="cartao-parcelas-header">
+                <span>Opções de Parcelamento</span>
+            </div>
+            
+            <div class="cartao-parcelas-lista" id="cartaoParcelasList">
                 
                 <!-- JS renderiza aqui -->
                 
@@ -525,6 +560,27 @@
                 
                 <span>
                     Crediário
+                </span>
+                
+            </div>
+            
+            <div class="btn" id="btnRotaCartao" onclick="mudarRota('cartao', this)">
+                
+                <i class="fa-solid fa-credit-card"></i>
+                
+                <span>
+                    Cartão
+                </span>
+                
+            </div>
+            
+            <!-- compartilhar: não troca de rota, só abre o modal (compartilhar.js) -->
+            <div class="btn btn-acao" id="btnCompartilharFinanc">
+                
+                <i class="fa-solid fa-share-nodes"></i>
+                
+                <span>
+                    Enviar
                 </span>
                 
             </div>

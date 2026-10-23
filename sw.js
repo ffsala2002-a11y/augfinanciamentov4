@@ -1,6 +1,6 @@
 
 const CACHE_PREFIX = "aug-financeira-";
-const CACHE_NAME = "aug-financeira-v8";
+const CACHE_NAME = "aug-financeira-v9";
 
 const FILES = [
   "./",
