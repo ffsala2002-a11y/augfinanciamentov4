@@ -112,6 +112,8 @@ export function iniciarCompartilhar() {
         <div id="compPlanoInfo" class="comp-plano-info"></div>
       </div>
 
+      <!-- botão "enviar todos" (só no modo link) -->
+      <div id="compEnviarTodosWrap" class="comp-enviar-todos-wrap" style="display:none"></div>
 
     </div>
   `;
@@ -256,39 +258,51 @@ function renderizarProdutos(lista, imagensCache, comPlano, comCartao, modoFotos)
       <span class="comp-prod-preco">${(p.preco * p.quantidade).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span>
     `;
     
-    let enviarEl;
+    item.appendChild(imgEl);
+    item.appendChild(info);
     
     if (modoFotos) {
-      // Modo fotos: botão comum (async share precisa de button)
-      enviarEl = document.createElement('button');
+      // Modo fotos: botão individual por produto (async share precisa de button)
+      const enviarEl = document.createElement('button');
       enviarEl.className = 'btn-enviar-prod';
       enviarEl.innerHTML = '<i class="fa-regular fa-images"></i> Enviar fotos';
       enviarEl.title = 'Enviar foto';
       enviarEl.addEventListener('click', () => {
         enviarProdutoComFoto(p, imagensCache, comPlano, comCartao, enviarEl);
       });
-    } else {
-      // Modo link: <a href> direto — cada toque é gesto do usuário, sem popup blocker
-      const msg = montarMsgProduto(p, imagensCache, comPlano, comCartao, true);
-      enviarEl = document.createElement('a');
-      enviarEl.className = 'btn-enviar-prod';
-      enviarEl.href = `https://wa.me/?text=${encodeURIComponent(msg)}`;
-      enviarEl.target = '_blank';
-      enviarEl.rel = 'noopener noreferrer';
-      enviarEl.innerHTML = '<i class="fa-solid fa-link"></i> Link fotos';
-      enviarEl.title = 'Enviar link';
-      // Marca como enviado ao tocar
-      /*enviarEl.addEventListener('click', () => {
-        enviarEl.textContent = '✅';
-        setTimeout(() => { enviarEl.innerHTML = '<i class="fa-solid fa-link"></i>'; }, 2500);
-      });*/
+      item.appendChild(enviarEl);
     }
     
-    item.appendChild(imgEl);
-    item.appendChild(info);
-    item.appendChild(enviarEl);
     lista.appendChild(item);
   });
+  
+  // Modo link: um único botão envia todos os produtos de uma vez
+  renderizarBotaoEnviarTodos(imagensCache, comPlano, comCartao, modoFotos);
+}
+
+// Botão fixo "Enviar todos" — só aparece no modo link
+function renderizarBotaoEnviarTodos(imagensCache, comPlano, comCartao, modoFotos) {
+  const wrap = document.getElementById('compEnviarTodosWrap');
+  if (!wrap) return;
+  
+  wrap.innerHTML = '';
+  
+  if (modoFotos || !carrinho.length) {
+    wrap.style.display = 'none';
+    return;
+  }
+  
+  // <a href> direto: o toque é o gesto do usuário, sem bloqueio de popup
+  const msg = montarMsgTodos(imagensCache, comPlano, comCartao);
+  const a = document.createElement('a');
+  a.className = 'btn-enviar-todos';
+  a.href = `https://wa.me/?text=${encodeURIComponent(msg)}`;
+  a.target = '_blank';
+  a.rel = 'noopener noreferrer';
+  a.innerHTML = `<i class="fa-brands fa-whatsapp"></i> Enviar todos (${carrinho.length})`;
+  
+  wrap.appendChild(a);
+  wrap.style.display = 'block';
 }
 
 // Atualiza os botões quando troca o modo ou o plano
@@ -534,6 +548,12 @@ async function enviarTodos(imagensCache, comPlano, comCartao, modoFotos) {
 // ================= WHATSAPP (legado — mantido para compatibilidade) =================
 
 function enviarWhatsApp(imagensCache, comPlano, comCartao) {
+  const msg = montarMsgTodos(imagensCache, comPlano, comCartao);
+  window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+// Monta UMA mensagem com todos os produtos do carrinho (+ plano/cartão se marcado)
+function montarMsgTodos(imagensCache, comPlano, comCartao) {
   
   const garantias = JSON.parse(localStorage.getItem('garantias') || '[]');
   
@@ -615,7 +635,7 @@ function enviarWhatsApp(imagensCache, comPlano, comCartao) {
   
   msg += `\n_AUG Finance_ ✨`;
   
-  window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
+  return msg;
 }
 
 
