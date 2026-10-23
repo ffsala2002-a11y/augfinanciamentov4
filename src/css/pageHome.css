@@ -539,6 +539,434 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 40%;
+    gap: 2px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    background: #F3F3F3;
+    transition: background-color 0.2s;
+    box-shadow: var(--shadow-elevated);
+}
+
+.bottom-bar .box-btn .btn i {
+    font-size: 25px;
+}
+
+.bottom-bar .box-btn .btn span {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.bottom-bar .box-btn .btn.active {
+    overflow: hidden;
+    position: relative;
+    color: rgba(255, 255, 255, 1);
+    background: var(--gradient-primary);
+}
+
+.bottom-bar .box-btn .btn.active span {
+    display: none;
+}
+
+/* botão de ação (ex.: compartilhar) — não vira "ativo", só dá feedback ao toque */
+.bottom-bar .box-btn .btn.btn-acao:active {
+    color: rgba(255, 255, 255, 1);
+    background: var(--gradient-primary);
+}
+
+.main-list-cards {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: -2rem;
+    left: 1.2rem;
+    z-index: 2;
+    width: 90vw;
+    margin: 0 auto;
+}
+
+.main-list-cards .relative {
+    position: relative;
+    top: 3.6rem;
+    z-index: 3;
+    width: 90vw;
+    margin: 0 auto;
+}
+
+.btn-scan {
+    width: 28px;
+    position: absolute;
+    right: 0.5rem;
+    font-size: 20px;
+    box-shadow: var(--shadow-elevated);
+}
+
+.fechar-scan {
+    background: #FF4F4F;
+    color: var(--color-white);
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+}
+
+/* OVERLAY */
+
+.scanner-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.scanner-overlay.active {
+    display: flex;
+}
+
+/* BOX */
+
+.scanner-box {
+    width: 95%;
+    max-width: 420px;
+    background: var(--color-white);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* HEADER */
+
+.scanner-header {
+    background: var(--gradient-primary);
+    color: var(--color-white);
+    padding: 10px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titlle-scan {
+    font-weight: bold;
+}
+
+/* AREA DO VIDEO */
+
+.scanner-area {
+    position: relative;
+    width: 100%;
+    height: 90px;
+    background: var(--color-black);
+    overflow: hidden;
+}
+
+/* CONTROLE DO VIDEO/CANVAS DO QUAGGA */
+
+#scanner-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#scanner-container video,
+#scanner-container canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* LASER */
+
+.laser {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: red;
+    box-shadow: 0 0 10px red;
+    border-style: double;
+    z-index: 2;
+    animation: scan 2s linear infinite;
+}
+
+@keyframes scan {
+    0% {
+        top: 0;
+    }
+
+    50% {
+        top: 100%;
+    }
+
+    100% {
+        top: 0;
+    }
+}
+
+/* INFO */
+
+.scanner-info {
+    padding: 12px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.box-item-scan {
+    background: #D6D6D6;
+    width: 70%;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 0.5rem;
+}
+
+.ultimo-produto {
+    margin-top: 8px;
+    color: #333;
+    line-height: 1.3;
+}
+
+.preco-scan {
+    color: #14AA00;
+}
+
+.main-list-cards .relative .sugestoes {
+    position: absolute;
+    top: 4.5rem;
+    left: -1.1rem;
+    z-index: 3;
+    width: 110%;
+    margin: 0 auto;
+    padding-bottom: 10rem;
+    height: 700px;
+    display: none;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 1);
+}
+
+/*Img sugestao*/
+
+.imgProduto {
+    min-width: 40px;
+    max-width: 40px;
+}
+
+.imgProduto img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+/* Responsivo */
+
+@media (max-width: 420px) {
+    .titulo-aug {
+        font-size: 20px;
+        letter-spacing: 2px;
+    }
+}
+
+.main-list-cards .relative .sugestoes table {
+    width: 100%;
+    font-size: 12px;
+    padding: 0.4rem 0.5rem;
+    cursor: pointer;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    background: var(--color-white);
+    table-layout: fixed;
+}
+
+/* Larguras fixas para cada coluna */
+.main-list-cards .relative .sugestoes table thead tr th:nth-child(1),
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td:nth-child(1) {
+    width: 42px;
+}
+
+.main-list-cards .relative .sugestoes table thead tr th:nth-child(2),
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td:nth-child(2) {
+    width: 52px;
+}
+
+.main-list-cards .relative .sugestoes table thead tr th:nth-child(3),
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td:nth-child(3) {
+    /* Descrição ocupa o resto */
+}
+
+.main-list-cards .relative .sugestoes table thead tr th:nth-child(4),
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td:nth-child(4) {
+    width: 62px;
+}
+
+.main-list-cards .relative .sugestoes table thead tr th:nth-child(5),
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td:nth-child(5) {
+    width: 42px;
+}
+
+.main-list-cards .relative .sugestoes table thead tr th:nth-child(6),
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td:nth-child(6) {
+    width: 44px;
+}
+
+/*.main-list-cards .relative .sugestoes table thead {
+
+}*/
+
+.main-list-cards .relative .sugestoes table thead tr {
+    width: 100%;
+    background: var(--gradient-primary);
+    border-radius: 20px;
+}
+
+.main-list-cards .relative .sugestoes table thead tr th {
+    padding: 8px 4px;
+    border: solid 1px;
+    color: var(--color-white);
+    border-radius: 5px;
+    font-size: 11px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.main-list-cards .relative .sugestoes table #sugestoesBody {
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td {
+    padding: 6px 4px;
+    color: var(--color-black);
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 0px, rgba(0, 0, 0, 0.3) 1px 0px 1px 0px, rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
+    overflow: hidden;
+}
+
+/* Coluna de descrição: alinhada à esquerda e com quebra de linha */
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td:nth-child(3) {
+    text-align: left;
+    padding-left: 6px;
+}
+
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td .img-sugestao {
+    width: 35px;
+    border-radius: 5px;
+}
+
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td:first-child {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td:last-child {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td .descricao {
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.3;
+    word-break: break-word;
+    white-space: normal;
+    display: block;
+}
+
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td .preco {
+    color: #00B80A;
+}
+
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td .saldo {
+    color: #FF6E00;
+}
+
+/* ── Linha com item já no carrinho ─────────────────────────── */
+.main-list-cards .relative .sugestoes table #sugestoesBody tr.sugestao-no-carrinho {
+    background: rgba(34, 197, 94, 0.08);
+}
+
+/* Flash de feedback ao clicar */
+@keyframes sugestao-flash-anim {
+    0% {
+        background: rgba(34, 197, 94, 0.35);
+    }
+
+    100% {
+        background: rgba(34, 197, 94, 0.08);
+    }
+}
+
+.main-list-cards .relative .sugestoes table #sugestoesBody tr.sugestao-flash {
+    animation: sugestao-flash-anim 0.3s ease-out forwards;
+}
+
+/* Badge de quantidade no carrinho */
+.main-list-cards .relative .sugestoes table #sugestoesBody tr td .badge-carrinho {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    background: #03aca3;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 5px;
+    border-radius: 999px;
+    white-space: nowrap;
+    min-width: 28px;
+    justify-content: center;
+}
+
+
+.bottom-bar {
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-top: solid 2px var(--color-brand-blue);
+    backdrop-filter: blur(3px);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+}
+
+/* QUANDO O POPUP MOBILE VOLTAR, EVENTS NONE */
+
+.bottom-bar.event {
+    pointer-events: none;
+}
+
+.bottom-bar.active-bar {
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.4s ease;
+}
+
+.bottom-bar .box-btn {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.bottom-bar .box-btn .btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background: #F3F3F3;
     transition: background-color 0.2s;
     box-shadow: var(--shadow-elevated);

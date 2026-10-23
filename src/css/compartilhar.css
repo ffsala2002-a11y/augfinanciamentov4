@@ -4,35 +4,6 @@ ESTOU ORGANIZANDO ESSE CSS
 
 
 
-/* botão compartilhar */
-.btn-compartilhar-financ {
-  width: 100px;
-  height: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  /*transform: translateX(-70%);*/
-  border: none;
-  border-radius: 7px;
-  font-weight: bold;
-  overflow: hidden;
-  color: var(--color-white);
-  box-shadow:
-    rgba(0, 0, 0, 0.4) 0px 2px 4px,
-    
-    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
-    
-    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-  background: linear-gradient(90deg, rgba(26, 26, 26, 1) 0%, rgba(115, 0, 0, 1) 50%, rgba(21, 21, 21, 1) 100%);
-}
-
-.btn-compartilhar-financ i {
-  font-size: 21px;
-  color: var(--color-white);
-}
-
-
 /* modal compartilhar */
 .modal-compartilhar {
   display: none;

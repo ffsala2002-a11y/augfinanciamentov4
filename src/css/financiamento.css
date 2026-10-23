@@ -172,39 +172,6 @@ ESTOU ORGANIZANDO ESSE CSS
 }
 
 
-/* header parcelas */
-.financ-parcelas-header {
-  /*background: linear-gradient(135deg,#DD0000,#B80000);*/
-
-  background: #FFFFFF;
-
-  border-radius: 14px;
-
-  border: solid 2px #DADADA73;
-
-  padding: 14px 5px;
-
-  font-size: 16px;
-
-  font-weight: 800;
-
-  color: #fff;
-
-  letter-spacing: .3px;
-
-  text-align: center;
-
-  /*box-shadow:
-    0 4px 14px
-    rgba(221, 0, 0, 0.18);*/
-}
-
-.financ-parcelas-header span {
-  display: flex;
-  justify-content: space-between;
-}
-
-
 /* lista parcelas */
 .financ-parcelas-lista {
   width: 100%;
@@ -214,7 +181,7 @@ ESTOU ORGANIZANDO ESSE CSS
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 20rem;
+  top: 14.5rem;
   left: 0;
   z-index: 5;
   background: #ffffff;
