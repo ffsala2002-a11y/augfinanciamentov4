@@ -13,10 +13,55 @@ const fmt = v =>
 // Guarda qual item está expandido
 let itemExpandido = -1;
 
+// Último campo de entrada editado: 'valor' (R$) ou 'pct' (%)
+// Se foi %, a entrada em R$ acompanha o total quando o carrinho muda.
+let modoEntrada = 'valor';
+
+// Lê o valor do campo de entrada (R$) como número
+const lerEntrada = () =>
+  Number(
+    (document.getElementById('entrada')?.value || '')
+    .replace(/\D/g, '')
+  ) / 100 || 0;
+
+// Mantém Entrada (R$) e Entrada (%) sincronizadas
+function sincronizarEntrada(total) {
+  
+  const entradaEl = document.getElementById('entrada');
+  const pctEl = document.getElementById('entradaPct');
+  
+  if (!entradaEl || !pctEl) return;
+  
+  if (modoEntrada === 'pct') {
+    
+    // % manda: calcula o R$ (sem mexer no campo que está sendo digitado)
+    if (document.activeElement !== entradaEl) {
+      
+      const pct = Math.min(Math.max(parseFloat(pctEl.value) || 0, 0), 100);
+      
+      entradaEl.value = fmt(Math.round(total * pct) / 100);
+    }
+    
+  } else {
+    
+    // R$ manda: calcula o %
+    if (document.activeElement !== pctEl) {
+      
+      const valor = lerEntrada();
+      
+      pctEl.value =
+        total > 0 && valor > 0 ?
+        String(+Math.min(valor / total * 100, 100).toFixed(2)) :
+        '';
+    }
+  }
+}
+
 // Inicializa eventos do financiamento
 export function iniciarFinanciamento() {
   
   const entrada = document.getElementById('entrada');
+  const entradaPct = document.getElementById('entradaPct');
   const taxa = document.getElementById('taxa');
   const semJuros = document.getElementById('semJuros3x');
   const parc18 = document.getElementById('parc18x');
@@ -24,12 +69,25 @@ export function iniciarFinanciamento() {
   // Formata o campo entrada
   entrada?.addEventListener('input', () => {
     
+    modoEntrada = 'valor';
+    
     let v = entrada.value.replace(/\D/g, '');
     
     entrada.value = (Number(v) / 100).toLocaleString('pt-BR', {
       style: 'currency',
       currency: 'BRL'
     });
+    
+    renderFinanciamento();
+  });
+  
+  // Entrada em porcentagem (0 a 100)
+  entradaPct?.addEventListener('input', () => {
+    
+    modoEntrada = 'pct';
+    
+    if (parseFloat(entradaPct.value) > 100) entradaPct.value = '100';
+    if (parseFloat(entradaPct.value) < 0) entradaPct.value = '0';
     
     renderFinanciamento();
   });
@@ -79,6 +137,9 @@ export function renderFinanciamento() {
     totalValorEl.textContent = fmt(total);
   }
   
+  // Sincroniza entrada R$ <-> %
+  sincronizarEntrada(total);
+  
   // Se carrinho estiver vazio
   if (!carrinho.length || total <= 0 || isNaN(total)) {
     
@@ -107,11 +168,7 @@ export function renderFinanciamento() {
     document.getElementById('parc18x')?.checked || false;
   
   // Valor da entrada
-  const entradaNum =
-    Number(
-      (entradaEl?.value || 'R$ 0,00')
-      .replace(/\D/g, '')
-    ) / 100 || 0;
+  const entradaNum = lerEntrada();
   
   // Taxa digitada
   const taxaNum =
