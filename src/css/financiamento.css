@@ -65,7 +65,7 @@ ESTOU ORGANIZANDO ESSE CSS
 .financ-inputs {
   display: grid;
   grid-template-columns:
-    1fr 1fr;
+    1.5fr 0.8fr 0.9fr;
   gap: 10px;
 }
 
@@ -90,7 +90,8 @@ ESTOU ORGANIZANDO ESSE CSS
 
 /* input */
 .financ-input-group input {
-  padding: 12px 14px;
+  padding: 12px 10px;
+  min-width: 0;
   background: #fff;
   border:
     1.5px solid #E5E7EB;
