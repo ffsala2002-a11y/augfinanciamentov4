@@ -361,3 +361,33 @@ ESTOU ORGANIZANDO ESSE CSS
     opacity: 1;
   }
 }
+
+
+/* botão "Enviar todos" — último elemento do modal, segue o fluxo de scroll (modo link) */
+.comp-enviar-todos-wrap {
+  margin-top: 8px;
+}
+
+.btn-enviar-todos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 800;
+  color: #FF6700;
+  background-color: #FFEDE2;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.btn-enviar-todos i {
+  font-size: 22px;
+}
+
+.btn-enviar-todos:active {
+  transform: scale(0.98);
+}
